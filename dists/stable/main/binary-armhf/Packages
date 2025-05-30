@@ -1,0 +1,16 @@
+Package: unudhcpd
+Version: 2.2
+Architecture: armhf
+Maintainer: Marc Lainez <marc@spin42.com>
+Installed-Size: 20
+Depends: libc6:armhf (>= 2.36)
+Filename: pool/main/u/unudhcpd/unudhcpd_2.2_armhf.deb
+Size: 5932
+MD5sum: 60f58becd343b1d2f948d9b9038b9393
+SHA1: 7748f1b05548f255a738c1d1f2c1262bc6c5c1b0
+SHA256: 1ce05e5fecc3ed7db7ea440002823ab5427a5f35828e5ef0c9baf4898f570796
+Section: unknown
+Priority: optional
+Homepage: https://gitlab.com/postmarketOS/unudhcpd
+Description: unudhcpd debian package based on postmarketOS source tree
+
