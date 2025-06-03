@@ -1,13 +1,13 @@
 Package: citronics-initramfs
-Version: 1.0.0
+Version: 1.0.1
 Architecture: armhf
 Maintainer: info@citronics.eu
 Depends: initramfs-tools, busybox, kpartx, unudhcpd, linux-image-6.11.4-citronics-lemon
-Filename: pool/main/u/citronics-initramfs/citronics-initramfs-1.0.0.deb
-Size: 6912
-MD5sum: d836f8e8f820af9b6fb1dba5aaa46e27
-SHA1: 770d7c7e9a0e9a19c1421dc929f618347226bd52
-SHA256: 93b061bc6827be866216ab1ba985052654c778100136e38740cdcc51df815bd5
+Filename: pool/main/u/citronics-initramfs/citronics-initramfs-1.0.1.deb
+Size: 6936
+MD5sum: b68477d1d647e4bccf3e915627d8e00e
+SHA1: 8bfce5f2f4e508c1b7995289bbbef66a2b1b1c51
+SHA256: 4793de02b0919affa438b53124f0856570b9df417dd481a7dd4783c8b9943c92
 Section: base
 Priority: optional
 Description: Custom initramfs-tools hooks and scripts for citronics boards
@@ -26,6 +26,25 @@ Section: base
 Priority: optional
 Description: Firmware from two Git submodules, installed into /lib/firmware
 
+Package: linux-headers-6.11.4-citronics-lemon
+Source: linux-upstream
+Version: 1.0-1
+Architecture: armhf
+Maintainer: marc <marc@framework.local>
+Installed-Size: 51940
+Filename: pool/main/u/linux-image/linux-headers-6.11.4-citronics-lemon_1.0-1_armhf.deb
+Size: 8808252
+MD5sum: 5236768c7e7ca297d4120b60dcaf5c0e
+SHA1: dd4f1b0b11c981bf4943edbaff2ba7732f126438
+SHA256: d82b90687b17c3c587956e1e1f4efe83759c11c23b949e74c06181c408d98414
+Section: kernel
+Priority: optional
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.11.4-citronics-lemon on armhf
+ This package provides kernel header files for 6.11.4-citronics-lemon on armhf
+ .
+ This is useful for people who need to build external modules
+
 Package: linux-image-6.11.4-citronics-lemon
 Source: linux-upstream
 Version: 1.0-1
@@ -43,6 +62,26 @@ Homepage: https://www.kernel.org/
 Description: Linux kernel, version 6.11.4-citronics-lemon
  This package contains the Linux kernel, modules and corresponding other
  files, version: 6.11.4-citronics-lemon.
+
+Package: linux-libc-dev
+Source: linux-upstream
+Version: 1.0-1
+Architecture: armhf
+Maintainer: marc <marc@framework.local>
+Installed-Size: 6956
+Provides: linux-kernel-headers
+Filename: pool/main/u/linux-image/linux-libc-dev_1.0-1_armhf.deb
+Size: 1347856
+MD5sum: f9007b0d0bb9fd7211558daee8577def
+SHA1: e2f4f690b5a1777fc984c2bd183ffed21be752fa
+SHA256: 3cce85cab41abf37d1f70b4289cfe3f495facae27953997f8a18c9527f796b45
+Section: devel
+Priority: optional
+Multi-Arch: same
+Homepage: https://www.kernel.org/
+Description: Linux support headers for userspace development
+ This package provides userspaces headers from the Linux kernel.  These headers
+ are used by the installed headers for GNU glibc and other system libraries.
 
 Package: unudhcpd
 Version: 2.2
