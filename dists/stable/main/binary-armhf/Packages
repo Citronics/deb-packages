@@ -1,3 +1,49 @@
+Package: citronics-initramfs
+Version: 1.0.0
+Architecture: armhf
+Maintainer: info@citronics.eu
+Depends: initramfs-tools, busybox, kpartx, unudhcpd, linux-image-6.11.4-citronics-lemon
+Filename: pool/main/u/citronics-initramfs/citronics-initramfs-1.0.0.deb
+Size: 6912
+MD5sum: d836f8e8f820af9b6fb1dba5aaa46e27
+SHA1: 770d7c7e9a0e9a19c1421dc929f618347226bd52
+SHA256: 93b061bc6827be866216ab1ba985052654c778100136e38740cdcc51df815bd5
+Section: base
+Priority: optional
+Description: Custom initramfs-tools hooks and scripts for citronics boards
+ This package installs custom hooks, modules, and scripts into initramfs-tools.
+
+Package: linux-firmware-lemon
+Version: 1.0
+Architecture: all
+Maintainer: Your Name <you@example.com>
+Filename: pool/main/u/linux-firmware-lemon/linux-firmware-lemon-package.deb
+Size: 26834296
+MD5sum: 2b9b6b79128e1a0e52dfbc3b5a068d9b
+SHA1: a702aa50249dc7293976d7b1161f861a50262ab1
+SHA256: dc0e923dc74e8f9112e49201a08ce7f17aa3b299e29f0e6360294610b489afd8
+Section: base
+Priority: optional
+Description: Firmware from two Git submodules, installed into /lib/firmware
+
+Package: linux-image-6.11.4-citronics-lemon
+Source: linux-upstream
+Version: 1.0-1
+Architecture: armhf
+Maintainer: marc <marc@framework.local>
+Installed-Size: 35254
+Filename: pool/main/u/linux-image/linux-image-6.11.4-citronics-lemon_1.0-1_armhf.deb
+Size: 13917092
+MD5sum: fc1534d0d041585b1deef2e5f9cb8eb8
+SHA1: 13594239d348934bae8bf3819b1fa6db38ea83eb
+SHA256: 52b3cb5938626fd80694eb8802ca4d09bced9185b1f776ec5ab5426d6eb97af8
+Section: kernel
+Priority: optional
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.11.4-citronics-lemon
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.11.4-citronics-lemon.
+
 Package: unudhcpd
 Version: 2.2
 Architecture: armhf
