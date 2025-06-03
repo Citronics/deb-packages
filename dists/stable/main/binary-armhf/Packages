@@ -1,13 +1,13 @@
 Package: citronics-initramfs
-Version: 1.0.1
+Version: 1.0.2
 Architecture: armhf
 Maintainer: info@citronics.eu
 Depends: initramfs-tools, busybox, kpartx, unudhcpd, linux-image-6.11.4-citronics-lemon
-Filename: pool/main/u/citronics-initramfs/citronics-initramfs-1.0.1.deb
+Filename: pool/main/u/citronics-initramfs/citronics-initramfs-1.0.2.deb
 Size: 6936
-MD5sum: b68477d1d647e4bccf3e915627d8e00e
-SHA1: 8bfce5f2f4e508c1b7995289bbbef66a2b1b1c51
-SHA256: 4793de02b0919affa438b53124f0856570b9df417dd481a7dd4783c8b9943c92
+MD5sum: 3ce5bcc36321a2225abc06c07e7975fa
+SHA1: c7bfb132d8cd2e405998c28b9276cf2cab02a484
+SHA256: fc6d83c6eaf10c48444d62f6d9c8c7d66b06053276c6f452421ca94eecc67bf0
 Section: base
 Priority: optional
 Description: Custom initramfs-tools hooks and scripts for citronics boards
