@@ -33,10 +33,10 @@ Architecture: armhf
 Maintainer: marc <marc@framework.local>
 Installed-Size: 51940
 Filename: pool/main/u/linux-image/linux-headers-6.11.4-citronics-lemon_1.0-1_armhf.deb
-Size: 8808252
-MD5sum: 5236768c7e7ca297d4120b60dcaf5c0e
-SHA1: dd4f1b0b11c981bf4943edbaff2ba7732f126438
-SHA256: d82b90687b17c3c587956e1e1f4efe83759c11c23b949e74c06181c408d98414
+Size: 8808236
+MD5sum: aeba3ed7f73a89933e843791f0bf9aa0
+SHA1: 74efc1ebef78dc9d38cf0b2b4b04050bef2993ba
+SHA256: 3bca02bd12cdb12f9116f2fd1025abb6b2903f65f4a98062de661bff0e6135f4
 Section: kernel
 Priority: optional
 Homepage: https://www.kernel.org/
@@ -52,10 +52,10 @@ Architecture: armhf
 Maintainer: marc <marc@framework.local>
 Installed-Size: 35254
 Filename: pool/main/u/linux-image/linux-image-6.11.4-citronics-lemon_1.0-1_armhf.deb
-Size: 13917092
-MD5sum: fc1534d0d041585b1deef2e5f9cb8eb8
-SHA1: 13594239d348934bae8bf3819b1fa6db38ea83eb
-SHA256: 52b3cb5938626fd80694eb8802ca4d09bced9185b1f776ec5ab5426d6eb97af8
+Size: 13919292
+MD5sum: 0424b7e42995c0898079a13b9b406105
+SHA1: b16b36c3aea75f91c9c17671972ea9fc160001a8
+SHA256: 4687d92c0ebdca9cb71cd24bb968aa7e63dfdf60b980fc831e804467d3588301
 Section: kernel
 Priority: optional
 Homepage: https://www.kernel.org/
@@ -71,10 +71,10 @@ Maintainer: marc <marc@framework.local>
 Installed-Size: 6956
 Provides: linux-kernel-headers
 Filename: pool/main/u/linux-image/linux-libc-dev_1.0-1_armhf.deb
-Size: 1347856
-MD5sum: f9007b0d0bb9fd7211558daee8577def
-SHA1: e2f4f690b5a1777fc984c2bd183ffed21be752fa
-SHA256: 3cce85cab41abf37d1f70b4289cfe3f495facae27953997f8a18c9527f796b45
+Size: 1347692
+MD5sum: 61b18c0d1551f8bfe9affd39bc901041
+SHA1: 5f1c3f29ad852c0c91b1a3be52b5230f6e5bfbda
+SHA256: 29683997841f7b12cdbef19e05191bf11fc16a47ddfe1ca01812ab468960ab16
 Section: devel
 Priority: optional
 Multi-Arch: same
