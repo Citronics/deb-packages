@@ -5,9 +5,9 @@ Maintainer: info@citronics.eu
 Depends: initramfs-tools, busybox, kpartx, unudhcpd, linux-headers-6.11.4-citronics-lemon, linux-image-6.11.4-citronics-lemon
 Filename: pool/main/u/citronics-initramfs/citronics-initramfs-1.0.2.deb
 Size: 8306
-MD5sum: b17f1ca5ed2faf8bf560354d0a23811c
-SHA1: 14cebedff91a4e73ddc668867fac37e7acfd7ec6
-SHA256: 5e434e1598b73379ca5bde7b0d4b5d7b76471bbc33085acb0c1ad3a5dc7e8b7a
+MD5sum: 98b702f18d73a578bbac62b66567cd62
+SHA1: a6af337d17b9a17b25eadf8201614246f8bd6a50
+SHA256: b2023c2ba929b3f10ee49e956084427577fc3365a356fecb3bb3cacb8f7893a7
 Section: base
 Priority: optional
 Description: Custom initramfs-tools hooks and scripts for citronics boards
