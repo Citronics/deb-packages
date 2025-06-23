@@ -4,10 +4,10 @@ Architecture: armhf
 Maintainer: info@citronics.eu
 Depends: initramfs-tools, busybox-static, kpartx, inetutils-telnetd, unudhcpd, parted
 Filename: pool/main/u/citronics-initramfs/citronics-initramfs-1.0.7.deb
-Size: 8348
-MD5sum: 2655c5cfb4a0744a26241ec9f51f6abd
-SHA1: 5bc6dbbc2e19215c6175cae5550c1c66d42db9d0
-SHA256: 405f64e0def83ac3b90b3c069340c972d614197776c2e5029405af5f375c983d
+Size: 8346
+MD5sum: 990f65ea58f81074fefb1823896da014
+SHA1: a79a30c5b9429ec5a6004c929cb271f8d762cdde
+SHA256: f0edb0777cac36a700e09ae948a1bf9338f43c85b5f749af8385e4109365d90f
 Section: base
 Priority: optional
 Description: Custom initramfs-tools hooks and scripts for citronics boards
