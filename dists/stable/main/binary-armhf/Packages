@@ -28,15 +28,15 @@ Description: Firmware from two Git submodules, installed into /lib/firmware
 
 Package: linux-headers-6.12.0-citronics-lemon
 Source: linux-upstream
-Version: 1.0-1
+Version: 1.0-2
 Architecture: armhf
-Maintainer: marc <marc@framework.local>
-Installed-Size: 49263
-Filename: pool/main/u/linux-image/linux-headers-6.12.0-citronics-lemon_1.0-1_armhf.deb
-Size: 8386284
-MD5sum: db6e370e5d87ee5915f9b0cc982487ad
-SHA1: da022006c5859917c27eeca38e8bd76a258fd113
-SHA256: 2340defa2cbae1ffb3f46271a8581b87572d16f18427e602e4885dc132bf19af
+Maintainer: marc <marc@Ryzen>
+Installed-Size: 49273
+Filename: pool/main/u/linux-image/linux-headers-6.12.0-citronics-lemon_1.0-2_armhf.deb
+Size: 8643410
+MD5sum: 650d2d57dbc6daa5fceeec4a98f1511e
+SHA1: ce70e7fa8659d33d8bd4ce0f51d768b94bdd7443
+SHA256: ae88d35c7ba539bff2241ebd367cbe1a6c11367cf38deaa09d54dd4b3039fdc0
 Section: kernel
 Priority: optional
 Homepage: https://www.kernel.org/
@@ -47,15 +47,15 @@ Description: Linux kernel headers for 6.12.0-citronics-lemon on armhf
 
 Package: linux-image-6.12.0-citronics-lemon
 Source: linux-upstream
-Version: 1.0-1
+Version: 1.0-2
 Architecture: armhf
-Maintainer: marc <marc@framework.local>
-Installed-Size: 37838
-Filename: pool/main/u/linux-image/linux-image-6.12.0-citronics-lemon_1.0-1_armhf.deb
-Size: 14437104
-MD5sum: 36197fabda7eb3c4572a07e08fa688ea
-SHA1: 2745b67ec0acee71736608560a988dbe3d4097bc
-SHA256: c100922b0a9f52b15c6646dbabe32a90c5e0a76317955839b746d76a410f9665
+Maintainer: marc <marc@Ryzen>
+Installed-Size: 37592
+Filename: pool/main/u/linux-image/linux-image-6.12.0-citronics-lemon_1.0-2_armhf.deb
+Size: 15488886
+MD5sum: 69e9c8d7a321c94a858726301420a6f1
+SHA1: 3ed6a85dcaab2c4de7d89eb299a9466f4f7bfa88
+SHA256: d527fc5885594680f50e2015fd025f2f673527edafe58cc7bbcd97b53361c8c9
 Section: kernel
 Priority: optional
 Homepage: https://www.kernel.org/
@@ -65,16 +65,16 @@ Description: Linux kernel, version 6.12.0-citronics-lemon
 
 Package: linux-libc-dev
 Source: linux-upstream
-Version: 1.0-1
+Version: 1.0-2
 Architecture: armhf
-Maintainer: marc <marc@framework.local>
+Maintainer: marc <marc@Ryzen>
 Installed-Size: 7007
 Provides: linux-kernel-headers
-Filename: pool/main/u/linux-image/linux-libc-dev_1.0-1_armhf.deb
-Size: 1356264
-MD5sum: 4c43c3a31e64e183f5d7735f3c937a2e
-SHA1: bec4282ea685a54fceb3554be1c305638cf425eb
-SHA256: a2d9004ffdcb7c85e6afb5573876b7e81fc643cac498847e8ae9c311d862450f
+Filename: pool/main/u/linux-image/linux-libc-dev_1.0-2_armhf.deb
+Size: 1400070
+MD5sum: f31f5c1399a3e584e37e0ef65fb62232
+SHA1: b58dafc606ac0a254765e31afd9dc29f1e30328f
+SHA256: 124e70a357840d2329c7584af74fb0258df669c4f2a9873e91ac3f89bc7b2cb3
 Section: devel
 Priority: optional
 Multi-Arch: same
