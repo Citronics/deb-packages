@@ -1,0 +1,30 @@
+Package: citronics-initramfs
+Architecture: armhf
+Version: 1.0.8
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Depends: initramfs-tools, busybox-static, kpartx, inetutils-telnetd, unudhcpd, parted
+Filename: pool/main/citronics-initramfs-1.0.8.deb
+Size: 7830
+MD5sum: eaf6d0d515dfce8eabde4a6a0469b027
+SHA1: 0daa334bd68de1198dadde0b15356992cc050fd2
+SHA256: 1bbe92f39c33b6e7703f3cd3768f7c2ca1c70c3d03c4e5bc98a6cc5f2951f033
+SHA512: 232e20e01d2937a2d782c20ddc701f664717580fcd4b124e00d5d8150839a3b0e4804275150c1fdd55a5ea40ff2eb1e9e78a0b48960dffef825623bbc77737f0
+Description: Custom initramfs-tools hooks and scripts for citronics boards
+ This package installs custom hooks, modules, and scripts into initramfs-tools.
+
+Package: linux-firmware-lime
+Architecture: all
+Version: 1.0
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime_1.0_all.deb
+Size: 29493406
+MD5sum: 531c747982eba563b92a9f142184678a
+SHA1: 3ac76afef7af9a507659b93c4dd04115a68ddf08
+SHA256: 3648a5cc9d585dd46e102da8716a86287eddfe0801757b76256bca86ef584b18
+SHA512: 1d88fe67cdb0561b4cef1078e9e4af20cdf925c3615426031d9f44ca74234d9c29566dca6a629465240a3d1085b6d8460a97135fdcf47992b25cea5ed34e69f2
+Description: Firmware for the Lime board from two Git submodules, installed into /lib/firmware
+
