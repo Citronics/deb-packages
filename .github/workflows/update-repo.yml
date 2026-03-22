@@ -60,8 +60,8 @@ jobs:
         run: |
           apt-ftparchive packages pool/main/ > dists/stable/main/binary-armhf/Packages
           cp dists/stable/main/binary-armhf/Packages dists/stable/main/binary-all/Packages
-          gzip -k dists/stable/main/binary-armhf/Packages
-          gzip -k dists/stable/main/binary-all/Packages
+          gzip -kf dists/stable/main/binary-armhf/Packages
+          gzip -kf dists/stable/main/binary-all/Packages
           apt-ftparchive release dists/stable/ > dists/stable/Release
 
       - name: Commit and push
