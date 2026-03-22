@@ -53,7 +53,7 @@ jobs:
       - name: Build meta-package
         run: |
           if [ -d meta-packages/citronics-lime/DEBIAN ]; then
-            dpkg-deb --build meta-packages/citronics-lime pool/main/citronics-lime_1.0_armhf.deb
+            dpkg-deb --build meta-packages/citronics-lime pool/main/citronics-lime_2.0_armhf.deb
           fi
 
       - name: Generate APT metadata
