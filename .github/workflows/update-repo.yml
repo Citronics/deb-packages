@@ -1,0 +1,77 @@
+name: Update APT Repository
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [update-repo]
+
+concurrency:
+  group: apt-repo-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Install apt-ftparchive
+        run: sudo apt-get update && sudo apt-get install -y apt-utils
+
+      - name: Create directory structure
+        run: |
+          mkdir -p pool/main
+          mkdir -p dists/stable/main/binary-armhf
+          mkdir -p dists/stable/main/binary-all
+
+      - name: Download releases from all source repos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/unudhcpd-deb"
+
+          for REPO in $REPOS; do
+            echo "Downloading from $REPO..."
+            TAGS=$(gh release list --repo "$REPO" --json tagName --jq '.[].tagName' 2>/dev/null || true)
+            for TAG in $TAGS; do
+              gh release download "$TAG" --repo "$REPO" --pattern '*.deb' --dir pool/main/ --skip-existing 2>/dev/null || true
+            done
+          done
+
+          find pool/main/ -name '*-dbg_*' -delete
+          find pool/main/ -name 'linux-libc-dev_*' -delete
+
+          echo "Downloaded .deb files:"
+          ls -la pool/main/
+
+      - name: Build meta-package
+        run: |
+          if [ -d meta-packages/citronics-lime/DEBIAN ]; then
+            dpkg-deb --build meta-packages/citronics-lime pool/main/citronics-lime_1.0_armhf.deb
+          fi
+
+      - name: Generate APT metadata
+        run: |
+          apt-ftparchive packages pool/main/ > dists/stable/main/binary-armhf/Packages
+          cp dists/stable/main/binary-armhf/Packages dists/stable/main/binary-all/Packages
+          gzip -k dists/stable/main/binary-armhf/Packages
+          gzip -k dists/stable/main/binary-all/Packages
+          apt-ftparchive release dists/stable/ > dists/stable/Release
+
+      - name: Commit and push
+        run: |
+          git config user.name "Marc Lainez"
+          git config user.email "marc.lainez@gmail.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update APT repository"
+            git push
+          fi
