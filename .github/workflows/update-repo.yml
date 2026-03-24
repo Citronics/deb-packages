@@ -34,6 +34,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Carrier-specific repos (linux-firmware-{carrier}, {carrier}-image) paired per carrier.
+          # Shared repos (initramfs, unudhcpd-deb) reused across all carriers.
+          # To add a new carrier: append its linux-firmware-{carrier} and {carrier}-image repos here.
           REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/unudhcpd-deb"
 
           for REPO in $REPOS; do
