@@ -50,11 +50,17 @@ jobs:
           echo "Downloaded .deb files:"
           ls -la pool/main/
 
-      - name: Build meta-package
+      - name: Build meta-packages
         run: |
-          if [ -d meta-packages/citronics-lime/DEBIAN ]; then
-            dpkg-deb --build meta-packages/citronics-lime pool/main/citronics-lime_2.0_armhf.deb
-          fi
+          for pkg_dir in meta-packages/*/; do
+            if [ -d "${pkg_dir}DEBIAN" ]; then
+              pkg_name=$(grep '^Package:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
+              pkg_version=$(grep '^Version:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
+              pkg_arch=$(grep '^Architecture:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
+              dpkg-deb --build "$pkg_dir" "pool/main/${pkg_name}_${pkg_version}_${pkg_arch}.deb"
+              echo "Built ${pkg_name}_${pkg_version}_${pkg_arch}.deb"
+            fi
+          done
 
       - name: Generate APT metadata
         run: |
