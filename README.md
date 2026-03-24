@@ -22,12 +22,15 @@ sudo apt update
 
 | Package | Description | Source repo |
 | --- | --- | --- |
-| `citronics-lime` | Meta-package — installs everything below | this repo |
+| `citronics-lime` | Transitional meta-package (depends on `citronics-lime-fp2`) | this repo |
+| `citronics-lime-fp2` | Board-specific meta-package (carrier-lime, board-fp2) | this repo |
 | `linux-image-*-citronics-lime` | Kernel image | [lime-image](https://github.com/Citronics/lime-image) |
 | `linux-headers-*-citronics-lime` | Kernel headers | [lime-image](https://github.com/Citronics/lime-image) |
 | `linux-firmware-lime` | Proprietary firmware | [linux-firmware-lime](https://github.com/Citronics/linux-firmware-lime) |
 | `citronics-initramfs` | Custom initramfs | [initramfs](https://github.com/Citronics/initramfs) |
 | `unudhcpd` | USB DHCP helper | [unudhcpd-deb](https://github.com/Citronics/unudhcpd-deb) |
+
+Meta-packages follow the naming pattern `citronics-{carrier}-{board}` (e.g., `citronics-lime-fp2`). To add a new carrier or board combination, create a new meta-package under `meta-packages/citronics-{carrier}-{board}/` in this repository. The `build-meta.sh` script automatically discovers all meta-packages via a dynamic loop — no script changes needed when adding carriers.
 
 To install everything:
 
