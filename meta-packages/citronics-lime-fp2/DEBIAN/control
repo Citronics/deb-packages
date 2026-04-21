@@ -2,9 +2,9 @@ Package: citronics-lime-fp2
 Version: 2.0
 Architecture: armhf
 Maintainer: Citronics <info@citronics.eu>
-Depends: linux-image-6.15.11-citronics-lime, linux-firmware-lime, citronics-initramfs, unudhcpd
+Depends: linux-image-6.15.11-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd
 Section: metapackages
 Priority: optional
 Description: Citronics Lime meta-package for Fairphone 2
- Installs the complete Citronics Lime software stack:
+ Installs the complete Citronics Lime software stack for Fairphone 2:
  kernel image, firmware, initramfs, and DHCP helper.
