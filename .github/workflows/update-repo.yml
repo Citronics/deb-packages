@@ -29,6 +29,7 @@ jobs:
           mkdir -p pool/main
           mkdir -p dists/stable/main/binary-armhf
           mkdir -p dists/stable/main/binary-all
+          mkdir -p dists/stable/main/binary-arm64
 
       - name: Download releases from all source repos
         env:
@@ -69,8 +70,10 @@ jobs:
         run: |
           apt-ftparchive packages pool/main/ > dists/stable/main/binary-armhf/Packages
           cp dists/stable/main/binary-armhf/Packages dists/stable/main/binary-all/Packages
+          cp dists/stable/main/binary-armhf/Packages dists/stable/main/binary-arm64/Packages
           gzip -kf dists/stable/main/binary-armhf/Packages
           gzip -kf dists/stable/main/binary-all/Packages
+          gzip -kf dists/stable/main/binary-arm64/Packages
           apt-ftparchive release dists/stable/ > dists/stable/Release
 
       - name: Commit and push
