@@ -14,6 +14,70 @@ SHA512: 232e20e01d2937a2d782c20ddc701f664717580fcd4b124e00d5d8150839a3b0e4804275
 Description: Custom initramfs-tools hooks and scripts for citronics boards
  This package installs custom hooks, modules, and scripts into initramfs-tools.
 
+Package: citronics-initramfs
+Architecture: all
+Version: 1.0.8
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Depends: initramfs-tools, busybox-static, kpartx, inetutils-telnetd, unudhcpd, parted
+Filename: pool/main/citronics-initramfs_1.0.9_all.deb
+Size: 8230
+MD5sum: 465384bec6eff6693030833e919077f3
+SHA1: eb452a4dbc3c84dfc920f913f4309389143b5e49
+SHA256: dfabd4836117188337c4f860d704a184d41141a33a332f698fb8e6600360f8d4
+SHA512: 9f585d09e992df3717f524d6872e42e9645489af25789aa5874c5e73b7ccf531f015a9dfa90f14ff4f6e93a95c3361bfcfc16a4d1b219567625c734df3fb1ff9
+Description: Custom initramfs-tools hooks and scripts for citronics boards
+ This package installs custom hooks, modules, and scripts into initramfs-tools.
+
+Package: citronics-lime-fp2
+Architecture: armhf
+Version: 2.0
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-6.15.11-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd
+Filename: pool/main/citronics-lime-fp2_2.0_armhf.deb
+Size: 628
+MD5sum: d9b683d8189fbffaf03233e220bdcf5a
+SHA1: 86459f8572b7de74ae3d448ed717025f06b40ced
+SHA256: b375a4782e128c3305df4e068bea9ad59d31eb3ccf11c29e368ff368f070a396
+SHA512: f7f71361c42e77027a0a61f38a2714675ab2ab5ce4f52580e88942fce22799839107483b4fc30e77577228bd038fa5d030e4b2304a8d25e1aa1ee78be544a484
+Description: Citronics Lime meta-package for Fairphone 2
+ Installs the complete Citronics Lime software stack for Fairphone 2:
+ kernel image, firmware, initramfs, and DHCP helper.
+
+Package: citronics-lime
+Architecture: armhf
+Version: 3.0
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: citronics-lime-fp2
+Filename: pool/main/citronics-lime_3.0_armhf.deb
+Size: 578
+MD5sum: 5e10fc0895b736ce081191f87c929bd6
+SHA1: d5db2bf993aa5b5d4429f0705a59e21544922108
+SHA256: bfc82cdff2bdf664c9d164137536e3490513437a96aa43367a70724087afa9de
+SHA512: ecd0ac5685745b9c6eca9c8050247a4f8548377bc5d302bb77321530be8748e2dbcca7c7686573d01f44198beadd2bca20f24ba470d851d3b64cb16d25a454a7
+Description: Transitional package for Citronics Lime
+ This is a transitional package that depends on citronics-lime-fp2.
+ It can be safely removed after upgrading.
+
+Package: linux-firmware-lime-fp3
+Architecture: all
+Version: 1.0
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime-fp3_1.0_all.deb
+Size: 33827764
+MD5sum: 32dcd5269519e6cc02b5d5d15664e4d3
+SHA1: 34fed43d63cdfef76673760c704765d86fe5a1ba
+SHA256: e061ecd1e0ab1953a26e0ed587f76a4a9003e683968e6a3bcd306ac011bcde64
+SHA512: b3d9f19a1c9d28f97dc21afab19d30e3c18cbe00ca9eb536323e774d89a7062e840acba1f52c4eb11119048e9cc07e06b2f590c84f0bf61bd67646cc5ef66481
+Description: Firmware for Fairphone 3/3+ on the Citronics Lime carrier board
+
 Package: linux-firmware-lime
 Architecture: all
 Version: 1.0

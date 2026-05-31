@@ -1,0 +1,117 @@
+Package: citronics-initramfs
+Architecture: all
+Version: 1.0.8
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Depends: initramfs-tools, busybox-static, kpartx, inetutils-telnetd, unudhcpd, parted
+Filename: pool/main/citronics-initramfs_1.0.9_all.deb
+Size: 8230
+MD5sum: 465384bec6eff6693030833e919077f3
+SHA1: eb452a4dbc3c84dfc920f913f4309389143b5e49
+SHA256: dfabd4836117188337c4f860d704a184d41141a33a332f698fb8e6600360f8d4
+SHA512: 9f585d09e992df3717f524d6872e42e9645489af25789aa5874c5e73b7ccf531f015a9dfa90f14ff4f6e93a95c3361bfcfc16a4d1b219567625c734df3fb1ff9
+Description: Custom initramfs-tools hooks and scripts for citronics boards
+ This package installs custom hooks, modules, and scripts into initramfs-tools.
+
+Package: citronics-lime-fp3
+Architecture: arm64
+Version: 1.0
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-6.19.5-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl
+Filename: pool/main/citronics-lime-fp3_1.0_arm64.deb
+Size: 648
+MD5sum: 210f89e4497b7caead4bf89af87cc432
+SHA1: 1def3f9a4957aeeceeaee1b7a6cb7c0bae5cb347
+SHA256: f1b8434dd330a69846edefee72f222ea35cca54b6c1ae0e8d3c77ed20d0d1455
+SHA512: 538705d3b26846f00a518f8e9a89928e256eb236deb0471ba1b24f4a0c7cc7261105b2031de85766accb51a2a21b064fab21b18846f870e576cb9a27e2c972ce
+Description: Citronics Lime meta-package for Fairphone 3/3+
+ Installs the complete Citronics Lime software stack for Fairphone 3/3+:
+ kernel image, firmware, initramfs, and DHCP helper.
+
+Package: linux-firmware-lime-fp3
+Architecture: all
+Version: 1.0
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime-fp3_1.0_all.deb
+Size: 33827764
+MD5sum: 32dcd5269519e6cc02b5d5d15664e4d3
+SHA1: 34fed43d63cdfef76673760c704765d86fe5a1ba
+SHA256: e061ecd1e0ab1953a26e0ed587f76a4a9003e683968e6a3bcd306ac011bcde64
+SHA512: b3d9f19a1c9d28f97dc21afab19d30e3c18cbe00ca9eb536323e774d89a7062e840acba1f52c4eb11119048e9cc07e06b2f590c84f0bf61bd67646cc5ef66481
+Description: Firmware for Fairphone 3/3+ on the Citronics Lime carrier board
+
+Package: linux-firmware-lime
+Architecture: all
+Version: 1.0
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime_1.0_all.deb
+Size: 29493406
+MD5sum: 531c747982eba563b92a9f142184678a
+SHA1: 3ac76afef7af9a507659b93c4dd04115a68ddf08
+SHA256: 3648a5cc9d585dd46e102da8716a86287eddfe0801757b76256bca86ef584b18
+SHA512: 1d88fe67cdb0561b4cef1078e9e4af20cdf925c3615426031d9f44ca74234d9c29566dca6a629465240a3d1085b6d8460a97135fdcf47992b25cea5ed34e69f2
+Description: Firmware for the Lime board from two Git submodules, installed into /lib/firmware
+
+Package: linux-headers-6.19.5-msm8953-citronics-lime-fp3
+Architecture: arm64
+Version: 0.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 54250
+Filename: pool/main/linux-headers-6.19.5-msm8953-citronics-lime-fp3_0.1_arm64.deb
+Size: 9243070
+MD5sum: db564c9e19bf787a6d91e4272dece8f8
+SHA1: 227d910135194f9b925574d70c92367c58c07c57
+SHA256: cd75b0131d3293163a9adb4e8c6634389d328c9e1fa8154fbead1775efdc6ff1
+SHA512: 04a4bb85f25f05c75c654f9e587199acfbca7db980f186307ea1fb737b3689933e4f6f5d5f577104245b05bf8c57bb1ab49031105e75f8e8a57abae82b6972be
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.19.5-msm8953-citronics-lime-fp3 on arm64
+ This package provides kernel header files for 6.19.5-msm8953-citronics-lime-fp3 on arm64
+ .
+ This is useful for people who need to build external modules
+
+Package: linux-image-6.19.5-msm8953-citronics-lime-fp3
+Architecture: arm64
+Version: 0.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 95772
+Filename: pool/main/linux-image-6.19.5-msm8953-citronics-lime-fp3_0.1_arm64.deb
+Size: 20701008
+MD5sum: 688e168f5601add25856c3bc9fff11f8
+SHA1: 4d4c058748f4ccd8182b91100817de8a327194b0
+SHA256: 916dc869d1a8f964453424b85cf91aa1cecd22fe01c7d4d59103dcd966bd176a
+SHA512: 44c5dc972635478e9ac5866e537d3f28055b94078459d3df6cca8515baa7299e78de16b58d8e557be171cac810c0bf46995f725ae602eb2a1e04a4698df9264d
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.19.5-msm8953-citronics-lime-fp3
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.19.5-msm8953-citronics-lime-fp3.
+
+Package: unudhcpd
+Architecture: arm64
+Version: 2.2
+Priority: optional
+Section: unknown
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 76
+Depends: libc6:arm64 (>= 2.39)
+Filename: pool/main/unudhcpd_2.2_arm64.deb
+Size: 6188
+MD5sum: 23ec5b62cf6665443c4600457f6d55f2
+SHA1: aecab79aef5041f4310e6e04be33f91d8b32a812
+SHA256: f4c36b636af611dc45fb0ef31d6efe81d0b79d4c7b0d9abbbf405621f002f4e6
+SHA512: 5bd8ce755dfefbe317e95ff606113d4d689e36637a0045a00e1a1f1ddabf153db4093c306018a2a228529fc78379a38f66c2db5b4058818aba9022d4cbc3a84d
+Homepage: https://gitlab.com/postmarketOS/unudhcpd
+Description: unudhcpd debian package based on postmarketOS source tree
+
