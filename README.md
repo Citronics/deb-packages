@@ -22,14 +22,15 @@ sudo apt update
 
 | Package | Arch | Description | Source repo |
 | --- | --- | --- | --- |
-| `citronics-lime` | all | Transitional meta-package (depends on `citronics-lime-fp2`) | this repo |
-| `citronics-lime-fp2` | all | FP2 meta-package (carrier-lime, board-fp2) | this repo |
+| `citronics-lime` | armhf | Transitional meta-package (depends on `citronics-lime-fp2`) | this repo |
+| `citronics-lime-fp2` | armhf | FP2 meta-package (carrier-lime, board-fp2) | this repo |
 | `citronics-lime-fp3` | arm64 | FP3 meta-package (carrier-lime, board-fp3) | this repo |
 | `linux-image-*-citronics-lime-fp3` | arm64 | FP3 kernel image | [citronics-kernel](https://github.com/Citronics/citronics-kernel) |
 | `linux-headers-*-citronics-lime-fp3` | arm64 | FP3 kernel headers | [citronics-kernel](https://github.com/Citronics/citronics-kernel) |
+| `linux-firmware-lime-fp2` | all | FP2 firmware | [citronics-firmware](https://github.com/Citronics/citronics-firmware) |
 | `linux-firmware-lime-fp3` | all | FP3 firmware | [citronics-firmware](https://github.com/Citronics/citronics-firmware) |
-| `linux-firmware-lime` | all | FP2 firmware | [linux-firmware-lime](https://github.com/Citronics/linux-firmware-lime) |
-| `citronics-initramfs` | all | Custom initramfs | [initramfs](https://github.com/Citronics/initramfs) |
+| `linux-firmware-lime` | all | FP2 firmware (legacy — superseded by `linux-firmware-lime-fp2`) | [linux-firmware-lime](https://github.com/Citronics/linux-firmware-lime) |
+| `citronics-initramfs` | all | Custom initramfs | [citronics-initramfs](https://github.com/Citronics/citronics-initramfs) |
 | `unudhcpd` | armhf, arm64 | USB DHCP helper | [unudhcpd-deb](https://github.com/Citronics/unudhcpd-deb) |
 
 Meta-packages follow the naming pattern `citronics-{carrier}-{board}` (e.g., `citronics-lime-fp2`, `citronics-lime-fp3`). To add a new carrier or board combination, create a new meta-package under `meta-packages/citronics-{carrier}-{board}/` in this repository. The `build-meta.sh` script automatically discovers all meta-packages via a dynamic loop — no script changes needed when adding carriers.
