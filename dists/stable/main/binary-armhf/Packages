@@ -39,10 +39,10 @@ Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-6.15.11-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd
 Filename: pool/main/citronics-lime-fp2_2.0_armhf.deb
 Size: 628
-MD5sum: d9b683d8189fbffaf03233e220bdcf5a
-SHA1: 86459f8572b7de74ae3d448ed717025f06b40ced
-SHA256: b375a4782e128c3305df4e068bea9ad59d31eb3ccf11c29e368ff368f070a396
-SHA512: f7f71361c42e77027a0a61f38a2714675ab2ab5ce4f52580e88942fce22799839107483b4fc30e77577228bd038fa5d030e4b2304a8d25e1aa1ee78be544a484
+MD5sum: baf720a06c8cc37601c2dde6f90768b0
+SHA1: 0de4f236454a53a8b7509fa38c08742cb7d91ea8
+SHA256: fc373a15b88973a21536d7522adccaf9b9c245b9b788c207760c00b30968f9bf
+SHA512: ca0caebf60ad6d3332519ccc0889664bfb2669359d60e3c60355a1015dbd02b8bda7adc1780511c79bb668023230cc0de68abc3ce56edda164167a4cde512666
 Description: Citronics Lime meta-package for Fairphone 2
  Installs the complete Citronics Lime software stack for Fairphone 2:
  kernel image, firmware, initramfs, and DHCP helper.
@@ -55,11 +55,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
-Size: 578
-MD5sum: 5e10fc0895b736ce081191f87c929bd6
-SHA1: d5db2bf993aa5b5d4429f0705a59e21544922108
-SHA256: bfc82cdff2bdf664c9d164137536e3490513437a96aa43367a70724087afa9de
-SHA512: ecd0ac5685745b9c6eca9c8050247a4f8548377bc5d302bb77321530be8748e2dbcca7c7686573d01f44198beadd2bca20f24ba470d851d3b64cb16d25a454a7
+Size: 576
+MD5sum: f444f81cf76d21741952b3f7d2a333a0
+SHA1: 214c1c274f6d2cc8ed20514661d2e8a1081398b8
+SHA256: b900a02a47ecaa2d198a05cb7728d6132decc4495f2d88aa2317828a8b448e2d
+SHA512: 16c1ff62c3d5f190e4854d76469cc39799567914aec2b337ce7e47abe3c36b408894c43e5f368a2f8e2faa3aec0a11d33de623cfec6f795cabbb2fab1287e5c3
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
@@ -91,4 +91,21 @@ SHA1: 3ac76afef7af9a507659b93c4dd04115a68ddf08
 SHA256: 3648a5cc9d585dd46e102da8716a86287eddfe0801757b76256bca86ef584b18
 SHA512: 1d88fe67cdb0561b4cef1078e9e4af20cdf925c3615426031d9f44ca74234d9c29566dca6a629465240a3d1085b6d8460a97135fdcf47992b25cea5ed34e69f2
 Description: Firmware for the Lime board from two Git submodules, installed into /lib/firmware
+
+Package: unudhcpd
+Architecture: armhf
+Version: 2.2
+Priority: optional
+Section: unknown
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 20
+Depends: libc6:armhf (>= 2.39)
+Filename: pool/main/unudhcpd_2.2_armhf.deb
+Size: 6012
+MD5sum: 2efd55e0270b1944797132650e48e2a9
+SHA1: ada7a9cf6d45f43e2e63983c948c02612d4c7da0
+SHA256: 67778f61af6a887aa9894c08e2ae4a4d9ad43f03683199d23cf841671564f6ac
+SHA512: 8092112a3ce68ab104b208647841e5363ed0883d449a3bd2bfc7fabf0c27441766d9d0e484c94b10baa1bb6edeff46313e267d3e29da47cbff71ed392ce0b250
+Homepage: https://gitlab.com/postmarketOS/unudhcpd
+Description: unudhcpd debian package based on postmarketOS source tree
 
