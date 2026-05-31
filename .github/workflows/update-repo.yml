@@ -16,15 +16,23 @@ jobs:
   update-repo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout gh-pages branch
+      - name: Checkout main (meta-package sources)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main-checkout
+
+      - name: Checkout gh-pages (APT repo)
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          path: apt-repo
 
       - name: Install apt-ftparchive
         run: sudo apt-get update && sudo apt-get install -y apt-utils
 
       - name: Create directory structure
+        working-directory: apt-repo
         run: |
           mkdir -p pool/main
           mkdir -p dists/stable/main/binary-armhf
@@ -32,12 +40,10 @@ jobs:
           mkdir -p dists/stable/main/binary-arm64
 
       - name: Download releases from all source repos
+        working-directory: apt-repo
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Phone-specific repos (citronics-kernel, citronics-firmware) build per-phone packages.
-          # Legacy carrier repos (linux-firmware-lime, lime-image) kept for backward compat.
-          # Shared repos (initramfs, unudhcpd-deb) reused across all phones.
           REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/citronics-kernel Citronics/citronics-firmware Citronics/unudhcpd-deb"
 
           for REPO in $REPOS; do
@@ -55,8 +61,9 @@ jobs:
           ls -la pool/main/
 
       - name: Build meta-packages
+        working-directory: apt-repo
         run: |
-          for pkg_dir in meta-packages/*/; do
+          for pkg_dir in ../main-checkout/meta-packages/*/; do
             if [ -d "${pkg_dir}DEBIAN" ]; then
               pkg_name=$(grep '^Package:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
               pkg_version=$(grep '^Version:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
@@ -67,16 +74,19 @@ jobs:
           done
 
       - name: Generate APT metadata
+        working-directory: apt-repo
         run: |
-          apt-ftparchive packages pool/main/ > dists/stable/main/binary-armhf/Packages
-          cp dists/stable/main/binary-armhf/Packages dists/stable/main/binary-all/Packages
-          cp dists/stable/main/binary-armhf/Packages dists/stable/main/binary-arm64/Packages
+          apt-ftparchive packages pool/main/ > /tmp/all-packages
+          awk 'BEGIN{RS=""; ORS="\n\n"} /\nArchitecture: (armhf|all)\n/' /tmp/all-packages > dists/stable/main/binary-armhf/Packages
+          awk 'BEGIN{RS=""; ORS="\n\n"} /\nArchitecture: (arm64|all)\n/' /tmp/all-packages > dists/stable/main/binary-arm64/Packages
+          awk 'BEGIN{RS=""; ORS="\n\n"} /\nArchitecture: all\n/' /tmp/all-packages > dists/stable/main/binary-all/Packages
           gzip -kf dists/stable/main/binary-armhf/Packages
-          gzip -kf dists/stable/main/binary-all/Packages
           gzip -kf dists/stable/main/binary-arm64/Packages
+          gzip -kf dists/stable/main/binary-all/Packages
           apt-ftparchive release dists/stable/ > dists/stable/Release
 
       - name: Commit and push
+        working-directory: apt-repo
         run: |
           git config user.name "Marc Lainez"
           git config user.email "marc.lainez@gmail.com"
