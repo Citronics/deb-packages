@@ -14,6 +14,20 @@ SHA512: 9f585d09e992df3717f524d6872e42e9645489af25789aa5874c5e73b7ccf531f015a9df
 Description: Custom initramfs-tools hooks and scripts for citronics boards
  This package installs custom hooks, modules, and scripts into initramfs-tools.
 
+Package: linux-firmware-lime-fp2
+Architecture: all
+Version: 1.1
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime-fp2_1.1_all.deb
+Size: 29493356
+MD5sum: 47640d7e2934689e23b1f8cfbab96d56
+SHA1: 5c37261a0f44fcb22849323204407586a8c2c8fb
+SHA256: acdce2f07facae08d0950e20f88a1b4980a7c11de2610f96f1aea8bd990a9709
+SHA512: 985401555d7da3c6f3c641f06689643b555c205007e346c54c6921ec922fe8d8d251219b9bc83723d3c5f52c602b95a486a4850f804ca04ca2eafda94fd6ed5e
+Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
+
 Package: linux-firmware-lime-fp3
 Architecture: all
 Version: 1.0
@@ -26,6 +40,20 @@ MD5sum: 32dcd5269519e6cc02b5d5d15664e4d3
 SHA1: 34fed43d63cdfef76673760c704765d86fe5a1ba
 SHA256: e061ecd1e0ab1953a26e0ed587f76a4a9003e683968e6a3bcd306ac011bcde64
 SHA512: b3d9f19a1c9d28f97dc21afab19d30e3c18cbe00ca9eb536323e774d89a7062e840acba1f52c4eb11119048e9cc07e06b2f590c84f0bf61bd67646cc5ef66481
+Description: Firmware for Fairphone 3/3+ on the Citronics Lime carrier board
+
+Package: linux-firmware-lime-fp3
+Architecture: all
+Version: 1.1
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime-fp3_1.1_all.deb
+Size: 33827668
+MD5sum: 4b0a5d78d25299d511868a36c8017fff
+SHA1: 7e5f83a1f8b499c98127c004090ad78913751f45
+SHA256: ebbd1c294ccfeb570f4946e4f4dc109c55c57a8ed7b063f48ae3e3a63586049a
+SHA512: 81f6665e408b9f66dd63db0c134903c4aba8406e2754369f6085a98a1921093652033c56b8f0a2fd517a06a6e01952bda7c70d1621efab2cf5fa9166524fd59d
 Description: Firmware for Fairphone 3/3+ on the Citronics Lime carrier board
 
 Package: linux-firmware-lime
