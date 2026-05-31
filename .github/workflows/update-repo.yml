@@ -38,6 +38,10 @@ jobs:
           mkdir -p dists/stable/main/binary-armhf
           mkdir -p dists/stable/main/binary-all
           mkdir -p dists/stable/main/binary-arm64
+          mkdir -p pool/experimental
+          mkdir -p dists/stable/experimental/binary-armhf
+          mkdir -p dists/stable/experimental/binary-all
+          mkdir -p dists/stable/experimental/binary-arm64
 
       - name: Download releases from all source repos
         working-directory: apt-repo
@@ -56,6 +60,18 @@ jobs:
 
           find pool/main/ -name '*-dbg_*' -delete
           find pool/main/ -name 'linux-libc-dev_*' -delete
+
+          echo "Sorting experimental kernel debs..."
+          for deb in pool/main/linux-image-*-citronics-lime-*.deb pool/main/linux-headers-*-citronics-lime-*.deb; do
+            [ -f "$deb" ] || continue
+            basename=$(basename "$deb")
+            if echo "$basename" | grep -qE 'msm8974-6\.16\.|msm8953-7\.0\.'; then
+              echo "Keeping stable in pool/main: $basename"
+            else
+              echo "Moving experimental to pool/experimental: $basename"
+              mv "$deb" pool/experimental/
+            fi
+          done
 
           echo "Downloaded .deb files:"
           ls -la pool/main/
@@ -83,6 +99,13 @@ jobs:
           gzip -kf dists/stable/main/binary-armhf/Packages
           gzip -kf dists/stable/main/binary-arm64/Packages
           gzip -kf dists/stable/main/binary-all/Packages
+          apt-ftparchive packages pool/experimental/ > /tmp/experimental-packages
+          awk 'BEGIN{RS=""; ORS="\n\n"} /\nArchitecture: (armhf|all)\n/' /tmp/experimental-packages > dists/stable/experimental/binary-armhf/Packages
+          awk 'BEGIN{RS=""; ORS="\n\n"} /\nArchitecture: (arm64|all)\n/' /tmp/experimental-packages > dists/stable/experimental/binary-arm64/Packages
+          awk 'BEGIN{RS=""; ORS="\n\n"} /\nArchitecture: all\n/' /tmp/experimental-packages > dists/stable/experimental/binary-all/Packages
+          gzip -kf dists/stable/experimental/binary-armhf/Packages
+          gzip -kf dists/stable/experimental/binary-arm64/Packages
+          gzip -kf dists/stable/experimental/binary-all/Packages
           apt-ftparchive release dists/stable/ > dists/stable/Release
 
       - name: Commit and push
