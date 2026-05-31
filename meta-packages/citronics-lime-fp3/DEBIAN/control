@@ -2,7 +2,7 @@ Package: citronics-lime-fp3
 Version: 1.0
 Architecture: arm64
 Maintainer: Citronics <info@citronics.eu>
-Depends: linux-image-6.15-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd
+Depends: linux-image-6.19.5-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl
 Section: metapackages
 Priority: optional
 Description: Citronics Lime meta-package for Fairphone 3/3+
