@@ -65,7 +65,7 @@ jobs:
           for deb in pool/main/linux-image-*-citronics-lime-*.deb pool/main/linux-headers-*-citronics-lime-*.deb; do
             [ -f "$deb" ] || continue
             basename=$(basename "$deb")
-            if echo "$basename" | grep -qE 'msm8974-6\.16\.|msm8953-7\.0\.'; then
+            if echo "$basename" | grep -qE '7\.[0-9]+\.[0-9]+-msm8953|6\.16\.[0-9]+-msm8974'; then
               echo "Keeping stable in pool/main: $basename"
             else
               echo "Moving experimental to pool/experimental: $basename"
