@@ -106,7 +106,12 @@ jobs:
           gzip -kf dists/stable/experimental/binary-armhf/Packages
           gzip -kf dists/stable/experimental/binary-arm64/Packages
           gzip -kf dists/stable/experimental/binary-all/Packages
-          apt-ftparchive release dists/stable/ > dists/stable/Release
+          apt-ftparchive \
+            -o APT::FTPArchive::Release::Suite=stable \
+            -o APT::FTPArchive::Release::Codename=stable \
+            -o APT::FTPArchive::Release::Architectures="armhf arm64 all" \
+            -o APT::FTPArchive::Release::Components="main experimental" \
+            release dists/stable/ > dists/stable/Release
 
       - name: Commit and push
         working-directory: apt-repo
