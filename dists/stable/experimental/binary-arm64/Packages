@@ -1,0 +1,39 @@
+Package: linux-headers-6.19.5-msm8953-citronics-lime-fp3
+Architecture: arm64
+Version: 0.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 54250
+Filename: pool/experimental/linux-headers-6.19.5-msm8953-citronics-lime-fp3_0.1_arm64.deb
+Size: 9243070
+MD5sum: db564c9e19bf787a6d91e4272dece8f8
+SHA1: 227d910135194f9b925574d70c92367c58c07c57
+SHA256: cd75b0131d3293163a9adb4e8c6634389d328c9e1fa8154fbead1775efdc6ff1
+SHA512: 04a4bb85f25f05c75c654f9e587199acfbca7db980f186307ea1fb737b3689933e4f6f5d5f577104245b05bf8c57bb1ab49031105e75f8e8a57abae82b6972be
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.19.5-msm8953-citronics-lime-fp3 on arm64
+ This package provides kernel header files for 6.19.5-msm8953-citronics-lime-fp3 on arm64
+ .
+ This is useful for people who need to build external modules
+
+Package: linux-image-6.19.5-msm8953-citronics-lime-fp3
+Architecture: arm64
+Version: 0.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 95772
+Filename: pool/experimental/linux-image-6.19.5-msm8953-citronics-lime-fp3_0.1_arm64.deb
+Size: 20701008
+MD5sum: 688e168f5601add25856c3bc9fff11f8
+SHA1: 4d4c058748f4ccd8182b91100817de8a327194b0
+SHA256: 916dc869d1a8f964453424b85cf91aa1cecd22fe01c7d4d59103dcd966bd176a
+SHA512: 44c5dc972635478e9ac5866e537d3f28055b94078459d3df6cca8515baa7299e78de16b58d8e557be171cac810c0bf46995f725ae602eb2a1e04a4698df9264d
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.19.5-msm8953-citronics-lime-fp3
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.19.5-msm8953-citronics-lime-fp3.
+

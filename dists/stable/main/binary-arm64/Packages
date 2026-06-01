@@ -16,17 +16,17 @@ Description: Custom initramfs-tools hooks and scripts for citronics boards
 
 Package: citronics-lime-fp3
 Architecture: arm64
-Version: 1.0
+Version: 1.1
 Priority: optional
 Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
-Depends: linux-image-6.19.5-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl
-Filename: pool/main/citronics-lime-fp3_1.0_arm64.deb
-Size: 646
-MD5sum: e1a85d23cb0e7a40024a076e6184d359
-SHA1: b95a58a31df21dc9fbb4c7bd56a3876fb311b802
-SHA256: a16d6398dfe816d5642bc0c3469202e566d3fafd90bf7719320e0b4d66cfb183
-SHA512: 1e925d5d1f2661631c97bc08a52b958a3dd2d92bb539367532c91ecf18e02f2439d9e90a9d8e111510184330e06eab5c58aa8058be6789b97a7e5b9596bef7df
+Depends: linux-image-7.0.9-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl
+Filename: pool/main/citronics-lime-fp3_1.1_arm64.deb
+Size: 648
+MD5sum: 758ed9f44d40d75cbd714f81e02aed22
+SHA1: fe8409016777f179a16936537194f211bd22dc8d
+SHA256: d3a03dd31898ece0029ae4be86b81b59c35349123d4741720c65ebbf514f1a8f
+SHA512: 0f6084dcf5348baabe85d78e4facc018251a3da0fc59affcef69d351b1c67c511b92f03a87323bc29bc4b794a51f711704ff02b52b87948b7e97c01af3153c10
 Description: Citronics Lime meta-package for Fairphone 3/3+
  Installs the complete Citronics Lime software stack for Fairphone 3/3+:
  kernel image, firmware, initramfs, and DHCP helper.
@@ -87,44 +87,24 @@ SHA256: 3648a5cc9d585dd46e102da8716a86287eddfe0801757b76256bca86ef584b18
 SHA512: 1d88fe67cdb0561b4cef1078e9e4af20cdf925c3615426031d9f44ca74234d9c29566dca6a629465240a3d1085b6d8460a97135fdcf47992b25cea5ed34e69f2
 Description: Firmware for the Lime board from two Git submodules, installed into /lib/firmware
 
-Package: linux-headers-6.19.5-msm8953-citronics-lime-fp3
+Package: linux-image-7.0.9-msm8953-citronics-lime-fp3
 Architecture: arm64
-Version: 0.1
+Version: 0.1-6-gd110eb8
 Priority: optional
 Section: kernel
 Source: linux-upstream
 Maintainer: Citronics <info@citronics.eu>
-Installed-Size: 54250
-Filename: pool/main/linux-headers-6.19.5-msm8953-citronics-lime-fp3_0.1_arm64.deb
-Size: 9243070
-MD5sum: db564c9e19bf787a6d91e4272dece8f8
-SHA1: 227d910135194f9b925574d70c92367c58c07c57
-SHA256: cd75b0131d3293163a9adb4e8c6634389d328c9e1fa8154fbead1775efdc6ff1
-SHA512: 04a4bb85f25f05c75c654f9e587199acfbca7db980f186307ea1fb737b3689933e4f6f5d5f577104245b05bf8c57bb1ab49031105e75f8e8a57abae82b6972be
+Installed-Size: 100366
+Filename: pool/main/linux-image-7.0.9-msm8953-citronics-lime-fp3_0.1-6-gd110eb8_arm64.deb
+Size: 21158420
+MD5sum: 77eddc4c935f110d42862048adbb7922
+SHA1: 9c63978a32f5898b155f9dff466ce39fc82b528e
+SHA256: 2161bc52f271ebcc139b5eb1196a14f71f14ee45afd35a4e4bb60b347d7b1a6a
+SHA512: 5df7e90eb284dd67004a71a87a93e4595421f240c2a7e802299f663df1832fa75702d7c4546dd251dde356ed594cc2a44df6173dcd8dd3fcdd113a6c18e26c57
 Homepage: https://www.kernel.org/
-Description: Linux kernel headers for 6.19.5-msm8953-citronics-lime-fp3 on arm64
- This package provides kernel header files for 6.19.5-msm8953-citronics-lime-fp3 on arm64
- .
- This is useful for people who need to build external modules
-
-Package: linux-image-6.19.5-msm8953-citronics-lime-fp3
-Architecture: arm64
-Version: 0.1
-Priority: optional
-Section: kernel
-Source: linux-upstream
-Maintainer: Citronics <info@citronics.eu>
-Installed-Size: 95772
-Filename: pool/main/linux-image-6.19.5-msm8953-citronics-lime-fp3_0.1_arm64.deb
-Size: 20701008
-MD5sum: 688e168f5601add25856c3bc9fff11f8
-SHA1: 4d4c058748f4ccd8182b91100817de8a327194b0
-SHA256: 916dc869d1a8f964453424b85cf91aa1cecd22fe01c7d4d59103dcd966bd176a
-SHA512: 44c5dc972635478e9ac5866e537d3f28055b94078459d3df6cca8515baa7299e78de16b58d8e557be171cac810c0bf46995f725ae602eb2a1e04a4698df9264d
-Homepage: https://www.kernel.org/
-Description: Linux kernel, version 6.19.5-msm8953-citronics-lime-fp3
+Description: Linux kernel, version 7.0.9-msm8953-citronics-lime-fp3
  This package contains the Linux kernel, modules and corresponding other
- files, version: 6.19.5-msm8953-citronics-lime-fp3.
+ files, version: 7.0.9-msm8953-citronics-lime-fp3.
 
 Package: unudhcpd
 Architecture: arm64
