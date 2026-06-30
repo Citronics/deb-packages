@@ -16,6 +16,22 @@ Description: Custom initramfs-tools hooks and scripts for citronics boards
 
 Package: citronics-initramfs
 Architecture: all
+Version: 1.1.0
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Depends: initramfs-tools, busybox-static, kpartx, inetutils-telnetd, unudhcpd, parted
+Filename: pool/main/citronics-initramfs-1.1.0.deb
+Size: 8530
+MD5sum: 3070b580304b20f322fe10ff232ec809
+SHA1: 33bffb831e3c518122cf3b43ede05c5965ab3419
+SHA256: 8f45e26fc174012e7f20ab69442ecf6a78eb96e09edc0044e3d95fa298dff7a7
+SHA512: c7bc4538e915adf39ac1630df28fedb92ce69ade0a967b01164138d7dc0a09d002ff2409bece4a1339837e1909932cebd6e3f470bf2b8d057a8d9a56f53567a2
+Description: Custom initramfs-tools hooks and scripts for citronics boards
+ This package installs custom hooks, modules, and scripts into initramfs-tools.
+
+Package: citronics-initramfs
+Architecture: all
 Version: 1.0.8
 Priority: optional
 Section: base
@@ -55,11 +71,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-6.16.12-msm8974-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd
 Filename: pool/main/citronics-lime-fp2_2.1_armhf.deb
-Size: 630
-MD5sum: 2b5cb6d5087821442655e79124ba81f5
-SHA1: ba98b4ee8be19eff10d3340ea1b2b2e28a044b6a
-SHA256: 45acd98e1142fbf7b502d0fbd9f0b5dd1a33d1c76bd845869bf5605d9c92fb0f
-SHA512: cefc2b4a284f1a61abaeb81c14b59c3598de628dd21bcf65ea16d193f2963b77380bb60c55b3fd45f8695e0cf9e7631fd8f0bc6cc7cf2022167c130f668b844a
+Size: 628
+MD5sum: bfa0601110b17a5e0d5bb24877b0ffe9
+SHA1: 56d515c93e85613d22b317e8d08dde04c2729e76
+SHA256: 4c8bc880d0e9306f62dbd76861780803431e66bbd75d7d9330c9fd485e7a1e3d
+SHA512: 1b87bb30a66a3f00cbe31525feae5f1fb0f1116c39b3df3b38491ea04eac708a22f9576ec61f1e6866bec59851305a7050868c1617608bb4e2bb00ceed5d0a82
 Description: Citronics Lime meta-package for Fairphone 2
  Installs the complete Citronics Lime software stack for Fairphone 2:
  firmware, initramfs, and DHCP helper.
@@ -73,10 +89,10 @@ Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
 Size: 578
-MD5sum: 05fba51f101bae6097242a909ee44046
-SHA1: d3b0decce4c7fbb3a2a8bc48fd7e7d8fe3570911
-SHA256: 15bffd349898db922209f3d30eb1fe4124ef8074ffb78ff5b5df8519bacc4a4b
-SHA512: 2497a2496bb92d9e0dc85104f3405c38883f5b3a1707de58c2ea743c267f181a33304e7083609ed7a86fc9cf5f49a331540c3c83f150f4c9d1be3bfff0d676ec
+MD5sum: 78bfab7da1c2996e77ae4cb2234894f6
+SHA1: 1e9464dc849d198d866cffe4961f95661fb54dd4
+SHA256: 0217e7b9f4483ae1528fa980ea414996a43f7a45d25bec3260b17ce0603f7da2
+SHA512: e6392b4e4b19dd038f57336c3cc0dbd4e03230b54e12c030c1858f23a11dacd028253b7d3b6eaee7814a3d6dc4a7fe1c1c202d1981132302bb437cf074d8e363
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
