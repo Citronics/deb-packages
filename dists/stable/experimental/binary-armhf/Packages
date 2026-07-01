@@ -18,6 +18,26 @@ Description: Linux kernel headers for 6.15.11-citronics-lime-fp2-g392e63037af0 o
  .
  This is useful for people who need to build external modules
 
+Package: linux-headers-6.15.11-citronics-lime-fp2-g698540132829
+Architecture: armhf
+Version: 3.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 50710
+Filename: pool/experimental/linux-headers-6.15.11-citronics-lime-fp2-g698540132829_3.1_armhf.deb
+Size: 8917456
+MD5sum: 6ad14e4b2cf9dd8b0a811e97f7d8f5b9
+SHA1: e3454729181f7c646d368996dc2a772277f7136c
+SHA256: 25eb9b7d4570ceb8190a6e085f0b470d61bb165b5237aca4063ede87ad747200
+SHA512: 5bababb34692f2874ad28ecb5463836056fc0b3c4f8855f3ca359935ed94b1ea58827f76313023736fccce83408a3363d21a44f0983f1647c63f2cc0b1fe45ad
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.15.11-citronics-lime-fp2-g698540132829 on armhf
+ This package provides kernel header files for 6.15.11-citronics-lime-fp2-g698540132829 on armhf
+ .
+ This is useful for people who need to build external modules
+
 Package: linux-image-6.15.11-citronics-lime-fp2-g392e63037af0
 Architecture: armhf
 Version: 0.0
@@ -36,4 +56,23 @@ Homepage: https://www.kernel.org/
 Description: Linux kernel, version 6.15.11-citronics-lime-fp2-g392e63037af0
  This package contains the Linux kernel, modules and corresponding other
  files, version: 6.15.11-citronics-lime-fp2-g392e63037af0.
+
+Package: linux-image-6.15.11-citronics-lime-fp2-g698540132829
+Architecture: armhf
+Version: 3.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 36852
+Filename: pool/experimental/linux-image-6.15.11-citronics-lime-fp2-g698540132829_3.1_armhf.deb
+Size: 15302714
+MD5sum: a7d7a5a9cbc88bc1c59097717daf1509
+SHA1: bd5d4ee8e3cd4f8842a9b56bdbfd59b407b7d223
+SHA256: be92ce6270732992bf2d0dd57377894318ce1de54d333a1bbcc6411164718b09
+SHA512: 3bb633408da6449bc06a552163835b6eb49da3210b73b7faa8434fb4c66a75f1b015e9dace36071da0ea1dcdaa61d39e794a7ca2d4c0f2cce83f83ec9aeac6ab
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.15.11-citronics-lime-fp2-g698540132829
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.15.11-citronics-lime-fp2-g698540132829.
 
