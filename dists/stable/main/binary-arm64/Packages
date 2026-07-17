@@ -48,6 +48,22 @@ Description: Custom initramfs-tools hooks and scripts for citronics boards
 
 Package: citronics-initramfs
 Architecture: all
+Version: 1.1.2
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Depends: initramfs-tools, busybox-static, kpartx, inetutils-telnetd, unudhcpd, parted
+Filename: pool/main/citronics-initramfs-1.1.2.deb
+Size: 10360
+MD5sum: e0784e35be2ffbee6c5f826bdcff52af
+SHA1: 452453af45382369851e5170f90dcd23c616247c
+SHA256: d4926e7697dcff84f7dcaa4e95a5899126e24a00413d576be726dfc2f83565b2
+SHA512: b1bc5dbc0d9c3943034de9187982c3a844b5db1090a45247405dedde49f5e4d70506228a63347ea811313c2f6acf8e0fbe377b3fe4d516685774bdcfb9402c3b
+Description: Custom initramfs-tools hooks and scripts for citronics boards
+ This package installs custom hooks, modules, and scripts into initramfs-tools.
+
+Package: citronics-initramfs
+Architecture: all
 Version: 1.1.2~rc1
 Priority: optional
 Section: base
@@ -86,11 +102,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-7.0.9-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl
 Filename: pool/main/citronics-lime-fp3_1.1_arm64.deb
-Size: 648
-MD5sum: 7c60dd08b256c01edcc5fa2e4ea58fd2
-SHA1: c099213e29f9dc50372f775410035caf7bd2a80d
-SHA256: 18d3786bdf35bb68298d1558fbd341b3a773bede029ff5b32fc5028762e1f61d
-SHA512: 9b9f1c0071d9e5533ce304a22c2c1935534ab6d104a59799648c1e45094149e0a449caec9b1210ae82bf3d2b85a0be47450a516653844066a6bde4e9691bf0aa
+Size: 644
+MD5sum: 4e509050954d3df79e5472b50c121d9d
+SHA1: c2eba31f4cd63985f9646073be5a955450ae90a6
+SHA256: 37e220233a77d486d13a974aaad651632db3d54a47c1d8d3cc51c76d9722edee
+SHA512: c181f63054e54dc3c06366904f61c60f57c50c9941cbd94059e98d74532b6d3f60dd5e3464b0c38219d102cccd4a6ac1dee309d55f16a23f7c33a9feed479e90
 Description: Citronics Lime meta-package for Fairphone 3/3+
  Installs the complete Citronics Lime software stack for Fairphone 3/3+:
  kernel image, firmware, initramfs, and DHCP helper.
