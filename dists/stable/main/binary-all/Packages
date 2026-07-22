@@ -110,6 +110,20 @@ Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
 
 Package: linux-firmware-lime-fp2
 Architecture: all
+Version: 1.2.2
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime-fp2_1.2.2_all.deb
+Size: 29497054
+MD5sum: c9851187f17b805e3ef86611646dda95
+SHA1: 9d28a7e8311e634b5551b64bc543298b59fca9a2
+SHA256: e0a1bd72192c02a6d7d8006371f07d07bb96b427be362471a59de102982a2bdc
+SHA512: a7f3c669e45874f234f22297613122a181774fcb936d607dd2683e6c6f0e7cbb0cba366d6d5fa939f2718efb18c41f211146004ca2e15b50a37fdbf6f74ef819
+Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
+
+Package: linux-firmware-lime-fp2
+Architecture: all
 Version: 1.2
 Priority: optional
 Section: base
@@ -148,6 +162,20 @@ MD5sum: 4b0a5d78d25299d511868a36c8017fff
 SHA1: 7e5f83a1f8b499c98127c004090ad78913751f45
 SHA256: ebbd1c294ccfeb570f4946e4f4dc109c55c57a8ed7b063f48ae3e3a63586049a
 SHA512: 81f6665e408b9f66dd63db0c134903c4aba8406e2754369f6085a98a1921093652033c56b8f0a2fd517a06a6e01952bda7c70d1621efab2cf5fa9166524fd59d
+Description: Firmware for Fairphone 3/3+ on the Citronics Lime carrier board
+
+Package: linux-firmware-lime-fp3
+Architecture: all
+Version: 1.2.2
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Filename: pool/main/linux-firmware-lime-fp3_1.2.2_all.deb
+Size: 33827272
+MD5sum: 88f22811fa8f20c656f864f0394d51fe
+SHA1: 1541233a88d11afc153f4a3d69193f5d6d0792e5
+SHA256: c37b7ebb56067b1754fb45eef2e1661eadbcc0dcb24d36ad7e55beb8d3305da2
+SHA512: 97b4ab52b53e79ed92295990a0a75cf2c69f4a2c19eb0fe7cd5e655689a464e32477868016cd62c230d64bfe65b09d387ddf3b6d940f67c08b3c07bb99cd0291
 Description: Firmware for Fairphone 3/3+ on the Citronics Lime carrier board
 
 Package: linux-firmware-lime-fp3
