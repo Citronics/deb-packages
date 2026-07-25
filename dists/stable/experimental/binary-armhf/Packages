@@ -98,6 +98,26 @@ Description: Linux kernel headers for 6.15.11-citronics-lime-fp2-g407dfc8dd995 o
  .
  This is useful for people who need to build external modules
 
+Package: linux-headers-6.15.11-citronics-lime-fp2-g407dfc8dd995
+Architecture: armhf
+Version: 3.2~rc3.8
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 50715
+Filename: pool/experimental/linux-headers-6.15.11-citronics-lime-fp2-g407dfc8dd995_3.2.rc3.8_armhf.deb
+Size: 8920800
+MD5sum: d6d471dd6765c6236c62cc0ca36dfc26
+SHA1: 36e42564e1edb4a460db02a632ea1493a07445b7
+SHA256: 264daeedd5ce5a16cd59a9a0cf19114e94a23fa684e95a56ded99f8f3f01d78e
+SHA512: a58b8e3995bd29d1b4cb0f5e8d75842cef654fc64d958d6c10257d6a3772a29eb8c5a3d9962854a3966857fae5cce0a927473fa9e5aff13f0c5e295214aeaab9
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.15.11-citronics-lime-fp2-g407dfc8dd995 on armhf
+ This package provides kernel header files for 6.15.11-citronics-lime-fp2-g407dfc8dd995 on armhf
+ .
+ This is useful for people who need to build external modules
+
 Package: linux-headers-6.15.11-citronics-lime-fp2-g5d2aee3292a4
 Architecture: armhf
 Version: 3.2~rc3
@@ -238,6 +258,26 @@ Description: Linux kernel headers for 6.18.39-citronics-lime-fp2-gdc92e638f6c0 o
  .
  This is useful for people who need to build external modules
 
+Package: linux-headers-6.18.40-citronics-lime-fp2-g0c5d971f52d9
+Architecture: armhf
+Version: 3.2~rc3.8
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 52730
+Filename: pool/experimental/linux-headers-6.18.40-citronics-lime-fp2-g0c5d971f52d9_3.2.rc3.8_armhf.deb
+Size: 9238754
+MD5sum: a1500de9c63a94e0e1422786c190412b
+SHA1: 0aed693d27da7a14b02da1b3bb0a5aed4d8604d2
+SHA256: bb2405ed682f59b2d2dc28d87873b785a0544373f0b134296e7df3ff968ee8c6
+SHA512: b9cdac3c13c92dc0f54156c813eac15128a47154e6feba856eb1931d4f3625a947695fd3397e50e15effbe57968f05db913d8015e6801b8be2e29f1e1d0c1f64
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.18.40-citronics-lime-fp2-g0c5d971f52d9 on armhf
+ This package provides kernel header files for 6.18.40-citronics-lime-fp2-g0c5d971f52d9 on armhf
+ .
+ This is useful for people who need to build external modules
+
 Package: linux-image-6.15.11-citronics-lime-fp2-g096c77c6cca0-dirty
 Architecture: armhf
 Version: 3.2~rc2
@@ -328,6 +368,25 @@ MD5sum: 81c6f9b8e5770c90ff72431a3a8cfefe
 SHA1: d6d7a961778ef68848424605da0a3f108dea1b25
 SHA256: 4c9089552d9623d3b65b881d9c8143d14e5ad5261ce08a1489869364fad06042
 SHA512: eaf0256aeb7291a4ab2f8ae3e9691aae1210661722aeb0a0c534d19762b712962624345b0270735096cab12e4aaed0b7537f39a752c3d5152e4cd897db7275fb
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.15.11-citronics-lime-fp2-g407dfc8dd995
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.15.11-citronics-lime-fp2-g407dfc8dd995.
+
+Package: linux-image-6.15.11-citronics-lime-fp2-g407dfc8dd995
+Architecture: armhf
+Version: 3.2~rc3.8
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 37049
+Filename: pool/experimental/linux-image-6.15.11-citronics-lime-fp2-g407dfc8dd995_3.2.rc3.8_armhf.deb
+Size: 15352200
+MD5sum: 7499d9951c1e25dbb8ae92c4693ef5f3
+SHA1: aadec54ec2e2c8aa529c258571174f4c53d5cfc3
+SHA256: 6478697dee1356685fdd48bd5ea9840e4d97c172fc6a6ea001937c92ebf77f23
+SHA512: 6dd16588c3caf276ff17d879ef779ed48a5c690c003c421dd9c80f1a8ef3689ab20533dccd667acabf7cbe187f3fe1d58bd1809146d8f4e3bf62e0005dfb070b
 Homepage: https://www.kernel.org/
 Description: Linux kernel, version 6.15.11-citronics-lime-fp2-g407dfc8dd995
  This package contains the Linux kernel, modules and corresponding other
@@ -465,4 +524,23 @@ Homepage: https://www.kernel.org/
 Description: Linux kernel, version 6.18.39-citronics-lime-fp2-gdc92e638f6c0
  This package contains the Linux kernel, modules and corresponding other
  files, version: 6.18.39-citronics-lime-fp2-gdc92e638f6c0.
+
+Package: linux-image-6.18.40-citronics-lime-fp2-g0c5d971f52d9
+Architecture: armhf
+Version: 3.2~rc3.8
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 38381
+Filename: pool/experimental/linux-image-6.18.40-citronics-lime-fp2-g0c5d971f52d9_3.2.rc3.8_armhf.deb
+Size: 15891056
+MD5sum: 4bbc26963470de96b0a8532296d78c4e
+SHA1: 48e6c58a7cf2bfca56bb473b621742569a340fa4
+SHA256: 69e4b64fee9958c30226e6844460b9d62646e77c5dfb76a9c2f0d847e0e11f49
+SHA512: 077e38c4250829fdae4e85402df364e228663868604c0093ca44f4bd3490f9ca340bb24dbcbae79df4a23f0b328fa0a0d394a45b7146690c65e246598d36ec73
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.18.40-citronics-lime-fp2-g0c5d971f52d9
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.18.40-citronics-lime-fp2-g0c5d971f52d9.
 
