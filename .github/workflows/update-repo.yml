@@ -4,6 +4,16 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [update-repo]
+  # Self-healing net. The publishers (citronics-kernel, initramfs) dispatch
+  # update-repo after every release, but that hop needs a cross-repo credential
+  # (APT_DISPATCH_TOKEN) and therefore has a single point of failure: when the
+  # secret was unset, releases kept being published while apt silently kept
+  # serving the previous index - a kernel deb sat unreachable for a day that way.
+  # A daily pass costs almost nothing (the job is idempotent: it rebuilds the
+  # index from the assets of every existing release) and bounds that failure to
+  # 24 h instead of forever.
+  schedule:
+    - cron: '17 5 * * *'
 
 concurrency:
   group: apt-repo-update
