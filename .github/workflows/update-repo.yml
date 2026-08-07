@@ -141,7 +141,18 @@ jobs:
           IMAGES_DISPATCH_TOKEN: ${{ secrets.IMAGES_DISPATCH_TOKEN }}
         run: |
           if [ -z "$IMAGES_DISPATCH_TOKEN" ]; then
-            echo "IMAGES_DISPATCH_TOKEN not set — skipping image build trigger"
+            # A warning, not an error: the APT index - the thing devices install
+            # from - was already refreshed successfully by the steps above. Only
+            # the convenience rebuild of the debos images is skipped. Contrast
+            # APT_DISPATCH_TOKEN in the publisher repos, whose absence *does*
+            # break delivery and therefore fails the run.
+            echo "::warning title=Image rebuild not triggered::IMAGES_DISPATCH_TOKEN" \
+                 "is unset, so Citronics/debos-citronics was not told to rebuild" \
+                 "its images. The APT repository itself IS up to date, so devices" \
+                 "can apt-install the new packages; only the prebuilt images stay" \
+                 "on the previous package set. Fix: fine-grained PAT (resource" \
+                 "owner Citronics, repository Citronics/debos-citronics, Contents:" \
+                 "read+write) as the organisation secret IMAGES_DISPATCH_TOKEN."
             exit 0
           fi
           echo "Triggering deps-updated dispatch in Citronics/debos-citronics"
