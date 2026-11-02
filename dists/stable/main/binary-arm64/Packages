@@ -135,10 +135,10 @@ Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-7.0.9-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl
 Filename: pool/main/citronics-lime-fp3_1.1_arm64.deb
 Size: 646
-MD5sum: d00c84bc75c99c23793afd0222d94f7f
-SHA1: 0367d77b9b28e0784fa70e4bb2baae17b53932a9
-SHA256: e14cd73479fa1c0acf02d56a40afc8c45d2b74cbc7d1ed8a99e42d7232adf45a
-SHA512: 8cc692083c8c92d09a6f0e6efa3ed3cad4313e6ebaec7edc45685b45c026ddb369574749ed6496e2fcf01a091df245c8ee38cecf51b0d93b9c5713b167df1daf
+MD5sum: 3a5c589d02f37dfe3a54605b1b74a318
+SHA1: 40dc82d38a1a589e11bdbf043b2e5f216a9a470e
+SHA256: b87c89a0185eeb3e85d701f0e1bef918cdf03fa9a4e105a5ba47f96f88de9f67
+SHA512: fc15eff4b5e858c86601fc8b2c0131078307d9ba8cde6822d45498249e2cd1c2875709c74aeebe137f76693a050989449d133002482dd3aabb7c497f2fd75df3
 Description: Citronics Lime meta-package for Fairphone 3/3+
  Installs the complete Citronics Lime software stack for Fairphone 3/3+:
  kernel image, firmware, initramfs, and DHCP helper.
