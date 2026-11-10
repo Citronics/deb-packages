@@ -168,10 +168,10 @@ Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-6.16.12-msm8974-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd
 Filename: pool/main/citronics-lime-fp2_2.1_armhf.deb
 Size: 628
-MD5sum: f47b2a777acb5734f11d8c7527628284
-SHA1: 7d13561630da26b5d226d3f751e74e7cd784412c
-SHA256: f0526d39b54852f859f0dc3d85b2a61bae91e68de2cd747ce061928a218dc237
-SHA512: fb30594c812e99f2045ad51f5db9dc4b1c4b11e4c0707316aca2e1164a3bf34427444a6d5f592b199cf53a1f3083c25e90960dea6474f416406421e7a9e03052
+MD5sum: a283b426342ee962655bb0365d26e51f
+SHA1: 5e962ddbb7026a05b46e6f9890087e8ab54b55c4
+SHA256: 657a64a19d9d552ac18b4dbd26fc3e48a5a984cf60a9534748bb1ef326cff741
+SHA512: e71cdac92e3b75253934fb6c46118942083c9d5f15d853f906087b9d4b01d1ba2b95126b806a499700d2f46b7aaf3a66b862577c30e390d2af2465b1398d747b
 Description: Citronics Lime meta-package for Fairphone 2
  Installs the complete Citronics Lime software stack for Fairphone 2:
  firmware, initramfs, and DHCP helper.
@@ -184,11 +184,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
-Size: 578
-MD5sum: bb1de9fefee29efae4f4036ecf470054
-SHA1: ed24e6e8761fb433f6063bc18041079a06a378f9
-SHA256: c6116ac0995cce151f6238fa9b3f4186a57d1e6c252de6f906c4f5b974e0b4bc
-SHA512: 69097d27fdc6c99c5c1d7f8619fdca790212ca8091ea49883de8206fe26878ef86f8ccd50ce8f37257911d8d11b422c886df5d4673f8e29e19d270611b67a846
+Size: 576
+MD5sum: 862e0bc5ef7165b5f522e7d94feef686
+SHA1: 4d000c26abb37c15886e3eee10b2275d92068b4a
+SHA256: 80bcce328fc2d01a87bd224b26c467b53b916c5d8cc97df6c72e1b55b587ddd2
+SHA512: 7e3db7acc5d577755229fcd184f3ab8aafe2a21723261d0baa3b15c31446a495b2483846f668bb88a6ab174e6b05734370a0fc90fe33c01264c242cad1b2348f
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
