@@ -128,6 +128,22 @@ Description: Custom initramfs-tools hooks and scripts for citronics boards
 
 Package: citronics-initramfs
 Architecture: all
+Version: 1.1.2.6
+Priority: optional
+Section: base
+Maintainer: Citronics <info@citronics.eu>
+Depends: initramfs-tools, busybox-static, kpartx, unudhcpd, parted
+Filename: pool/main/citronics-initramfs-1.1.2.6.deb
+Size: 15676
+MD5sum: 11abec5ce6ecf9986d2398a8ec1bf078
+SHA1: 6766bbee9b9a6a51bf591203327a18961d0b0ef5
+SHA256: 6d5d3f939a2f824d041da9953c5d2f9f67b582e0b7075461506057df5ac1ef87
+SHA512: 6b510497a0794825eae8c0bbfffc86937bbfc74d6bafe002079c96d28d84277c41a282c5044be461f6038daa66b9df8e19dcf196ae03933930522429a5422af4
+Description: Custom initramfs-tools hooks and scripts for citronics boards
+ This package installs custom hooks, modules, and scripts into initramfs-tools.
+
+Package: citronics-initramfs
+Architecture: all
 Version: 1.1.2
 Priority: optional
 Section: base
