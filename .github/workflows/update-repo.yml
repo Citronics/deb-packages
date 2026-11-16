@@ -58,7 +58,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/citronics-kernel Citronics/citronics-firmware Citronics/unudhcpd-deb"
+          REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/citronics-kernel Citronics/citronics-firmware Citronics/unudhcpd-deb Citronics/limeboard-firmware Citronics/limeboard-extras"
 
           for REPO in $REPOS; do
             echo "Downloading from $REPO..."
