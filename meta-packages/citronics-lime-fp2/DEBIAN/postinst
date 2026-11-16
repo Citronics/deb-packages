@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+if [ "$1" = configure ]; then
+	# isc-dhcp-server6 has no interface to serve on these boards and fails
+	# at every boot; images built since 2.2 disable it.
+	if [ -d /run/systemd/system ]; then
+		systemctl disable --now isc-dhcp-server6.service >/dev/null 2>&1 || true
+	else
+		systemctl disable isc-dhcp-server6.service >/dev/null 2>&1 || true
+	fi
+	# Apply the watchdog settings of system.conf.d without a reboot
+	[ -d /run/systemd/system ] && systemctl daemon-reload >/dev/null 2>&1 || true
+fi
+exit 0
