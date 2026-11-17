@@ -61,14 +61,29 @@ jobs:
           REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/citronics-kernel Citronics/citronics-firmware Citronics/unudhcpd-deb Citronics/limeboard-firmware Citronics/limeboard-extras"
 
           mkdir -p /tmp/manifests
+          : > /tmp/kernel-assets.tsv
           for REPO in $REPOS; do
             echo "Downloading from $REPO..."
             # A failed listing must fail the run: it would silently leave
             # that repository's packages out of the index.
             TAGS=$(gh release list --repo "$REPO" --limit 1000 --json tagName --jq '.[].tagName')
             for TAG in $TAGS; do
-              # A release without .deb assets is fine, hence || true
-              gh release download "$TAG" --repo "$REPO" --pattern '*.deb' --dir pool/main/ --skip-existing 2>/dev/null || true
+              if [ "$REPO" = Citronics/citronics-kernel ]; then
+                # Kernel packages are large: fetch only those neither in the
+                # pool already nor pruned (scripts/prune-experimental.sh).
+                # Each asset's release date drives the pruning.
+                gh release view "$TAG" --repo "$REPO" --json createdAt,assets \
+                  --jq '.createdAt as $d | .assets[].name | "\($d)\t\(.)"' >> /tmp/kernel-assets.tsv
+                for f in $(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name | select(endswith(".deb"))'); do
+                  case "$f" in *-dbg_*|linux-libc-dev_*) continue ;; esac
+                  [ -f "pool/main/$f" ] || [ -f "pool/experimental/$f" ] && continue
+                  grep -qxF "$f" pruned.txt 2>/dev/null && continue
+                  gh release download "$TAG" --repo "$REPO" --pattern "$f" --dir pool/main/
+                done
+              else
+                # A release without .deb assets is fine, hence || true
+                gh release download "$TAG" --repo "$REPO" --pattern '*.deb' --dir pool/main/ --skip-existing 2>/dev/null || true
+              fi
               # Kernel releases list each package's APT component
               gh release download "$TAG" --repo "$REPO" --pattern 'components.tsv' \
                 --output "/tmp/manifests/${REPO#*/}-$TAG.tsv" 2>/dev/null || true
@@ -87,7 +102,7 @@ jobs:
             case "$f" in
               linux-image-citronics-lime-fp2_*) ;;
               linux-image-6.1[28].*|linux-headers-6.1[28].*) ;;
-              *) echo "  not published (FP2 series other than 6.12/6.18): $f"; rm -f "$deb" ;;
+              *) echo "  not published (FP2 series other than 6.12/6.18): $f"; rm -f "$deb"; echo "$f" >> pruned.txt ;;
             esac
           done
 
@@ -117,6 +132,9 @@ jobs:
               mv -f "$deb" "pool/$comp/"
             fi
           done
+
+          echo "Pruning old experimental kernels (keeping the 3 newest builds per series)..."
+          ../main-checkout/scripts/prune-experimental.sh pool/experimental /tmp/kernel-assets.tsv pruned.txt 3
 
           echo "Downloaded .deb files:"
           ls -la pool/main/
