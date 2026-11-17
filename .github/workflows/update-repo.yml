@@ -158,11 +158,20 @@ jobs:
             release dists/stable/ > dists/stable/Release
 
       - name: Commit and push
+        id: commit
         working-directory: apt-repo
         run: |
           git config user.name "Marc Lainez"
           git config user.email "marc.lainez@gmail.com"
           git add -A
+          # The images only install from main: experimental (rc kernels)
+          # changes alone do not warrant rebuilding them.
+          if git diff --cached --quiet -- 'dists/stable/main/*/Packages'; then
+            echo "main_changed=false" >> "$GITHUB_OUTPUT"
+            echo "The main component did not change: no image rebuild."
+          else
+            echo "main_changed=true" >> "$GITHUB_OUTPUT"
+          fi
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
@@ -171,6 +180,7 @@ jobs:
           fi
 
       - name: Trigger image build in debos-citronics
+        if: steps.commit.outputs.main_changed == 'true'
         env:
           IMAGES_DISPATCH_TOKEN: ${{ secrets.IMAGES_DISPATCH_TOKEN }}
         run: |
