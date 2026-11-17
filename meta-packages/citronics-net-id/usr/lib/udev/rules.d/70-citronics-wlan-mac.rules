@@ -1,0 +1,3 @@
+# A Wi-Fi interface without a MAC (the FP3's wcn36xx) cannot be brought up:
+# give it one from the eMMC serial, as the FP2's driver does (02:00:<serial>).
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlan*", ATTR{address}=="00:00:00:00:00:00", RUN+="/usr/libexec/citronics-wlan-mac $name"

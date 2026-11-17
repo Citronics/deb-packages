@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 if [ "$1" = purge ] && command -v deb-systemd-helper >/dev/null; then
-	deb-systemd-helper purge citronics-usb-network.service >/dev/null || true
+	deb-systemd-helper purge citronics-net-id.service >/dev/null || true
 fi
 exit 0

@@ -1,0 +1,13 @@
+#!/bin/sh
+# citronics-wlan-mac IFACE: give a Wi-Fi interface with no MAC the stable
+# locally administered address 02:00:<eMMC serial>.
+set -eu
+serial=$(cat /sys/block/mmcblk0/device/serial 2>/dev/null || true)
+serial=${serial#0x}
+case "$serial" in
+????????) ;;
+*) echo "citronics-wlan-mac: no eMMC serial, $1 keeps its MAC" >&2; exit 0 ;;
+esac
+mac=$(echo "$serial" | sed -E 's/^(..)(..)(..)(..)$/02:00:\1:\2:\3:\4/')
+ip link set "$1" address "$mac"
+echo "citronics-wlan-mac: $1 MAC $mac"
