@@ -128,8 +128,17 @@ jobs:
               pkg_name=$(grep '^Package:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
               pkg_version=$(grep '^Version:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
               pkg_arch=$(grep '^Architecture:' "${pkg_dir}DEBIAN/control" | awk '{print $2}')
-              dpkg-deb --root-owner-group --build "$pkg_dir" "pool/main/${pkg_name}_${pkg_version}_${pkg_arch}.deb"
-              echo "Built ${pkg_name}_${pkg_version}_${pkg_arch}.deb"
+              deb="pool/main/${pkg_name}_${pkg_version}_${pkg_arch}.deb"
+              # A published version is never rebuilt: dpkg-deb stamps fresh
+              # file times, so a rebuild changes the package's checksum and
+              # makes main look changed on every run. Changing a package's
+              # content therefore needs a version bump.
+              if [ -f "$deb" ]; then
+                echo "Already published: $deb"
+                continue
+              fi
+              dpkg-deb --root-owner-group --build "$pkg_dir" "$deb"
+              echo "Built $deb"
             fi
           done
 
