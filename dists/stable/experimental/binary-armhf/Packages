@@ -318,6 +318,26 @@ Description: Linux kernel headers for 6.18.57-citronics-lime-fp2-g0d4f078b1770 o
  .
  This is useful for people who need to build external modules
 
+Package: linux-headers-6.18.63-citronics-lime-fp2-gc7e458b30c57
+Architecture: armhf
+Version: 3.2~rc3.24
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 53277
+Filename: pool/experimental/linux-headers-6.18.63-citronics-lime-fp2-gc7e458b30c57_3.2.rc3.24_armhf.deb
+Size: 9286974
+MD5sum: d6aca8fef6eb7ef87271c8b0ff990c36
+SHA1: 3910e66c6822cba0f694682cba07171d58d17c95
+SHA256: 4b626e60ca8b989883bc0eef5d0e8828c27a3f4b6029e08c0827bccd6718cdfb
+SHA512: 8abafb937d66700ba523f7a410d1e772c1cb0d9c76ab4bd5dc1a19f8fde56310752d992ab6207ed3419bb722ed77d8a38c524a0079088d7a84456ffe16fcc6a0
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.18.63-citronics-lime-fp2-gc7e458b30c57 on armhf
+ This package provides kernel header files for 6.18.63-citronics-lime-fp2-gc7e458b30c57 on armhf
+ .
+ This is useful for people who need to build external modules
+
 Package: linux-image-6.18.39-citronics-lime-fp2-g44fb85a0a17f
 Architecture: armhf
 Version: 3.2~rc2
@@ -621,4 +641,23 @@ Homepage: https://www.kernel.org/
 Description: Linux kernel, version 6.18.57-citronics-lime-fp2-g0d4f078b1770
  This package contains the Linux kernel, modules and corresponding other
  files, version: 6.18.57-citronics-lime-fp2-g0d4f078b1770.
+
+Package: linux-image-6.18.63-citronics-lime-fp2-gc7e458b30c57
+Architecture: armhf
+Version: 3.2~rc3.24
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 47640
+Filename: pool/experimental/linux-image-6.18.63-citronics-lime-fp2-gc7e458b30c57_3.2.rc3.24_armhf.deb
+Size: 18240312
+MD5sum: 5d2337fd38d55abcf66968e6129d2036
+SHA1: 25bd3f58f27c45787dffcba1510397b41893ce77
+SHA256: 0bd8fb8462b2e20e00c9f07aa1bb308a84c4e0e896fe6707b75940c0318686ef
+SHA512: ae4a2c941c7388eb1da352e1d2a3188a2c7321f8c86b229522c8eaa3e49c092d8ea521e4798d8fa282c774eaaff67c866e1151dfc65bfd2e7ba2519864b486c1
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.18.63-citronics-lime-fp2-gc7e458b30c57
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.18.63-citronics-lime-fp2-gc7e458b30c57.
 

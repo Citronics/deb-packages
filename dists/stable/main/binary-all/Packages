@@ -219,11 +219,11 @@ Section: net
 Maintainer: Citronics <info@citronics.eu>
 Depends: iproute2
 Filename: pool/main/citronics-net-id_1.1_all.deb
-Size: 3934
-MD5sum: f0521eac8446613b9f09d707eeb4f98b
-SHA1: 2b213f8bcf97ba61988a15103c4cfcdffe6ccb84
-SHA256: a494dd47a73ee5d2522795648e87775e6f82dacdd3184540dfc6065f638477cc
-SHA512: 6d92aa624a71888fbf0b3e9cc26360af066bdc815099e8c43966669a12075181af7e1c825b13706c9c388cd5ffa70f785b36ff3d7bbc78c546ca1c9ee4efa088
+Size: 3940
+MD5sum: 2c0327d3972ec76b965fec1bfe8bf52c
+SHA1: d372217e3cc2d00f751ca45631587fd6b639324c
+SHA256: 60109bc0561b181b9c53a84b00bb707274738e7bdac2a077e1f63646fc79a2c0
+SHA512: 945d4fd5c8f2b1e247c4aa837f18989ec35261db0a66513820a3d86331ae097991a62e8a256d49f6d232d7feb13851dd550a968aaa9bac4699a0b3db4456104e
 Description: Network identity of Citronics phones, unique per device
  Derives from the eMMC serial the address of the phone's USB network link
  (usb0), the address its DHCP server hands the computer, and the link's

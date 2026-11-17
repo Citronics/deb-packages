@@ -249,11 +249,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-7.0.9-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl, unattended-upgrades, citronics-net-id
 Filename: pool/main/citronics-lime-fp3_1.4_arm64.deb
-Size: 3838
-MD5sum: 2a97a118133414c64ae00ce3f0fe6bdc
-SHA1: 697e5a43c41af88334d6d2d53550163153ac85d6
-SHA256: 64b45edb49a226258fb8192bf986c50dd9a611159830c5544e92ce46e268c0b9
-SHA512: e3504a8fa54a191b750f825a4ab7b398879c6a163d9821c877c7d45a2f830907e7d85b14cca9dddf513c5aead0e9503eb556f117d53b2d33ad3d5484d5be378f
+Size: 3840
+MD5sum: 81b435b42aedee0c954041d076df18e1
+SHA1: 8cb0efb08fe93552fac26738433212b06c63a0df
+SHA256: 77acc6529eb8f487701e52fb979de4bc21045588f1401be823d01474bb77f5cf
+SHA512: 1d048efdcb98f67c8d88eebc93c6bbac3e1f8d961dcf480b50982dda9b309be3572e58b165417e324c45de12e5cb56a3fcb5294dee973a5e42c2e5b0940c8081
 Description: Citronics Lime meta-package for Fairphone 3/3+
  Installs the complete Citronics Lime software stack for Fairphone 3/3+:
  kernel image, firmware, initramfs, and DHCP helper.
@@ -287,11 +287,11 @@ Section: net
 Maintainer: Citronics <info@citronics.eu>
 Depends: iproute2
 Filename: pool/main/citronics-net-id_1.1_all.deb
-Size: 3934
-MD5sum: f0521eac8446613b9f09d707eeb4f98b
-SHA1: 2b213f8bcf97ba61988a15103c4cfcdffe6ccb84
-SHA256: a494dd47a73ee5d2522795648e87775e6f82dacdd3184540dfc6065f638477cc
-SHA512: 6d92aa624a71888fbf0b3e9cc26360af066bdc815099e8c43966669a12075181af7e1c825b13706c9c388cd5ffa70f785b36ff3d7bbc78c546ca1c9ee4efa088
+Size: 3940
+MD5sum: 2c0327d3972ec76b965fec1bfe8bf52c
+SHA1: d372217e3cc2d00f751ca45631587fd6b639324c
+SHA256: 60109bc0561b181b9c53a84b00bb707274738e7bdac2a077e1f63646fc79a2c0
+SHA512: 945d4fd5c8f2b1e247c4aa837f18989ec35261db0a66513820a3d86331ae097991a62e8a256d49f6d232d7feb13851dd550a968aaa9bac4699a0b3db4456104e
 Description: Network identity of Citronics phones, unique per device
  Derives from the eMMC serial the address of the phone's USB network link
  (usb0), the address its DHCP server hands the computer, and the link's

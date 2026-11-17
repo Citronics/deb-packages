@@ -302,11 +302,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd, limeboard-io, limeboard-ha, unattended-upgrades, citronics-net-id
 Filename: pool/main/citronics-lime-fp2_2.5_armhf.deb
-Size: 4044
-MD5sum: 4e52992120c259be6ba58824b6645c73
-SHA1: c48ca0cb9b666168b926135dae5c3d95ebc6d069
-SHA256: f7d03908ddf6b1c1f10fbe127242cf569760b8663d1e73d0f2f76406ab1cb5cd
-SHA512: abbc51d2fd89ba9a0e751f5af7ab1f882531ec7cdac2ae69d9bd767187c89ec9c25cc2ffd3e272e3548f7fd50208732bbda18c8fc254fb2cbaf065431a026abf
+Size: 4046
+MD5sum: 439a1ade084f0a6dd5c9766a557717c3
+SHA1: 73d92f98f543d1b939733fb2d6067581355af2ee
+SHA256: 0949c274a1403fc687c2ba734cb64bdf4c785db46ae9308421f36ccb5082bc82
+SHA512: 97f24b06ffc34640d475309eaf50caba4342ade2b23bebaaa383b54dcac919614ae70a968f62bb2f9752f8d1d53f259f867dc9d68affa567c2b5c89ea336f1fe
 Description: Citronics Lime meta-package for Fairphone 2
  Installs the complete Citronics Lime software stack for Fairphone 2:
  firmware, initramfs, DHCP helper, and the Limeboard header tools and
@@ -320,11 +320,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
-Size: 1414
-MD5sum: 3d49bca0035f356e3a069e33eae3c0a6
-SHA1: f0a75c10fb8fc743939660a035b742cce76d4c12
-SHA256: 58cce5ba418635c0e4b60bc6876fe8f6d407c18037721a04e21574086058efa1
-SHA512: 5243632f356f10634af033278a42f15cdbf61ecf73c7006e7fa29b91530fb710143b680fb9550e15a67f3c84eec42bd1a10b32f4ac75402ef9e860cc6e1b8aaf
+Size: 1418
+MD5sum: 3bd044364f0807179de5ed91ccb02af6
+SHA1: 8e976bab7303103458c27a14aa3eb2719931312f
+SHA256: 6b09366955523ff47b79c4111978a4e92bed7da5d4a53014b53330d4d2ebb02e
+SHA512: da32249f5267ef1e01a91d0353a4ada05e9bd411c3ef80cca545e10075c0a145e9d0b6f47a46d8f24e2b85b45de358c94351d17e8d76c1e6df70b3ac8196bf7c
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
@@ -358,11 +358,11 @@ Section: net
 Maintainer: Citronics <info@citronics.eu>
 Depends: iproute2
 Filename: pool/main/citronics-net-id_1.1_all.deb
-Size: 3934
-MD5sum: f0521eac8446613b9f09d707eeb4f98b
-SHA1: 2b213f8bcf97ba61988a15103c4cfcdffe6ccb84
-SHA256: a494dd47a73ee5d2522795648e87775e6f82dacdd3184540dfc6065f638477cc
-SHA512: 6d92aa624a71888fbf0b3e9cc26360af066bdc815099e8c43966669a12075181af7e1c825b13706c9c388cd5ffa70f785b36ff3d7bbc78c546ca1c9ee4efa088
+Size: 3940
+MD5sum: 2c0327d3972ec76b965fec1bfe8bf52c
+SHA1: d372217e3cc2d00f751ca45631587fd6b639324c
+SHA256: 60109bc0561b181b9c53a84b00bb707274738e7bdac2a077e1f63646fc79a2c0
+SHA512: 945d4fd5c8f2b1e247c4aa837f18989ec35261db0a66513820a3d86331ae097991a62e8a256d49f6d232d7feb13851dd550a968aaa9bac4699a0b3db4456104e
 Description: Network identity of Citronics phones, unique per device
  Derives from the eMMC serial the address of the phone's USB network link
  (usb0), the address its DHCP server hands the computer, and the link's
