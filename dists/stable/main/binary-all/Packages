@@ -219,11 +219,11 @@ Section: net
 Maintainer: Citronics <info@citronics.eu>
 Depends: iproute2
 Filename: pool/main/citronics-net-id_1.1_all.deb
-Size: 3942
-MD5sum: 72c4837f54543ab842a0551b30891c31
-SHA1: 173d3e227397d2ef63477f77486699567b8ee4e3
-SHA256: 2e0e19a8f2e3a3476457102982ea7d04826c31119322a1a85e5ac4be7424941d
-SHA512: 637dfcb687a2d659520e52bd545f12f4768b95be4e1d40aecf8001c912a3ae50e4ebe8c33f7ee9bc6992b6f8487c70652c24309cda63b4a3eea58dac50e065f2
+Size: 3934
+MD5sum: f0521eac8446613b9f09d707eeb4f98b
+SHA1: 2b213f8bcf97ba61988a15103c4cfcdffe6ccb84
+SHA256: a494dd47a73ee5d2522795648e87775e6f82dacdd3184540dfc6065f638477cc
+SHA512: 6d92aa624a71888fbf0b3e9cc26360af066bdc815099e8c43966669a12075181af7e1c825b13706c9c388cd5ffa70f785b36ff3d7bbc78c546ca1c9ee4efa088
 Description: Network identity of Citronics phones, unique per device
  Derives from the eMMC serial the address of the phone's USB network link
  (usb0), the address its DHCP server hands the computer, and the link's
@@ -464,48 +464,6 @@ Description: Limeboard header as Raspberry Pi style Linux devices
  the firmware, gpiozero's "limeboard" pin factory, RPi.GPIO and Blinka
  compatibility, and udev rules giving the gpio, spi and i2c groups the
  header.
-
-Package: linux-firmware-lime-fp2
-Architecture: all
-Version: 1.1
-Priority: optional
-Section: base
-Maintainer: Citronics <info@citronics.eu>
-Filename: pool/main/linux-firmware-lime-fp2_1.1_all.deb
-Size: 29493356
-MD5sum: 47640d7e2934689e23b1f8cfbab96d56
-SHA1: 5c37261a0f44fcb22849323204407586a8c2c8fb
-SHA256: acdce2f07facae08d0950e20f88a1b4980a7c11de2610f96f1aea8bd990a9709
-SHA512: 985401555d7da3c6f3c641f06689643b555c205007e346c54c6921ec922fe8d8d251219b9bc83723d3c5f52c602b95a486a4850f804ca04ca2eafda94fd6ed5e
-Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
-
-Package: linux-firmware-lime-fp2
-Architecture: all
-Version: 1.2.2
-Priority: optional
-Section: base
-Maintainer: Citronics <info@citronics.eu>
-Filename: pool/main/linux-firmware-lime-fp2_1.2.2_all.deb
-Size: 29497054
-MD5sum: c9851187f17b805e3ef86611646dda95
-SHA1: 9d28a7e8311e634b5551b64bc543298b59fca9a2
-SHA256: e0a1bd72192c02a6d7d8006371f07d07bb96b427be362471a59de102982a2bdc
-SHA512: a7f3c669e45874f234f22297613122a181774fcb936d607dd2683e6c6f0e7cbb0cba366d6d5fa939f2718efb18c41f211146004ca2e15b50a37fdbf6f74ef819
-Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
-
-Package: linux-firmware-lime-fp2
-Architecture: all
-Version: 1.2
-Priority: optional
-Section: base
-Maintainer: Citronics <info@citronics.eu>
-Filename: pool/main/linux-firmware-lime-fp2_1.2_all.deb
-Size: 29494394
-MD5sum: 7d86f7f16cc2895eee6706ce3567d0bf
-SHA1: 92caf0c3311861d1b73a3764aa10d857c1ace5dc
-SHA256: 051f9e0315ae29171e697e13ff648fa3a0933258567fb5b56559a1f9bcdf91c1
-SHA512: f87cac75ef61c0807c12657ebbcdfbcd8064962034ce4dce5693b01046e1b7c21dd1f2b4fd63b8adaf562d24d3a044bb3d09a7aa60419054014a6f2bf939b11b
-Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
 
 Package: linux-firmware-lime-fp3
 Architecture: all

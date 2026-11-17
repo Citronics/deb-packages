@@ -302,11 +302,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd, limeboard-io, limeboard-ha, unattended-upgrades, citronics-net-id
 Filename: pool/main/citronics-lime-fp2_2.5_armhf.deb
-Size: 4048
-MD5sum: 1559e2f91e1f8f3cd70a8160efffdaf0
-SHA1: 7fdf8958b6b8304020b4787888fa03ba99686da9
-SHA256: 43b3092aa1760fec25ffcd8461c5033a9e461a14eb211c67c1cac4eb0460163f
-SHA512: 82a4c4120a730e0ddcd7d120aaa93dbb661acd9afca2157cba95dd274259bf1704ef635280777bd7feca5876f51636664bbec61c51d8d8e3fee54ea170b74851
+Size: 4044
+MD5sum: 4e52992120c259be6ba58824b6645c73
+SHA1: c48ca0cb9b666168b926135dae5c3d95ebc6d069
+SHA256: f7d03908ddf6b1c1f10fbe127242cf569760b8663d1e73d0f2f76406ab1cb5cd
+SHA512: abbc51d2fd89ba9a0e751f5af7ab1f882531ec7cdac2ae69d9bd767187c89ec9c25cc2ffd3e272e3548f7fd50208732bbda18c8fc254fb2cbaf065431a026abf
 Description: Citronics Lime meta-package for Fairphone 2
  Installs the complete Citronics Lime software stack for Fairphone 2:
  firmware, initramfs, DHCP helper, and the Limeboard header tools and
@@ -320,11 +320,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
-Size: 1418
-MD5sum: 5598490629cb31645f4a500d53692753
-SHA1: e368d3690ae6a6dbd61566f2a344d29eeca0dc32
-SHA256: 969a1dbd7d148b2a6f05df49a8e9d51a20094334ee146120354bb2275e16c8d5
-SHA512: 37bcd3777ab434e55f5cbe6a54c7792b5516713c8c9479005b3428359a4e79ee26732493aa44482ac027bf50f53c8655b27429a561dc2c9beb1d51a813b43a27
+Size: 1414
+MD5sum: 3d49bca0035f356e3a069e33eae3c0a6
+SHA1: f0a75c10fb8fc743939660a035b742cce76d4c12
+SHA256: 58cce5ba418635c0e4b60bc6876fe8f6d407c18037721a04e21574086058efa1
+SHA512: 5243632f356f10634af033278a42f15cdbf61ecf73c7006e7fa29b91530fb710143b680fb9550e15a67f3c84eec42bd1a10b32f4ac75402ef9e860cc6e1b8aaf
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
@@ -358,11 +358,11 @@ Section: net
 Maintainer: Citronics <info@citronics.eu>
 Depends: iproute2
 Filename: pool/main/citronics-net-id_1.1_all.deb
-Size: 3942
-MD5sum: 72c4837f54543ab842a0551b30891c31
-SHA1: 173d3e227397d2ef63477f77486699567b8ee4e3
-SHA256: 2e0e19a8f2e3a3476457102982ea7d04826c31119322a1a85e5ac4be7424941d
-SHA512: 637dfcb687a2d659520e52bd545f12f4768b95be4e1d40aecf8001c912a3ae50e4ebe8c33f7ee9bc6992b6f8487c70652c24309cda63b4a3eea58dac50e065f2
+Size: 3934
+MD5sum: f0521eac8446613b9f09d707eeb4f98b
+SHA1: 2b213f8bcf97ba61988a15103c4cfcdffe6ccb84
+SHA256: a494dd47a73ee5d2522795648e87775e6f82dacdd3184540dfc6065f638477cc
+SHA512: 6d92aa624a71888fbf0b3e9cc26360af066bdc815099e8c43966669a12075181af7e1c825b13706c9c388cd5ffa70f785b36ff3d7bbc78c546ca1c9ee4efa088
 Description: Network identity of Citronics phones, unique per device
  Derives from the eMMC serial the address of the phone's USB network link
  (usb0), the address its DHCP server hands the computer, and the link's
@@ -604,48 +604,6 @@ Description: Limeboard header as Raspberry Pi style Linux devices
  compatibility, and udev rules giving the gpio, spi and i2c groups the
  header.
 
-Package: linux-firmware-lime-fp2
-Architecture: all
-Version: 1.1
-Priority: optional
-Section: base
-Maintainer: Citronics <info@citronics.eu>
-Filename: pool/main/linux-firmware-lime-fp2_1.1_all.deb
-Size: 29493356
-MD5sum: 47640d7e2934689e23b1f8cfbab96d56
-SHA1: 5c37261a0f44fcb22849323204407586a8c2c8fb
-SHA256: acdce2f07facae08d0950e20f88a1b4980a7c11de2610f96f1aea8bd990a9709
-SHA512: 985401555d7da3c6f3c641f06689643b555c205007e346c54c6921ec922fe8d8d251219b9bc83723d3c5f52c602b95a486a4850f804ca04ca2eafda94fd6ed5e
-Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
-
-Package: linux-firmware-lime-fp2
-Architecture: all
-Version: 1.2.2
-Priority: optional
-Section: base
-Maintainer: Citronics <info@citronics.eu>
-Filename: pool/main/linux-firmware-lime-fp2_1.2.2_all.deb
-Size: 29497054
-MD5sum: c9851187f17b805e3ef86611646dda95
-SHA1: 9d28a7e8311e634b5551b64bc543298b59fca9a2
-SHA256: e0a1bd72192c02a6d7d8006371f07d07bb96b427be362471a59de102982a2bdc
-SHA512: a7f3c669e45874f234f22297613122a181774fcb936d607dd2683e6c6f0e7cbb0cba366d6d5fa939f2718efb18c41f211146004ca2e15b50a37fdbf6f74ef819
-Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
-
-Package: linux-firmware-lime-fp2
-Architecture: all
-Version: 1.2
-Priority: optional
-Section: base
-Maintainer: Citronics <info@citronics.eu>
-Filename: pool/main/linux-firmware-lime-fp2_1.2_all.deb
-Size: 29494394
-MD5sum: 7d86f7f16cc2895eee6706ce3567d0bf
-SHA1: 92caf0c3311861d1b73a3764aa10d857c1ace5dc
-SHA256: 051f9e0315ae29171e697e13ff648fa3a0933258567fb5b56559a1f9bcdf91c1
-SHA512: f87cac75ef61c0807c12657ebbcdfbcd8064962034ce4dce5693b01046e1b7c21dd1f2b4fd63b8adaf562d24d3a044bb3d09a7aa60419054014a6f2bf939b11b
-Description: Firmware for Fairphone 2 on the Citronics Lime carrier board
-
 Package: linux-firmware-lime-fp3
 Architecture: all
 Version: 1.0
@@ -816,23 +774,23 @@ Description: Linux kernel headers for 6.12.113-citronics-lime-fp2 on armhf
  .
  This is useful for people who need to build external modules
 
-Package: linux-headers-6.16.12-msm8974-citronics-lime-fp2
+Package: linux-headers-6.12.117-citronics-lime-fp2
 Architecture: armhf
-Version: 2.1
+Version: 3.2~rc3.23
 Priority: optional
 Section: kernel
 Source: linux-upstream
 Maintainer: Citronics <info@citronics.eu>
-Installed-Size: 51192
-Filename: pool/main/linux-headers-6.16.12-msm8974-citronics-lime-fp2_2.1_armhf.deb
-Size: 8992666
-MD5sum: 3553b6daef8838440cb0867b5623566c
-SHA1: 0df1dcaa01d3c5a480c1c8bc22c11d3f504552c8
-SHA256: 055c4b1b602663a03f211b1c3ce8a635b6f04cde068303abeec04079163bf78c
-SHA512: 78ea3659de4caa489b060bed22571ff87db1fea7a6d80871c902973d92f3a4411cc7a6cdc2eee05bcac73ef3e123c5e1fc3a8dc9f000bc613ebb97dbc846be86
+Installed-Size: 50034
+Filename: pool/main/linux-headers-6.12.117-citronics-lime-fp2_3.2.rc3.23_armhf.deb
+Size: 8727638
+MD5sum: ac632d662c31ebe01db2268b31159de5
+SHA1: e6b28de327984eff9e10a14f3922d0b955583fa7
+SHA256: 197f09c0f854cebddd9e942892d88ee1219b6ec79aa2706d1f59c9cdd72280bd
+SHA512: 67d25cb62e05ec6d504617ca72d41377eb45cdce2403774ac38d25b800f198592d9453104a0301682dbd95c16e774ca768866505c701e78638789bd4b6e769ee
 Homepage: https://www.kernel.org/
-Description: Linux kernel headers for 6.16.12-msm8974-citronics-lime-fp2 on armhf
- This package provides kernel header files for 6.16.12-msm8974-citronics-lime-fp2 on armhf
+Description: Linux kernel headers for 6.12.117-citronics-lime-fp2 on armhf
+ This package provides kernel header files for 6.12.117-citronics-lime-fp2 on armhf
  .
  This is useful for people who need to build external modules
 
@@ -931,24 +889,24 @@ Description: Linux kernel, version 6.12.113-citronics-lime-fp2
  This package contains the Linux kernel, modules and corresponding other
  files, version: 6.12.113-citronics-lime-fp2.
 
-Package: linux-image-6.16.12-msm8974-citronics-lime-fp2
+Package: linux-image-6.12.117-citronics-lime-fp2
 Architecture: armhf
-Version: 2.1
+Version: 3.2~rc3.23
 Priority: optional
 Section: kernel
 Source: linux-upstream
 Maintainer: Citronics <info@citronics.eu>
-Installed-Size: 36586
-Filename: pool/main/linux-image-6.16.12-msm8974-citronics-lime-fp2_2.1_armhf.deb
-Size: 15429508
-MD5sum: aee35c53a44e3129491b402936d5bff6
-SHA1: 34417729468ee2aa33ab3846b6406c67cacd9dba
-SHA256: 7c8d9ebe452c4d826724fa5fd065c0a770db4805c74cdd685b966197478c7311
-SHA512: 850903c0d1ec3cc575a1392cbc44ca13a6c047eff054588c7bc9dbd655dbc38b35a05f5fc4b820608fcd3f012197c5acf1008b8a50703463cb9aaf05d56cd9e2
+Installed-Size: 46687
+Filename: pool/main/linux-image-6.12.117-citronics-lime-fp2_3.2.rc3.23_armhf.deb
+Size: 17789552
+MD5sum: 6bee609263a98e7d9daa35f31561244f
+SHA1: aaa33644cfcd64a9336f9e33f58218297f3a7d03
+SHA256: 0a6a5da097d7dac7803baf7cfbeae0b7131b8f5a675bf9ce043e37d769003363
+SHA512: 5e318f291b814f14803f31766574122d9dbce3bd27c6368ac393d5e1a51c2e5a2dff125d38e4450edba60a5a804080a07e6c23137d57d6028e7fb7fa47b45df8
 Homepage: https://www.kernel.org/
-Description: Linux kernel, version 6.16.12-msm8974-citronics-lime-fp2
+Description: Linux kernel, version 6.12.117-citronics-lime-fp2
  This package contains the Linux kernel, modules and corresponding other
- files, version: 6.16.12-msm8974-citronics-lime-fp2.
+ files, version: 6.12.117-citronics-lime-fp2.
 
 Package: linux-image-citronics-lime-fp2
 Architecture: armhf
@@ -965,6 +923,23 @@ SHA256: a198e6405da60fc18e8b97e2ef75c5bfde24120a21693ed6353245e2f7f2de37
 SHA512: 1470e97189cf7ebbdcb40591dcc4f20d2a9d0eaa9db1ffee9f35c56cc60e01ffd68f7d61cf66fd7fe7bc018333ea8ef2f6242de5d747546c8dbedabb11e53203
 Description: Citronics Lime kernel for fp2 (meta-package)
  Depends on the current Citronics Lime kernel for fp2, 6.12.113-citronics-lime-fp2, built
+ from msm8x74-6.12-rc. Upgrading this package upgrades the kernel.
+
+Package: linux-image-citronics-lime-fp2
+Architecture: armhf
+Version: 3.2~rc3.23
+Priority: optional
+Section: kernel
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-6.12.117-citronics-lime-fp2 (= 3.2~rc3.23)
+Filename: pool/main/linux-image-citronics-lime-fp2_3.2.rc3.23_armhf.deb
+Size: 818
+MD5sum: ce0a18d2e79d90c84988c01661fe4651
+SHA1: 9e7c5087788ade20e7a3eb668bac7de410472c45
+SHA256: 1e7c37e3eb7dfa63669790c4a32da0128ad3f3f5d1abb17290d2de832ac2454b
+SHA512: 31c84a61400947279db11bfd2c519739f7d403a40f931fd2666b932ce1c52fc76fa2f32a292d7139ce3cb8e1de03288df542a5b056b160b0d6e2ff6c4713ef0f
+Description: Citronics Lime kernel for fp2 (meta-package)
+ Depends on the current Citronics Lime kernel for fp2, 6.12.117-citronics-lime-fp2, built
  from msm8x74-6.12-rc. Upgrading this package upgrades the kernel.
 
 Package: python3-gpiozero
