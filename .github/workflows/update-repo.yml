@@ -162,24 +162,20 @@ jobs:
         env:
           IMAGES_DISPATCH_TOKEN: ${{ secrets.IMAGES_DISPATCH_TOKEN }}
         run: |
+          # The APT index is already published at this point; a failure here
+          # only means the images were not rebuilt, but it must show as a
+          # failed run, or an expired token goes unnoticed.
           if [ -z "$IMAGES_DISPATCH_TOKEN" ]; then
-            # A warning, not an error: the APT index - the thing devices install
-            # from - was already refreshed successfully by the steps above. Only
-            # the convenience rebuild of the debos images is skipped. Contrast
-            # APT_DISPATCH_TOKEN in the publisher repos, whose absence *does*
-            # break delivery and therefore fails the run.
-            echo "::warning title=Image rebuild not triggered::IMAGES_DISPATCH_TOKEN" \
-                 "is unset, so Citronics/debos-citronics was not told to rebuild" \
-                 "its images. The APT repository itself IS up to date, so devices" \
-                 "can apt-install the new packages; only the prebuilt images stay" \
-                 "on the previous package set. Fix: fine-grained PAT (resource" \
-                 "owner Citronics, repository Citronics/debos-citronics, Contents:" \
-                 "read+write) as the organisation secret IMAGES_DISPATCH_TOKEN."
-            exit 0
+            echo "::error::IMAGES_DISPATCH_TOKEN is not set: the APT repository is up to date but debos-citronics was not asked to rebuild the images."
+            exit 1
           fi
           echo "Triggering deps-updated dispatch in Citronics/debos-citronics"
-          curl -s -X POST \
+          code=$(curl -s -o /tmp/dispatch.out -w '%{http_code}' -X POST \
             -H "Authorization: Bearer $IMAGES_DISPATCH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/Citronics/debos-citronics/dispatches \
-            -d '{"event_type":"deps-updated"}'
+            -d '{"event_type":"deps-updated"}')
+          if [ "$code" != 204 ]; then
+            echo "::error::debos-citronics refused the image rebuild request (HTTP $code): $(cat /tmp/dispatch.out)"
+            exit 1
+          fi
