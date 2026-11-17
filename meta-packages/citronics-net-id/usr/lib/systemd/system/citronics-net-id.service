@@ -8,7 +8,7 @@ Before=network-pre.target networking.service NetworkManager.service isc-dhcp-ser
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/libexec/citronics-usb-network
+ExecStart=/usr/libexec/citronics-net-id
 
 [Install]
 WantedBy=multi-user.target

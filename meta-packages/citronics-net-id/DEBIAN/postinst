@@ -8,15 +8,15 @@ if [ "$1" = configure ]; then
 		rm -f "$f" /etc/systemd/system/multi-user.target.wants/set-mac-from-serial.service
 	fi
 	if command -v deb-systemd-helper >/dev/null; then
-		if deb-systemd-helper --quiet was-enabled citronics-usb-network.service; then
-			deb-systemd-helper enable citronics-usb-network.service >/dev/null || true
+		if deb-systemd-helper --quiet was-enabled citronics-net-id.service; then
+			deb-systemd-helper enable citronics-net-id.service >/dev/null || true
 		else
-			deb-systemd-helper update-state citronics-usb-network.service >/dev/null || true
+			deb-systemd-helper update-state citronics-net-id.service >/dev/null || true
 		fi
 	fi
 	if [ -d /run/systemd/system ]; then
 		systemctl daemon-reload >/dev/null 2>&1 || true
-		echo "citronics-usb-network: the USB link moves to its per-device address at the next boot"
+		echo "citronics-net-id: the USB link moves to its per-device address at the next boot"
 	fi
 fi
 exit 0

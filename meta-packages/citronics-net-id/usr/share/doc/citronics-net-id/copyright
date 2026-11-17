@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: citronics-usb-network
+Upstream-Name: citronics-net-id
 Source: https://github.com/Citronics/deb-packages
 
 Files: *
