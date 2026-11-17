@@ -1,0 +1,86 @@
+#!/bin/sh
+# The USB network link (usb0, the phone's USB gadget): its address, the
+# address the DHCP server hands the computer, and its MAC, all derived from
+# the eMMC serial, so that phones connected to the same computer never clash.
+#
+# The link is a /30 in 10.250.0.0/16: the phone is .1, the computer .2.
+set -eu
+
+serial=$(cat /sys/block/mmcblk0/device/serial 2>/dev/null || true)
+serial=${serial#0x}
+if [ -z "$serial" ]; then
+	serial=$(tr -d '\0' < /proc/device-tree/serial-number 2>/dev/null || true)
+fi
+if [ -z "$serial" ]; then
+	echo "citronics-usb-network: no serial number, usb0 keeps its configuration" >&2
+	exit 0
+fi
+
+hash=$(printf '%s' "$serial" | md5sum | cut -c1-32)
+n=$(( 0x$(echo "$hash" | cut -c7-10) & 0x3fff ))
+net="10.250.$(( n >> 6 )).$(( (n & 63) * 4 ))"
+prefix=${net%.*}
+last=${net##*.}
+phone="$prefix.$(( last + 1 ))"
+host="$prefix.$(( last + 2 ))"
+mask=255.255.255.252
+
+# Write a file only when its content changes
+update() {
+	tmp="$1.new"
+	cat > "$tmp"
+	if cmp -s "$tmp" "$1"; then
+		rm -f "$tmp"
+	else
+		mv "$tmp" "$1"
+	fi
+}
+
+mkdir -p /etc/network/interfaces.d
+update /etc/network/interfaces.d/usb0 <<EOF
+# Written by citronics-usb-network at boot, from the eMMC serial
+auto usb0
+iface usb0 inet static
+address $phone
+netmask $mask
+EOF
+
+if [ -x /usr/sbin/dhcpd ]; then
+	update /etc/dhcp/dhcpd.conf <<EOF
+# Written by citronics-usb-network at boot: DHCP for the USB link
+default-lease-time 30;
+max-lease-time 30;
+
+subnet $net netmask $mask {
+  range $host $host;
+}
+authoritative;
+EOF
+elif [ -d /etc/dnsmasq.d ]; then
+	update /etc/dnsmasq.d/080_usb0.conf <<EOF
+# Written by citronics-usb-network at boot: DHCP for the USB link, without
+# a route or DNS server, so the computer keeps its own internet access
+interface=usb0
+dhcp-range=set:usb0,$host,$host,$mask,2m
+dhcp-option=tag:usb0,option:router
+dhcp-option=tag:usb0,option:dns-server
+EOF
+fi
+
+echo "citronics-usb-network: usb0 $phone/30, computer $host"
+
+# The MACs, from the same serial, once the gadget's interface exists
+mac=$(echo "$hash" | sed -E 's/^(..)(..)(..).*/02:11:22:\1:\2:\3/')
+tries=0
+while ! ip link show usb0 >/dev/null 2>&1; do
+	tries=$((tries + 1))
+	if [ "$tries" -gt 10 ]; then
+		echo "citronics-usb-network: no usb0"
+		exit 0
+	fi
+	sleep 1
+done
+ip link set usb0 down
+ip link set usb0 address "$mac"
+ip link set usb0 up
+echo "citronics-usb-network: usb0 MAC $mac"

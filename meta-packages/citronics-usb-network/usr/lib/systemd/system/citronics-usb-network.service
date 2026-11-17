@@ -1,0 +1,14 @@
+[Unit]
+Description=USB network link addresses and MAC from the eMMC serial
+DefaultDependencies=no
+After=local-fs.target usb-gadget.service
+Wants=network-pre.target
+Before=network-pre.target networking.service NetworkManager.service isc-dhcp-server.service dnsmasq.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/libexec/citronics-usb-network
+
+[Install]
+WantedBy=multi-user.target
