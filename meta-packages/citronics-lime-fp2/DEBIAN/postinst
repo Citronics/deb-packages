@@ -1,6 +1,14 @@
 #!/bin/sh
 set -e
 if [ "$1" = configure ]; then
+	# The SIM selection unit images installed in /etc would hide this
+	# package's: replace it, keeping the service enabled.
+	f=/etc/systemd/system/msm-modem-uim-selection.service
+	if [ -f "$f" ] && [ "$(md5sum < "$f" | cut -d' ' -f1)" = "e8910f2062084589226c62015e89a368" ]; then
+		rm -f "$f" /etc/systemd/system/multi-user.target.wants/msm-modem-uim-selection.service
+		[ -d /run/systemd/system ] && systemctl daemon-reload >/dev/null 2>&1 || true
+		systemctl enable msm-modem-uim-selection.service >/dev/null 2>&1 || true
+	fi
 	# isc-dhcp-server6 has no interface to serve on these boards and fails
 	# at every boot; images built since 2.2 disable it.
 	if [ -d /run/systemd/system ]; then
