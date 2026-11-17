@@ -1,3 +1,23 @@
+Package: linux-headers-6.12.117-citronics-lime-fp2-rc
+Architecture: armhf
+Version: 3.2.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 50034
+Filename: pool/experimental/linux-headers-6.12.117-citronics-lime-fp2-rc_3.2.1_armhf.deb
+Size: 8731858
+MD5sum: 2569de4a7845984d36437264f006d6f8
+SHA1: 659c92fb002f03242039a46ca36638127b152a1c
+SHA256: a7d7ecb1257cf132ba90950dc40e9f21f2667dd28285c0b117384f3c973321ae
+SHA512: ac93a37c21fe9722d6179d5ebb1042d3eb7c77d8226b46d29d3c019ed5fd7374559a1d9d4b06d713a14883852d367df4d480a7b943bb69b16cc249094c32fb2f
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.12.117-citronics-lime-fp2-rc on armhf
+ This package provides kernel header files for 6.12.117-citronics-lime-fp2-rc on armhf
+ .
+ This is useful for people who need to build external modules
+
 Package: linux-headers-6.18.39-citronics-lime-fp2-g44fb85a0a17f
 Architecture: armhf
 Version: 3.2~rc2
@@ -337,6 +357,25 @@ Description: Linux kernel headers for 6.18.63-citronics-lime-fp2-gc7e458b30c57 o
  This package provides kernel header files for 6.18.63-citronics-lime-fp2-gc7e458b30c57 on armhf
  .
  This is useful for people who need to build external modules
+
+Package: linux-image-6.12.117-citronics-lime-fp2-rc
+Architecture: armhf
+Version: 3.2.1
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 46688
+Filename: pool/experimental/linux-image-6.12.117-citronics-lime-fp2-rc_3.2.1_armhf.deb
+Size: 17796280
+MD5sum: 95411815af78c25f82c4585cbe4e8f72
+SHA1: f2fce9af9f9edd479e187c0cda7b5c6aa0d0ff32
+SHA256: d386f1d41f7b4c785ac25b2ec205dca67e7159c8c4a5a514f67e77ba81b6f58c
+SHA512: 06b1e31310695d3115b5b3bd79654e4237768b53d01480c3287e3b13ea8d17d9cf1570a2099f6c9b99875ea5d59dcd364e150de66ce44549ff4176de6d6c31a3
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.12.117-citronics-lime-fp2-rc
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.12.117-citronics-lime-fp2-rc.
 
 Package: linux-image-6.18.39-citronics-lime-fp2-g44fb85a0a17f
 Architecture: armhf
