@@ -258,6 +258,23 @@ Description: Citronics Lime meta-package for Fairphone 3/3+
  Installs the complete Citronics Lime software stack for Fairphone 3/3+:
  kernel image, firmware, initramfs, and DHCP helper.
 
+Package: citronics-lime-fp3
+Architecture: arm64
+Version: 1.5
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-7.0.9-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl, unattended-upgrades, citronics-net-id (>= 1.3)
+Filename: pool/main/citronics-lime-fp3_1.5_arm64.deb
+Size: 5534
+MD5sum: fb67eb4ddd1edac6a04060e806e4531f
+SHA1: 4663731e1b87b7ad75922e8906ce566d0151d19a
+SHA256: 37fd1d9b551e5285568decd7444e6a3d5b061252e4bb42ecdbdcc86393f4730e
+SHA512: 2a8009004baa33c1a7729428ed88a11c8f59a069ecbef9ab0de014618c1a28d6af9dbb8524337715a0f48cf3cb5b2aac6aa1c2bb22285421b99f9bff175ae7b9
+Description: Citronics Lime meta-package for Fairphone 3/3+
+ Installs the complete Citronics Lime software stack for Fairphone 3/3+:
+ kernel image, firmware, initramfs, and DHCP helper.
+
 Package: citronics-net-id
 Architecture: all
 Version: 1.0
@@ -299,6 +316,28 @@ Description: Network identity of Citronics phones, unique per device
  never clash. Configures isc-dhcp-server or dnsmasq, whichever serves the
  link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
  02:00:<eMMC serial>.
+
+Package: citronics-net-id
+Architecture: all
+Version: 1.3
+Priority: optional
+Section: net
+Maintainer: Citronics <info@citronics.eu>
+Depends: iproute2
+Filename: pool/main/citronics-net-id_1.3_all.deb
+Size: 4892
+MD5sum: 3ede96827bfb5b4e3ee6ede7cb6e10bd
+SHA1: ff9af910a61c107e9b668fb8fcf8fec765394507
+SHA256: b60629b3af80a2228d24455d04aae5c14870d72ab300c5db3283861b63050359
+SHA512: 96e4df68b0898db696257b5005783667204b3678f32b13398fe6358260bb443819e02fdaf7303db4030d5912761decad785a04c05105a830a334eb3bdba1243a
+Description: Network identity of Citronics phones, unique per device
+ Derives from the eMMC serial the address of the phone's USB network link
+ (usb0), the address its DHCP server hands the computer, and the link's
+ MAC: a /30 in 10.250.0.0/16, so that phones connected to the same computer
+ never clash. Configures isc-dhcp-server or dnsmasq, whichever serves the
+ link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
+ 02:00:<eMMC serial>. usb0 only exists while the USB port can be a device:
+ the link and its DHCP server are set up whenever it appears.
 
 Package: limeboard-ha
 Architecture: all
