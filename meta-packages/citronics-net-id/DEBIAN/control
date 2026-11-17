@@ -1,5 +1,5 @@
 Package: citronics-net-id
-Version: 1.2
+Version: 1.3
 Architecture: all
 Maintainer: Citronics <info@citronics.eu>
 Depends: iproute2
@@ -11,4 +11,5 @@ Description: Network identity of Citronics phones, unique per device
  MAC: a /30 in 10.250.0.0/16, so that phones connected to the same computer
  never clash. Configures isc-dhcp-server or dnsmasq, whichever serves the
  link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
- 02:00:<eMMC serial>.
+ 02:00:<eMMC serial>. usb0 only exists while the USB port can be a device:
+ the link and its DHCP server are set up whenever it appears.
