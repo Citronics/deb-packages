@@ -38,6 +38,26 @@ Description: Linux kernel headers for 6.12.118-citronics-lime-fp2-rc on armhf
  .
  This is useful for people who need to build external modules
 
+Package: linux-headers-6.12.118-citronics-lime-fp2-rc
+Architecture: armhf
+Version: 3.2.5
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 50041
+Filename: pool/experimental/linux-headers-6.12.118-citronics-lime-fp2-rc_3.2.5_armhf.deb
+Size: 8732606
+MD5sum: d747aafea8fafcffcbe0257b9e24a8da
+SHA1: bd1eeab8849e99a73ec9c53a952efbfef2f60683
+SHA256: 015cbbcb77f1ad84eb9facd596de371d3d3dd8149c2d6977d8b3050633f8ec85
+SHA512: 5ba1cf3a63366bc8eb742e54abe75490f0331b119fd70ce76b2aaca83707d0ba15acaf2330a3ef5eedcc2d1fac70c9038ab5979931718168b9966b861df68892
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.12.118-citronics-lime-fp2-rc on armhf
+ This package provides kernel header files for 6.12.118-citronics-lime-fp2-rc on armhf
+ .
+ This is useful for people who need to build external modules
+
 Package: linux-headers-6.18.57-citronics-lime-fp2-g0d4f078b1770
 Architecture: armhf
 Version: 3.2~rc3.22
@@ -131,6 +151,25 @@ MD5sum: 6a22510300db858c44359ed249516a66
 SHA1: 8ca72eddd580b86059afb3ad4719d846daab1a15
 SHA256: 8dd91531ea35fcd8d6ce187e32a28812ef80af8d743970dbf21549a38db71028
 SHA512: db8531f237dc25d4e03fb0b8048dbf6c92c1e409828ad6dd8093d2aeaf831ee2b650895385ebc0709dc7cc0e13e0304fc90d660c12d2c56fbc170441a124a6ef
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.12.118-citronics-lime-fp2-rc
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.12.118-citronics-lime-fp2-rc.
+
+Package: linux-image-6.12.118-citronics-lime-fp2-rc
+Architecture: armhf
+Version: 3.2.5
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 46724
+Filename: pool/experimental/linux-image-6.12.118-citronics-lime-fp2-rc_3.2.5_armhf.deb
+Size: 17805810
+MD5sum: f02080aab60d1702f84e409dd8fc2b98
+SHA1: c825ce7269145d0eab25be5480d1b0a538076f05
+SHA256: c8e7cae2f23e2a35f8c2c4ebba1be9cd935839d54ecc83d301b17f94b4c132be
+SHA512: 375b6df4ab50e7caddcde4a8703cc498e5ddcb409aa5197e698ce49357aaef279fa304a42dd0916e4e44b181bf66ace418083d7d586284b54d8267efb6c49777
 Homepage: https://www.kernel.org/
 Description: Linux kernel, version 6.12.118-citronics-lime-fp2-rc
  This package contains the Linux kernel, modules and corresponding other
