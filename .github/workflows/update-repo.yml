@@ -80,7 +80,8 @@ jobs:
 
           # The FP2 runs only the 6.12 and 6.18 kernel series; older releases
           # still carry other series, which are not published.
-          for deb in pool/main/linux-*-fp2*.deb pool/experimental/linux-*-fp2*.deb; do
+          for deb in pool/main/linux-image-*-fp2*.deb pool/main/linux-headers-*-fp2*.deb \
+                     pool/experimental/linux-image-*-fp2*.deb pool/experimental/linux-headers-*-fp2*.deb; do
             [ -f "$deb" ] || continue
             f=$(basename "$deb")
             case "$f" in
