@@ -178,7 +178,8 @@ The repository is not signed; devices trust it with `Trusted: yes`.
 4. **prunes experimental kernels**: per series (image or headers, kernel
    major.minor, phone) only the packages of the 3 newest citronics-kernel
    releases stay, older ones are deleted and recorded in `pruned.txt`
-   (`scripts/prune-experimental.sh`). Release kernels in `main` are never
+   (`scripts/prune-experimental.sh`). A package whose release was deleted
+   counts as the oldest of its series. Release kernels in `main` are never
    pruned. This keeps the GitHub Pages site under its 1 GB limit;
 5. builds the meta-packages in `meta-packages/`. **A meta-package version
    that is already published is never rebuilt**: to change a meta-package,
