@@ -1,6 +1,42 @@
 #!/bin/sh
 set -e
 if [ "$1" = configure ]; then
+	# Images before 2026-11 configured only the release itself, without
+	# its security and stable updates: set those up, as images now do.
+	if ! grep -rqsE -- '-security' /etc/apt/sources.list /etc/apt/sources.list.d/ &&
+	   [ -r /etc/os-release ]; then
+		. /etc/os-release
+		case "$ID" in
+		debian)
+			cat > /etc/apt/sources.list.d/debian.sources <<SOURCES
+Types: deb
+URIs: https://deb.debian.org/debian
+Suites: $VERSION_CODENAME $VERSION_CODENAME-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://security.debian.org/debian-security
+Suites: $VERSION_CODENAME-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+SOURCES
+			;;
+		ubuntu)
+			cat > /etc/apt/sources.list.d/ubuntu.sources <<SOURCES
+Types: deb
+URIs: http://ports.ubuntu.com/ubuntu-ports
+Suites: $VERSION_CODENAME $VERSION_CODENAME-updates $VERSION_CODENAME-security
+Components: main universe
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+SOURCES
+			;;
+		esac
+		if [ -f "/etc/apt/sources.list.d/$ID.sources" ] && [ -f /etc/apt/sources.list ]; then
+			mv /etc/apt/sources.list /etc/apt/sources.list.citronics-old
+		fi
+		echo "citronics-lime: security updates enabled; run apt update && apt full-upgrade"
+	fi
 	# The SIM selection unit images installed in /etc would hide this
 	# package's: replace it, keeping the service enabled.
 	f=/etc/systemd/system/msm-modem-uim-selection.service
