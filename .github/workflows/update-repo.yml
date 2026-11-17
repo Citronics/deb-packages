@@ -78,6 +78,18 @@ jobs:
           find pool/main/ pool/experimental/ -name '*-dbg_*' -delete
           find pool/main/ pool/experimental/ -name 'linux-libc-dev_*' -delete
 
+          # The FP2 runs only the 6.12 and 6.18 kernel series; older releases
+          # still carry other series, which are not published.
+          for deb in pool/main/linux-*-fp2*.deb pool/experimental/linux-*-fp2*.deb; do
+            [ -f "$deb" ] || continue
+            f=$(basename "$deb")
+            case "$f" in
+              linux-image-citronics-lime-fp2_*) ;;
+              linux-image-6.1[28].*|linux-headers-6.1[28].*) ;;
+              *) echo "  not published (FP2 series other than 6.12/6.18): $f"; rm -f "$deb" ;;
+            esac
+          done
+
           # Place every package in the component its release's components.tsv
           # names. Kernels from releases older than the manifest fall back to
           # the version list they were published under. A package found in
@@ -91,7 +103,7 @@ jobs:
             if [ -z "$comp" ]; then
               case "$f" in
                 linux-image-*-citronics-lime-*|linux-headers-*-citronics-lime-*)
-                  if echo "$f" | grep -qE '7\.[0-9]+\.[0-9]+-msm8953|6\.16\.[0-9]+-msm8974|6\.12\.[0-9]+-citronics-lime-fp2_'; then
+                  if echo "$f" | grep -qE '7\.[0-9]+\.[0-9]+-msm8953|6\.12\.[0-9]+-citronics-lime-fp2_'; then
                     comp=main
                   else
                     comp=experimental
