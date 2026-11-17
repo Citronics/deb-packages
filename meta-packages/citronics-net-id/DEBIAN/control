@@ -1,5 +1,5 @@
 Package: citronics-net-id
-Version: 1.1
+Version: 1.2
 Architecture: all
 Maintainer: Citronics <info@citronics.eu>
 Depends: iproute2

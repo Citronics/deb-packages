@@ -24,6 +24,25 @@ last=${net##*.}
 phone="$prefix.$(( last + 1 ))"
 host="$prefix.$(( last + 2 ))"
 mask=255.255.255.252
+mac=$(echo "$hash" | sed -E 's/^(..)(..)(..).*/02:11:22:\1:\2:\3/')
+
+# Give usb0 its MAC; an interface that is up is taken down for the change
+set_mac() {
+	if [ -n "$(ip -o link show dev usb0 up)" ]; then
+		ip link set usb0 down
+		ip link set usb0 address "$mac"
+		ip link set usb0 up
+	else
+		ip link set usb0 address "$mac"
+	fi
+	echo "citronics-net-id: usb0 MAC $mac"
+}
+
+# "mac": called by udev when usb0 appears, before ifupdown brings it up
+if [ "${1:-}" = mac ]; then
+	set_mac
+	exit 0
+fi
 
 # Write a file only when its content changes
 update() {
@@ -39,7 +58,7 @@ update() {
 mkdir -p /etc/network/interfaces.d
 update /etc/network/interfaces.d/usb0 <<EOF
 # Written by citronics-net-id at boot, from the eMMC serial
-auto usb0
+allow-hotplug usb0
 iface usb0 inet static
 address $phone
 netmask $mask
@@ -76,18 +95,16 @@ fi
 
 echo "citronics-net-id: usb0 $phone/30, computer $host"
 
-# The MACs, from the same serial, once the gadget's interface exists
-mac=$(echo "$hash" | sed -E 's/^(..)(..)(..).*/02:11:22:\1:\2:\3/')
-tries=0
-while ! ip link show usb0 >/dev/null 2>&1; do
-	tries=$((tries + 1))
-	if [ "$tries" -gt 10 ]; then
-		echo "citronics-net-id: no usb0"
-		exit 0
+# usb0 exists only while the USB port can be a device: on the Lime carrier
+# in Default mode it is a host. udev runs "citronics-net-id mac" when usb0
+# appears, so its MAC is right whenever it shows up.
+if ip link show usb0 >/dev/null 2>&1; then
+	set_mac
+	# usb0's udev event can precede this file (first boot, or the boot that
+	# replaced "auto usb0"), and ifupdown's hotplug then skipped it
+	if systemctl cat ifup@.service >/dev/null 2>&1; then
+		systemctl --no-block start ifup@usb0.service
 	fi
-	sleep 1
-done
-ip link set usb0 down
-ip link set usb0 address "$mac"
-ip link set usb0 up
-echo "citronics-net-id: usb0 MAC $mac"
+else
+	echo "citronics-net-id: usb0 not present, its MAC is set when it appears"
+fi
