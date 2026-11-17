@@ -32,3 +32,5 @@ linux-image-6.18.40-citronics-lime-fp2-g0c5d971f52d9_3.2.rc3.8_armhf.deb
 linux-image-6.18.40-citronics-lime-fp2-g59570e2e7e73_3.2.rc3.10_armhf.deb
 linux-image-6.18.40-citronics-lime-fp2-ga22efcba6e98_3.2.rc3.10_armhf.deb
 linux-image-6.18.40-citronics-lime-fp2-gaa55b1b242a1_3.2.rc3.13_armhf.deb
+linux-headers-6.18.57-citronics-lime-fp2-g0d4f078b1770_3.2.rc3.19_armhf.deb
+linux-image-6.18.57-citronics-lime-fp2-g0d4f078b1770_3.2.rc3.19_armhf.deb
