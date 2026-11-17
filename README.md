@@ -2,6 +2,9 @@
 
 APT package repository for Citronics Lime boards (Fairphone 2/FP2 and Fairphone 3/FP3) running Debian or Ubuntu.
 
+How packages, kernels and images get built, released and promoted, from a
+stable kernel update to the devices: [docs/release-process.md](docs/release-process.md).
+
 ## Adding the repository
 
 **Recommended** (GitHub Pages):
