@@ -60,26 +60,60 @@ jobs:
         run: |
           REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/citronics-kernel Citronics/citronics-firmware Citronics/unudhcpd-deb Citronics/limeboard-firmware Citronics/limeboard-extras"
 
+          mkdir -p /tmp/manifests
           for REPO in $REPOS; do
             echo "Downloading from $REPO..."
-            TAGS=$(gh release list --repo "$REPO" --json tagName --jq '.[].tagName' 2>/dev/null || true)
+            # A failed listing must fail the run: it would silently leave
+            # that repository's packages out of the index.
+            TAGS=$(gh release list --repo "$REPO" --limit 1000 --json tagName --jq '.[].tagName')
             for TAG in $TAGS; do
+              # A release without .deb assets is fine, hence || true
               gh release download "$TAG" --repo "$REPO" --pattern '*.deb' --dir pool/main/ --skip-existing 2>/dev/null || true
+              # Kernel releases list each package's APT component
+              gh release download "$TAG" --repo "$REPO" --pattern 'components.tsv' \
+                --output "/tmp/manifests/${REPO#*/}-$TAG.tsv" 2>/dev/null || true
             done
           done
 
-          find pool/main/ -name '*-dbg_*' -delete
-          find pool/main/ -name 'linux-libc-dev_*' -delete
+          find pool/main/ pool/experimental/ -name '*-dbg_*' -delete
+          find pool/main/ pool/experimental/ -name 'linux-libc-dev_*' -delete
 
-          echo "Sorting experimental kernel debs..."
-          for deb in pool/main/linux-image-*-citronics-lime-*.deb pool/main/linux-headers-*-citronics-lime-*.deb; do
+          # The FP2 runs only the 6.12 and 6.18 kernel series; older releases
+          # still carry other series, which are not published.
+          for deb in pool/main/linux-*-fp2*.deb pool/experimental/linux-*-fp2*.deb; do
             [ -f "$deb" ] || continue
-            basename=$(basename "$deb")
-            if echo "$basename" | grep -qE '7\.[0-9]+\.[0-9]+-msm8953|6\.16\.[0-9]+-msm8974|6\.12\.[0-9]+-citronics-lime-fp2'; then
-              echo "Keeping stable in pool/main: $basename"
-            else
-              echo "Moving experimental to pool/experimental: $basename"
-              mv "$deb" pool/experimental/
+            f=$(basename "$deb")
+            case "$f" in
+              linux-image-citronics-lime-fp2_*) ;;
+              linux-image-6.1[28].*|linux-headers-6.1[28].*) ;;
+              *) echo "  not published (FP2 series other than 6.12/6.18): $f"; rm -f "$deb" ;;
+            esac
+          done
+
+          # Place every package in the component its release's components.tsv
+          # names. Kernels from releases older than the manifest fall back to
+          # the version list they were published under. A package found in
+          # the wrong directory is moved, so none is listed in both.
+          cat /tmp/manifests/*.tsv > /tmp/components.tsv 2>/dev/null || : > /tmp/components.tsv
+          echo "Sorting packages into main and experimental..."
+          for deb in pool/main/*.deb pool/experimental/*.deb; do
+            [ -f "$deb" ] || continue
+            f=$(basename "$deb")
+            comp=$(awk -F'\t' -v f="$f" '$1 == f { print $2; exit }' /tmp/components.tsv)
+            if [ -z "$comp" ]; then
+              case "$f" in
+                linux-image-*-citronics-lime-*|linux-headers-*-citronics-lime-*)
+                  if echo "$f" | grep -qE '7\.[0-9]+\.[0-9]+-msm8953|6\.12\.[0-9]+-citronics-lime-fp2_'; then
+                    comp=main
+                  else
+                    comp=experimental
+                  fi ;;
+                *) continue ;;
+              esac
+            fi
+            if [ "$(dirname "$deb")" != "pool/$comp" ]; then
+              echo "  $f -> $comp"
+              mv -f "$deb" "pool/$comp/"
             fi
           done
 
@@ -140,24 +174,20 @@ jobs:
         env:
           IMAGES_DISPATCH_TOKEN: ${{ secrets.IMAGES_DISPATCH_TOKEN }}
         run: |
+          # The APT index is already published at this point; a failure here
+          # only means the images were not rebuilt, but it must show as a
+          # failed run, or an expired token goes unnoticed.
           if [ -z "$IMAGES_DISPATCH_TOKEN" ]; then
-            # A warning, not an error: the APT index - the thing devices install
-            # from - was already refreshed successfully by the steps above. Only
-            # the convenience rebuild of the debos images is skipped. Contrast
-            # APT_DISPATCH_TOKEN in the publisher repos, whose absence *does*
-            # break delivery and therefore fails the run.
-            echo "::warning title=Image rebuild not triggered::IMAGES_DISPATCH_TOKEN" \
-                 "is unset, so Citronics/debos-citronics was not told to rebuild" \
-                 "its images. The APT repository itself IS up to date, so devices" \
-                 "can apt-install the new packages; only the prebuilt images stay" \
-                 "on the previous package set. Fix: fine-grained PAT (resource" \
-                 "owner Citronics, repository Citronics/debos-citronics, Contents:" \
-                 "read+write) as the organisation secret IMAGES_DISPATCH_TOKEN."
-            exit 0
+            echo "::error::IMAGES_DISPATCH_TOKEN is not set: the APT repository is up to date but debos-citronics was not asked to rebuild the images."
+            exit 1
           fi
           echo "Triggering deps-updated dispatch in Citronics/debos-citronics"
-          curl -s -X POST \
+          code=$(curl -s -o /tmp/dispatch.out -w '%{http_code}' -X POST \
             -H "Authorization: Bearer $IMAGES_DISPATCH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/Citronics/debos-citronics/dispatches \
-            -d '{"event_type":"deps-updated"}'
+            -d '{"event_type":"deps-updated"}')
+          if [ "$code" != 204 ]; then
+            echo "::error::debos-citronics refused the image rebuild request (HTTP $code): $(cat /tmp/dispatch.out)"
+            exit 1
+          fi
