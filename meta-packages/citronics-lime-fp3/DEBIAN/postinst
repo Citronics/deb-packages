@@ -45,6 +45,35 @@ SOURCES
 		[ -d /run/systemd/system ] && systemctl daemon-reload >/dev/null 2>&1 || true
 		systemctl enable msm-modem-uim-selection.service >/dev/null 2>&1 || true
 	fi
+	# The USB gadget setup was image files in /etc, which would hide this
+	# package's: replace each one that is exactly as an image shipped it,
+	# and keep the service enabled if it was. Edited copies stay.
+	gadget_enabled=""
+	f=/etc/systemd/system/usb-gadget.service
+	if [ -f "$f" ]; then
+		case "$(md5sum < "$f" | cut -d' ' -f1)" in
+		48127da532239fb445da0b37c235ba9b|885c4ef2607b12fad466db508fe9a24d|94774115e0216503de26e70b8b01b32f|fe0f2df1c7deeab8cc08a5b85c640dbc)
+			[ -L /etc/systemd/system/multi-user.target.wants/usb-gadget.service ] && gadget_enabled=1
+			rm -f "$f" /etc/systemd/system/multi-user.target.wants/usb-gadget.service
+			;;
+		esac
+	fi
+	f=/etc/udev/rules.d/80-usb-gadget.rules
+	if [ -f "$f" ] && [ "$(md5sum < "$f" | cut -d' ' -f1)" = "37dbacfbd01740273424ffa03d1c20a4" ]; then
+		rm -f "$f"
+	fi
+	if [ ! -f /etc/systemd/system/usb-gadget.service ] && command -v deb-systemd-helper >/dev/null; then
+		# Enabled on a new installation (images) and where the image had it
+		# enabled; otherwise as the administrator left it
+		if [ -z "$2" ] || [ -n "$gadget_enabled" ] ||
+		   deb-systemd-helper --quiet was-enabled usb-gadget.service; then
+			deb-systemd-helper enable usb-gadget.service >/dev/null || true
+		else
+			deb-systemd-helper update-state usb-gadget.service >/dev/null || true
+		fi
+	fi
+	[ -d /run/systemd/system ] && systemctl daemon-reload >/dev/null 2>&1 || true
+	[ -d /run/udev ] && udevadm control --reload >/dev/null 2>&1 || true
 	# isc-dhcp-server6 has no interface to serve on these boards and fails
 	# at every boot; images built since 2.2 disable it.
 	if [ -d /run/systemd/system ]; then

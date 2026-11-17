@@ -7,6 +7,23 @@ if [ "$1" = configure ]; then
 	if [ -f "$f" ] && [ "$(md5sum < "$f" | cut -d' ' -f1)" = "670c564274fab5a499bb077afdab3c7c" ]; then
 		rm -f "$f" /etc/systemd/system/multi-user.target.wants/set-mac-from-serial.service
 	fi
+	# Images of 2026-11-17 shipped the DHCP server's usb0 drop-in and udev
+	# rule in /etc; this package now ships them: drop unedited copies
+	f=/etc/systemd/system/isc-dhcp-server.service.d/usb0.conf
+	if [ -f "$f" ] && [ "$(md5sum < "$f" | cut -d' ' -f1)" = "9d8f14153d363752c057e18348ba7d12" ]; then
+		rm -f "$f"
+		rmdir /etc/systemd/system/isc-dhcp-server.service.d 2>/dev/null || true
+	fi
+	f=/etc/udev/rules.d/81-usb0-dhcp-server.rules
+	if [ -f "$f" ] && [ "$(md5sum < "$f" | cut -d' ' -f1)" = "2da8e944e0b8e4595fc04db74733ee44" ]; then
+		rm -f "$f"
+	fi
+	# Images set INTERFACES, which dhcpd's unit ignores: it reads INTERFACESv4
+	f=/etc/default/isc-dhcp-server
+	if [ -f "$f" ] && grep -qx 'INTERFACES="usb0"' "$f" && ! grep -q '^INTERFACESv4=' "$f"; then
+		echo 'INTERFACESv4="usb0"' >> "$f"
+	fi
+	[ -d /run/udev ] && udevadm control --reload >/dev/null 2>&1 || true
 	if command -v deb-systemd-helper >/dev/null; then
 		if deb-systemd-helper --quiet was-enabled citronics-net-id.service; then
 			deb-systemd-helper enable citronics-net-id.service >/dev/null || true
