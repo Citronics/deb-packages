@@ -276,6 +276,24 @@ Description: Citronics Lime meta-package for Fairphone 2
  firmware, initramfs, DHCP helper, and the Limeboard header tools and
  Home Assistant agent.
 
+Package: citronics-lime-fp2
+Architecture: armhf
+Version: 2.4
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd, limeboard-io, limeboard-ha, unattended-upgrades
+Filename: pool/main/citronics-lime-fp2_2.4_armhf.deb
+Size: 4036
+MD5sum: a77d23234e621cbbe329986bad70d1a6
+SHA1: de72f3c5e10a8f589e0156fd20d516a074d48e04
+SHA256: 747d88de46946065a01ced61d64be4de3afa12fa73c3597b9f6ed71f2aa803db
+SHA512: 6d4e4eb097e1077e81db6b69d29ac8b79bae07944c41dad97720f86ba3b39226c814b0e9ae35e1bb5c0eee42334de8ad90eeaefc48f64ced39e629631b1bf1c1
+Description: Citronics Lime meta-package for Fairphone 2
+ Installs the complete Citronics Lime software stack for Fairphone 2:
+ firmware, initramfs, DHCP helper, and the Limeboard header tools and
+ Home Assistant agent.
+
 Package: citronics-lime
 Architecture: armhf
 Version: 3.0
@@ -284,11 +302,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
-Size: 1422
-MD5sum: 2f8ae4b615f94016668667549a0e646b
-SHA1: f117acb1325fcfedc264b62d38745f8d5d40c245
-SHA256: 6b43c9dd25dab47967e7d88a79d78d014605877d7a5c038da24925ffb1fbc135
-SHA512: 4a8a385d7b493aa1f1dddfa0c27bf61f010f94244e7f1e1a48812d659ab5b8ad7acef69b7197ac4fb1a088d4f32503d674fc31b439dc960795e14ba70ab647bf
+Size: 1418
+MD5sum: 54693053dabf6931c8ca97b8ffa5dc62
+SHA1: d2b8004cabae7f185e7fcd88522383343bb9d744
+SHA256: 330b9b1546855deee9b50dfc1cacbe3ddd5c94bddf0daffabb06b57767373027
+SHA512: 5d501bd2f40bea4668a63a7eca3e307cd1824ff37c7b40103ac2e64e210a4ea0523c636f3b834a63dd60270af62f610c112d5fe749ac84a57514babe653ecf58
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
