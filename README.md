@@ -41,6 +41,7 @@ sudo apt update
 | `limeboard-ha` | all | ✅ current | Limeboard Home Assistant agent (MQTT discovery) | [limeboard-extras](https://github.com/Citronics/limeboard-extras) |
 | `python3-gpiozero`, `python3-lgpio`, `python3-rpi-lgpio` | all, armhf | ✅ current | GPIO libraries the Limeboard tools use, followed from PyPI | [limeboard-extras](https://github.com/Citronics/limeboard-extras) |
 | `limeboard-io-firmware` | all | ✅ current | Limeboard I/O firmware for the Limeboard's STM32 | [limeboard-firmware](https://github.com/Citronics/limeboard-firmware) |
+| `modemmanager`, `libmm-glib0` (suites `trixie`, `resolute`) | armhf, arm64 | ✅ current | The distribution's ModemManager with the fixes the FP2/FP3 need for 4G | [modemmanager-deb](https://github.com/Citronics/modemmanager-deb) |
 
 Meta-packages follow the naming pattern `citronics-{carrier}-{board}` (e.g., `citronics-lime-fp2`, `citronics-lime-fp3`). To add a new carrier or board combination, create a new meta-package under `meta-packages/citronics-{carrier}-{board}/` in this repository. The `build-meta.sh` script automatically discovers all meta-packages via a dynamic loop — no script changes needed when adding carriers.
 
@@ -61,7 +62,7 @@ sudo apt install citronics-lime
 
 Each source repo has a `release.sh` script that builds `.deb` packages and publishes them as GitHub Releases using the `gh` CLI. Versions are derived from git tags.
 
-This repository has a GitHub Actions workflow (`update-repo.yml`) that downloads all `.deb` assets from the source repos ([citronics-kernel](https://github.com/Citronics/citronics-kernel), [citronics-firmware](https://github.com/Citronics/citronics-firmware), [linux-firmware-lime](https://github.com/Citronics/linux-firmware-lime), [initramfs](https://github.com/Citronics/initramfs), and [unudhcpd-deb](https://github.com/Citronics/unudhcpd-deb)), generates APT metadata with `apt-ftparchive`, and publishes the result to GitHub Pages via the `gh-pages` branch.
+This repository has a GitHub Actions workflow (`update-repo.yml`) that downloads all `.deb` assets from the source repos ([citronics-kernel](https://github.com/Citronics/citronics-kernel), [citronics-firmware](https://github.com/Citronics/citronics-firmware), [linux-firmware-lime](https://github.com/Citronics/linux-firmware-lime), [initramfs](https://github.com/Citronics/initramfs), [unudhcpd-deb](https://github.com/Citronics/unudhcpd-deb) and [modemmanager-deb](https://github.com/Citronics/modemmanager-deb), among others), generates APT metadata with `apt-ftparchive`, and publishes the result to GitHub Pages via the `gh-pages` branch.
 
 ### Updating the repository after a new release
 

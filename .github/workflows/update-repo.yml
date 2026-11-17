@@ -58,9 +58,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/citronics-kernel Citronics/citronics-firmware Citronics/unudhcpd-deb Citronics/limeboard-firmware Citronics/limeboard-extras"
+          REPOS="Citronics/initramfs Citronics/linux-firmware-lime Citronics/lime-image Citronics/citronics-kernel Citronics/citronics-firmware Citronics/unudhcpd-deb Citronics/limeboard-firmware Citronics/limeboard-extras Citronics/modemmanager-deb"
 
-          mkdir -p /tmp/manifests
+          mkdir -p /tmp/manifests /tmp/suites
           : > /tmp/kernel-assets.tsv
           for REPO in $REPOS; do
             echo "Downloading from $REPO..."
@@ -87,6 +87,9 @@ jobs:
               # Kernel releases list each package's APT component
               gh release download "$TAG" --repo "$REPO" --pattern 'components.tsv' \
                 --output "/tmp/manifests/${REPO#*/}-$TAG.tsv" 2>/dev/null || true
+              # Per-release builds list each package's suite (a codename)
+              gh release download "$TAG" --repo "$REPO" --pattern 'suites.tsv' \
+                --output "/tmp/suites/${REPO#*/}-$TAG.tsv" 2>/dev/null || true
             done
           done
 
@@ -132,6 +135,26 @@ jobs:
               mv -f "$deb" "pool/$comp/"
             fi
           done
+
+          # Packages built for one distribution release (suites.tsv: file,
+          # codename) go to pool/<codename>, which holds exactly the files
+          # the current releases list: a deleted release leaves the suite.
+          cat /tmp/suites/*.tsv > /tmp/suites.tsv 2>/dev/null || : > /tmp/suites.tsv
+          for suite in $(cut -f2 /tmp/suites.tsv | sort -u) $(ls -d pool/*/ 2>/dev/null | xargs -rn1 basename | grep -vxE 'main|experimental'); do
+            mkdir -p "pool/$suite"
+            for deb in pool/"$suite"/*.deb; do
+              [ -f "$deb" ] || continue
+              awk -F'\t' -v f="$(basename "$deb")" -v s="$suite" '$1 == f && $2 == s { found = 1 } END { exit !found }' /tmp/suites.tsv ||
+                { echo "  no longer in a release: $deb"; rm -f "$deb"; }
+            done
+          done
+          while IFS="$(printf '\t')" read -r f suite; do
+            [ -n "$f" ] || continue
+            if [ -f "pool/main/$f" ]; then
+              echo "  $f -> $suite"
+              mv -f "pool/main/$f" "pool/$suite/"
+            fi
+          done < /tmp/suites.tsv
 
           echo "Pruning old experimental kernels (keeping the 3 newest builds per series)..."
           ../main-checkout/scripts/prune-experimental.sh pool/experimental /tmp/kernel-assets.tsv pruned.txt 3
@@ -184,6 +207,25 @@ jobs:
             -o APT::FTPArchive::Release::Architectures="armhf arm64 all" \
             -o APT::FTPArchive::Release::Components="main experimental" \
             release dists/stable/ > dists/stable/Release
+          # One suite per distribution release codename, component main
+          for pool in pool/*/; do
+            suite=$(basename "$pool")
+            case "$suite" in main|experimental) continue ;; esac
+            rm -rf "dists/$suite"
+            ls "$pool"*.deb >/dev/null 2>&1 || { echo "Suite $suite is empty: removed"; rmdir "$pool"; continue; }
+            apt-ftparchive packages "$pool" > /tmp/suite-packages
+            for arch in armhf arm64; do
+              mkdir -p "dists/$suite/main/binary-$arch"
+              awk -v a="$arch" 'BEGIN{RS=""; ORS="\n\n"} $0 ~ "\nArchitecture: (" a "|all)\n"' /tmp/suite-packages > "dists/$suite/main/binary-$arch/Packages"
+              gzip -kf "dists/$suite/main/binary-$arch/Packages"
+            done
+            apt-ftparchive \
+              -o APT::FTPArchive::Release::Suite="$suite" \
+              -o APT::FTPArchive::Release::Codename="$suite" \
+              -o APT::FTPArchive::Release::Architectures="armhf arm64" \
+              -o APT::FTPArchive::Release::Components="main" \
+              release "dists/$suite/" > "dists/$suite/Release"
+          done
 
       - name: Commit and push
         id: commit
@@ -192,11 +234,12 @@ jobs:
           git config user.name "Marc Lainez"
           git config user.email "marc.lainez@gmail.com"
           git add -A
-          # The images only install from main: experimental (rc kernels)
-          # changes alone do not warrant rebuilding them.
-          if git diff --cached --quiet -- 'dists/stable/main/*/Packages'; then
+          # The images install from main and the codename suites:
+          # experimental (rc kernels) changes alone do not warrant
+          # rebuilding them.
+          if git diff --cached --quiet -- 'dists/*/main/*/Packages'; then
             echo "main_changed=false" >> "$GITHUB_OUTPUT"
-            echo "The main component did not change: no image rebuild."
+            echo "No main component changed: no image rebuild."
           else
             echo "main_changed=true" >> "$GITHUB_OUTPUT"
           fi
