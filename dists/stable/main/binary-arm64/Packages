@@ -241,6 +241,44 @@ Description: Citronics Lime meta-package for Fairphone 3/3+
  Installs the complete Citronics Lime software stack for Fairphone 3/3+:
  kernel image, firmware, initramfs, and DHCP helper.
 
+Package: citronics-lime-fp3
+Architecture: arm64
+Version: 1.4
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-7.0.9-msm8953-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl, unattended-upgrades, citronics-net-id
+Filename: pool/main/citronics-lime-fp3_1.4_arm64.deb
+Size: 3838
+MD5sum: b3c9c773bacd88d625f400bf4be5b6a7
+SHA1: 47041f472afa901b4c3160066c3278eae6e115cb
+SHA256: 08dd545117154a02d4cba3d25d1a8e6c0f617dafa3e55c7e1c6efa41ceac72b3
+SHA512: ac0fe7c6eee4c494403de7405137dee119a3c2185f0e81c1063e3a184c804b395e911127aeac46d7b6d88046e56b6c7d35608ad06eb1942971187e071c47a262
+Description: Citronics Lime meta-package for Fairphone 3/3+
+ Installs the complete Citronics Lime software stack for Fairphone 3/3+:
+ kernel image, firmware, initramfs, and DHCP helper.
+
+Package: citronics-net-id
+Architecture: all
+Version: 1.0
+Priority: optional
+Section: net
+Maintainer: Citronics <info@citronics.eu>
+Depends: iproute2
+Filename: pool/main/citronics-net-id_1.0_all.deb
+Size: 3830
+MD5sum: 19140334401391e6fca941c6735d27c9
+SHA1: e50f1572c5f524d94d2c5f952f61483b33bb20f8
+SHA256: b15df8520e067d0fed901ee231b48e0e055ba02988a0f75557950a64edf7efbd
+SHA512: 358cddd8124218619ad8dbce6210765327aa14a97c0af5d6bcd4920045aee62c1ff652048f96670426ac9a55d9430fbb0aeaeabc86b2be63498b7798b3efd783
+Description: Network identity of Citronics phones, unique per device
+ Derives from the eMMC serial the address of the phone's USB network link
+ (usb0), the address its DHCP server hands the computer, and the link's
+ MAC: a /30 in 10.250.0.0/16, so that phones connected to the same computer
+ never clash. Configures isc-dhcp-server or dnsmasq, whichever serves the
+ link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
+ 02:00:<eMMC serial>.
+
 Package: limeboard-ha
 Architecture: all
 Version: 1.0.1

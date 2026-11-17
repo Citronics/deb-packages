@@ -190,6 +190,27 @@ SHA512: 9f585d09e992df3717f524d6872e42e9645489af25789aa5874c5e73b7ccf531f015a9df
 Description: Custom initramfs-tools hooks and scripts for citronics boards
  This package installs custom hooks, modules, and scripts into initramfs-tools.
 
+Package: citronics-net-id
+Architecture: all
+Version: 1.0
+Priority: optional
+Section: net
+Maintainer: Citronics <info@citronics.eu>
+Depends: iproute2
+Filename: pool/main/citronics-net-id_1.0_all.deb
+Size: 3830
+MD5sum: 19140334401391e6fca941c6735d27c9
+SHA1: e50f1572c5f524d94d2c5f952f61483b33bb20f8
+SHA256: b15df8520e067d0fed901ee231b48e0e055ba02988a0f75557950a64edf7efbd
+SHA512: 358cddd8124218619ad8dbce6210765327aa14a97c0af5d6bcd4920045aee62c1ff652048f96670426ac9a55d9430fbb0aeaeabc86b2be63498b7798b3efd783
+Description: Network identity of Citronics phones, unique per device
+ Derives from the eMMC serial the address of the phone's USB network link
+ (usb0), the address its DHCP server hands the computer, and the link's
+ MAC: a /30 in 10.250.0.0/16, so that phones connected to the same computer
+ never clash. Configures isc-dhcp-server or dnsmasq, whichever serves the
+ link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
+ 02:00:<eMMC serial>.
+
 Package: limeboard-ha
 Architecture: all
 Version: 1.0.1

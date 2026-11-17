@@ -294,6 +294,24 @@ Description: Citronics Lime meta-package for Fairphone 2
  firmware, initramfs, DHCP helper, and the Limeboard header tools and
  Home Assistant agent.
 
+Package: citronics-lime-fp2
+Architecture: armhf
+Version: 2.5
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd, limeboard-io, limeboard-ha, unattended-upgrades, citronics-net-id
+Filename: pool/main/citronics-lime-fp2_2.5_armhf.deb
+Size: 4048
+MD5sum: 82f478fda891ed7a1fe88bc5dd7fab11
+SHA1: 8f30f9c5ecfcea708b79e9cde81c411d1231f437
+SHA256: 4479ec3e152832f4bb2a260db5c2e147c5e3058eb8333849b1dd045f3b216b4a
+SHA512: 4f6af23e9a1e43999433160de55ed608b4a53c6ffd171de1a4644c4e325a01fce1dbce20e2f0769ab23c3b8fe9e80677b25f1f5bd447d090366312767795b58a
+Description: Citronics Lime meta-package for Fairphone 2
+ Installs the complete Citronics Lime software stack for Fairphone 2:
+ firmware, initramfs, DHCP helper, and the Limeboard header tools and
+ Home Assistant agent.
+
 Package: citronics-lime
 Architecture: armhf
 Version: 3.0
@@ -302,14 +320,35 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
-Size: 1418
-MD5sum: 54693053dabf6931c8ca97b8ffa5dc62
-SHA1: d2b8004cabae7f185e7fcd88522383343bb9d744
-SHA256: 330b9b1546855deee9b50dfc1cacbe3ddd5c94bddf0daffabb06b57767373027
-SHA512: 5d501bd2f40bea4668a63a7eca3e307cd1824ff37c7b40103ac2e64e210a4ea0523c636f3b834a63dd60270af62f610c112d5fe749ac84a57514babe653ecf58
+Size: 1420
+MD5sum: fe587879e79102caa08d34746443d1f6
+SHA1: c8e02eda8913cfafdcd0cdc73b292af222a36ea9
+SHA256: 23a233b2f17ec4192dbcb1ceba6d1cf9a42b3886ae568e5841e6e184d9fd8b5c
+SHA512: d39700980f49943ae0fccabe6789c651752ab3cc7ff33011663a5c6217d35241917b6674a23a5a30401b41a43e318304d0c6f4f9845b0ee84e03a619a6fabe45
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
+
+Package: citronics-net-id
+Architecture: all
+Version: 1.0
+Priority: optional
+Section: net
+Maintainer: Citronics <info@citronics.eu>
+Depends: iproute2
+Filename: pool/main/citronics-net-id_1.0_all.deb
+Size: 3830
+MD5sum: 19140334401391e6fca941c6735d27c9
+SHA1: e50f1572c5f524d94d2c5f952f61483b33bb20f8
+SHA256: b15df8520e067d0fed901ee231b48e0e055ba02988a0f75557950a64edf7efbd
+SHA512: 358cddd8124218619ad8dbce6210765327aa14a97c0af5d6bcd4920045aee62c1ff652048f96670426ac9a55d9430fbb0aeaeabc86b2be63498b7798b3efd783
+Description: Network identity of Citronics phones, unique per device
+ Derives from the eMMC serial the address of the phone's USB network link
+ (usb0), the address its DHCP server hands the computer, and the link's
+ MAC: a /30 in 10.250.0.0/16, so that phones connected to the same computer
+ never clash. Configures isc-dhcp-server or dnsmasq, whichever serves the
+ link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
+ 02:00:<eMMC serial>.
 
 Package: limeboard-ha
 Architecture: all
