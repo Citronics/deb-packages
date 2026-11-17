@@ -266,11 +266,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd, limeboard-io, limeboard-ha
 Filename: pool/main/citronics-lime-fp2_2.3_armhf.deb
-Size: 1946
-MD5sum: 59836cd12d221313005a1ff509124ba0
-SHA1: 86720241d6bc0270c523caa844bf98f375e45423
-SHA256: c262913ec72ca7496610aae7c3d070d691cb41d7a1f881715b9cffd6394af2fb
-SHA512: 6108ef15e1b41dad4e2c5d6088ab382a298cf3f410706c771d70bea6865782c6eda2393e7f590984131e60d2d185057adbc7f8f7c5a7f5cd10805606100e9978
+Size: 1952
+MD5sum: 36a5d8f8c41cbfff01e16ec9ae579b78
+SHA1: c325ea04b54c4e68f64cabbee70a01430ade5bac
+SHA256: 8ab6508ffe07f53e49ce31430c05b8a4d43be336e0722fe19d81d459f41ead56
+SHA512: 7727582d5673993437bf237f50659d8c22169ed40f4fdd46f4dd8852c9d3cee6925e5e4ddf8620ce87286b0db641ac68c149d65e5c6b962fd796f7d804a185e8
 Description: Citronics Lime meta-package for Fairphone 2
  Installs the complete Citronics Lime software stack for Fairphone 2:
  firmware, initramfs, DHCP helper, and the Limeboard header tools and
@@ -284,11 +284,11 @@ Section: metapackages
 Maintainer: Citronics <info@citronics.eu>
 Depends: citronics-lime-fp2
 Filename: pool/main/citronics-lime_3.0_armhf.deb
-Size: 1420
-MD5sum: 0ba859fd7625c5b9bf301011282d298a
-SHA1: 71ffc1d3acb3998a69550846410a994160ae57f8
-SHA256: d777b8cd21aa301f4a357967272dc8136467b635cc8fced7418ed5ecf939c78b
-SHA512: 84ecd6df11ccc7e171e7cce24f7b1173f7f7c0af83713269aa139bfef395b7c0114661a442f246aea5cf2e2d6e6d570078f6c52965747b433acea27d559ec1b8
+Size: 1422
+MD5sum: 2f8ae4b615f94016668667549a0e646b
+SHA1: f117acb1325fcfedc264b62d38745f8d5d40c245
+SHA256: 6b43c9dd25dab47967e7d88a79d78d014605877d7a5c038da24925ffb1fbc135
+SHA512: 4a8a385d7b493aa1f1dddfa0c27bf61f010f94244e7f1e1a48812d659ab5b8ad7acef69b7197ac4fb1a088d4f32503d674fc31b439dc960795e14ba70ab647bf
 Description: Transitional package for Citronics Lime
  This is a transitional package that depends on citronics-lime-fp2.
  It can be safely removed after upgrading.
@@ -344,6 +344,25 @@ MD5sum: f64304e82946443ceb7db14e19b42da9
 SHA1: ca7d00cf666beaf3b8af405b616a9d92bab9b186
 SHA256: 48907802ed13af0d2883563aa3e13b2ff7f29e92579fd660e9e0fadd5bbc2ff0
 SHA512: 055d8f194f5d949e92d3eb71258a1c72d2671297d8bcb560e3fd510c37290d77f228a8279f844ca5845d724104fd50f41b388ad20a6379a8c28fdda9beaedcdd
+Homepage: https://github.com/Citronics/limeboard-extras
+Description: Limeboard as a Home Assistant device over MQTT
+ limeboard-ha publishes the Limeboard (its RGB LED and button) and the
+ phone's state and sensors to Home Assistant through MQTT discovery. It
+ idles until a broker is set in /etc/limeboard-ha.conf.
+
+Package: limeboard-ha
+Architecture: all
+Version: 1.0.4
+Priority: optional
+Section: misc
+Maintainer: Citronics <info@citronics.eu>
+Depends: python3, python3-paho-mqtt, python3-psutil, limeboard-io (>= 1.0.4)
+Filename: pool/main/limeboard-ha_1.0.4_all.deb
+Size: 11036
+MD5sum: 14a18af17fc67a45d0afa6083849bdb3
+SHA1: cc08ea0747dbb2a21d6465a3c4fff15f419c5797
+SHA256: a07f1ebcc24c9e28f1466b10a5ba196cbfc31a3530faba6897586ce6668ea5e5
+SHA512: 97eb3cd3fcde788eae4b6a7c5e2b54bcdb664471e9afbd98d79d9d58e9c7290259b86feb9b8a1401e3ffe75c5202e649919ae7ca7965e616d707f5da9f287dc2
 Homepage: https://github.com/Citronics/limeboard-extras
 Description: Limeboard as a Home Assistant device over MQTT
  limeboard-ha publishes the Limeboard (its RGB LED and button) and the
@@ -449,6 +468,30 @@ MD5sum: 982c2076e1c4fe022548acf41bb0dfc8
 SHA1: d8cdc510aae421322fe26b7a04527d82912f90c4
 SHA256: e47f02a84484292ac93caad18db9eae8a99617b5682feb1c6bddf92deec14181
 SHA512: ca8eb10d0bfd26b1c9b2b74e8d4eb5f3845e5cba8727b7a2fc45dda4684204b0a530efc701b5c9a68ea93c219bf83d641669043eda14a8bf20dc0b55b3c1ec6b
+Homepage: https://github.com/Citronics/limeboard-extras
+Description: Limeboard header as Raspberry Pi style Linux devices
+ Tools for the Limeboard's STM32 running the Limeboard I/O firmware, whose
+ header the kernel's citronics-dln2 driver turns into a GPIO chip, I2C and
+ SPI buses, an ADC and /dev/serial0: limeboard-config (and a raspi-config
+ for HAT installers) to turn the buses on as on a Raspberry Pi and update
+ the firmware, gpiozero's "limeboard" pin factory, RPi.GPIO and Blinka
+ compatibility, and udev rules giving the gpio, spi and i2c groups the
+ header.
+
+Package: limeboard-io
+Architecture: all
+Version: 1.0.4
+Priority: optional
+Section: misc
+Maintainer: Citronics <info@citronics.eu>
+Depends: python3, udev, dfu-util, gpiod, i2c-tools, python3-libgpiod, python3-smbus2, python3-spidev, python3-gpiozero (>= 2.0.1), python3-lgpio (>= 0.2.2.0), limeboard-io-firmware
+Recommends: python3-rpi-lgpio, can-utils, iproute2
+Filename: pool/main/limeboard-io_1.0.4_all.deb
+Size: 25162
+MD5sum: 5965461073bd1e6a7fa1b4770506b9ce
+SHA1: ef4b61033f8c4a465660c6902b64057f640467f2
+SHA256: 9e5a458a3389e4176b86f662707043852aa2c8c8a69b5f1b5b2c8fc82d742e34
+SHA512: 7247df8e1c9cb107206b5afca114bb9dcbf97ba87f736118036a8911a0474451bb6ee475f5cfdc7565670cb9f6adfabc718365a865c7e6d2bb2f30fa4417de7c
 Homepage: https://github.com/Citronics/limeboard-extras
 Description: Limeboard header as Raspberry Pi style Linux devices
  Tools for the Limeboard's STM32 running the Limeboard I/O firmware, whose
@@ -859,6 +902,22 @@ MD5sum: e8aab268030dc86b8097db565a531ca2
 SHA1: 0def335b819c710a41fc074edd29636bb7a37add
 SHA256: 1e749c1cd2bd638f180e77510301dd33f49d123cde94562d1af8a2595cff02fa
 SHA512: 5bc1a7b7b568bfb6baa974574d5b9d1215444d4be8ed75d3279b6122b04eaecc18e5f1393b445224884472c340d6de236217d8e83d7b825e2f894f5c06af5cce
+Description: simple interface to GPIO devices with Raspberry Pi
+ Packaged by Citronics for the Limeboard from the PyPI release.
+
+Package: python3-gpiozero
+Architecture: all
+Version: 2.0.1.post3-1citronics1
+Priority: optional
+Section: python
+Maintainer: Citronics <info@citronics.eu>
+Depends: python3, python3-colorzero
+Filename: pool/main/python3-gpiozero_2.0.1.post3-1citronics1_all.deb
+Size: 107152
+MD5sum: 4dad16c86f4bf23aee951ccacc74aef5
+SHA1: 8619f1f59303b2cd6668fd81e0e14a5cb7fb2d12
+SHA256: 29f5b0f03e9e472869ea6276f51742198de848881be927b769df10fd65e64b4b
+SHA512: 4abf1627af558384baf9b387f7714ef84c93851cb4964707c44ad246c93d626760ebb83fa4ebbd1cbe4d25da06d53d3939a18bcc89db4f503013e0d1c047768e
 Description: simple interface to GPIO devices with Raspberry Pi
  Packaged by Citronics for the Limeboard from the PyPI release.
 
