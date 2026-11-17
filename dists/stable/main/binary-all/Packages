@@ -211,6 +211,27 @@ Description: Network identity of Citronics phones, unique per device
  link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
  02:00:<eMMC serial>.
 
+Package: citronics-net-id
+Architecture: all
+Version: 1.1
+Priority: optional
+Section: net
+Maintainer: Citronics <info@citronics.eu>
+Depends: iproute2
+Filename: pool/main/citronics-net-id_1.1_all.deb
+Size: 3938
+MD5sum: 5b3cc240f42f261a107d2c936b0efae0
+SHA1: 1acd861a8ef4571cc2fbc2c2595c809f67667c76
+SHA256: 1366097c0f634e5757a474bf92b670608d47c86f13f0c49694837a0e5a24d502
+SHA512: fb54cb939b55160aecda55b215b90973e65fd6b28666b815789844e502f609a72c2f482162feb068a294c599e5e1fc5efe994eab6078eddadae60bdf3325ad77
+Description: Network identity of Citronics phones, unique per device
+ Derives from the eMMC serial the address of the phone's USB network link
+ (usb0), the address its DHCP server hands the computer, and the link's
+ MAC: a /30 in 10.250.0.0/16, so that phones connected to the same computer
+ never clash. Configures isc-dhcp-server or dnsmasq, whichever serves the
+ link. Gives a Wi-Fi interface that has no MAC (the FP3's) a stable one,
+ 02:00:<eMMC serial>.
+
 Package: limeboard-ha
 Architecture: all
 Version: 1.0.1
