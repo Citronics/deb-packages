@@ -10,9 +10,9 @@
 # older ones are deleted and their names appended to pruned.txt, which the
 # download step reads so that they are not downloaded again.
 #
-# Packages that come from no citronics-kernel release (published by hand) are
-# never pruned, and nothing outside the experimental pool is touched: release
-# kernels in main stay available.
+# A package whose release no longer exists counts as the oldest build of its
+# series. Nothing outside the experimental pool is touched: release kernels in
+# main stay available.
 set -euo pipefail
 
 POOL=$1
@@ -26,7 +26,7 @@ for deb in "$POOL"/linux-image-*.deb "$POOL"/linux-headers-*.deb; do
 	[ -f "$deb" ] || continue
 	f=$(basename "$deb")
 	date=$(awk -F'\t' -v f="$f" '$2 == f { print $1; exit }' "$ASSETS")
-	[ -n "$date" ] || continue
+	date=${date:-0000-00-00T00:00:00Z}
 	case "$f" in
 		linux-image-*) kind=linux-image ;;
 		*) kind=linux-headers ;;
