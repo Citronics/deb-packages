@@ -761,6 +761,45 @@ SHA256: 3648a5cc9d585dd46e102da8716a86287eddfe0801757b76256bca86ef584b18
 SHA512: 1d88fe67cdb0561b4cef1078e9e4af20cdf925c3615426031d9f44ca74234d9c29566dca6a629465240a3d1085b6d8460a97135fdcf47992b25cea5ed34e69f2
 Description: Firmware for the Lime board from two Git submodules, installed into /lib/firmware
 
+Package: linux-headers-6.18.57-msm8953-citronics-lime-fp3
+Architecture: arm64
+Version: 3.2.7
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 54068
+Filename: pool/main/linux-headers-6.18.57-msm8953-citronics-lime-fp3_3.2.7_arm64.deb
+Size: 9225550
+MD5sum: d5ea37fafe5fcb564e5760157b39420c
+SHA1: a8a8f757f63093720d5319faa4b85a5c3938f73b
+SHA256: f5834116ce3be41ab0c56945a7ba98fcf2877a6633ad1566c1e6d532e38a1211
+SHA512: 7cb1eb34ee72fb028ad8df65936829f14fe54d4cf1076a06a61550415dd66a2e8646c6745689f6f913a5a5574b8aa64a53dc880a33ac9437634d2485fb4000c8
+Homepage: https://www.kernel.org/
+Description: Linux kernel headers for 6.18.57-msm8953-citronics-lime-fp3 on arm64
+ This package provides kernel header files for 6.18.57-msm8953-citronics-lime-fp3 on arm64
+ .
+ This is useful for people who need to build external modules
+
+Package: linux-image-6.18.57-msm8953-citronics-lime-fp3
+Architecture: arm64
+Version: 3.2.7
+Priority: optional
+Section: kernel
+Source: linux-upstream
+Maintainer: Citronics <info@citronics.eu>
+Installed-Size: 103571
+Filename: pool/main/linux-image-6.18.57-msm8953-citronics-lime-fp3_3.2.7_arm64.deb
+Size: 22131138
+MD5sum: 2ff497601388a34c1085d6064e8cc48f
+SHA1: 114b166c64b12046722348ffb89c5bf68edf7b33
+SHA256: fba3c7f67957228f3ad38df3f935f2767a5444c8160758aaa86b7d13bda3138a
+SHA512: 6e939f366b405311c22deda61e72eafe1a41a8d9be48d5c51a7fa77d762384d3c407d766257bc200f7121d5735455bcd8d2823aa17555d81d5b0de9c31bfa7a7
+Homepage: https://www.kernel.org/
+Description: Linux kernel, version 6.18.57-msm8953-citronics-lime-fp3
+ This package contains the Linux kernel, modules and corresponding other
+ files, version: 6.18.57-msm8953-citronics-lime-fp3.
+
 Package: linux-image-7.0.9-msm8953-citronics-lime-fp3
 Architecture: arm64
 Version: 0.1-6-gd110eb8
@@ -779,6 +818,23 @@ Homepage: https://www.kernel.org/
 Description: Linux kernel, version 7.0.9-msm8953-citronics-lime-fp3
  This package contains the Linux kernel, modules and corresponding other
  files, version: 7.0.9-msm8953-citronics-lime-fp3.
+
+Package: linux-image-citronics-lime-fp3
+Architecture: arm64
+Version: 3.2.7
+Priority: optional
+Section: kernel
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-6.18.57-msm8953-citronics-lime-fp3 (= 3.2.7)
+Filename: pool/main/linux-image-citronics-lime-fp3_3.2.7_arm64.deb
+Size: 816
+MD5sum: c6ea00510af8108e9a363ad33b74bfdb
+SHA1: fe6bed2064230cb7e8e56bd440737054aaae4826
+SHA256: 0cd09e80d7eb89701bf8bf516a0a0b8c8bc6f9912427051746be86d264f138d5
+SHA512: 74518523a3b7dbd998550afe59c3077b67e827be592386210ea1bfd07708ed246ad81fa39c2c55ee5eaca91dc3931e304ea4ef5e6a3b537f118b0d4e78ed2037
+Description: Citronics Lime kernel for fp3 (meta-package)
+ Depends on the current Citronics Lime kernel for fp3, 6.18.57-msm8953-citronics-lime-fp3, built
+ from msm8953-6.18. Upgrading this package upgrades the kernel.
 
 Package: python3-gpiozero
 Architecture: all
