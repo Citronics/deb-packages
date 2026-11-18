@@ -1,0 +1,10 @@
+[Unit]
+Description=Move the modem to LTE once it has registered on 2G or 3G
+After=ModemManager.service
+
+[Service]
+Type=exec
+ExecStart=/usr/libexec/msm-modem-lte-once
+
+[Install]
+WantedBy=multi-user.target
