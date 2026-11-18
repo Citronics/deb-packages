@@ -1,0 +1,138 @@
+Package: gir1.2-modemmanager-1.0
+Architecture: armhf
+Version: 1.25.95-1ubuntu1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: introspection
+Source: modemmanager
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 361
+Depends: gir1.2-gio-2.0, gir1.2-glib-2.0, gir1.2-gobject-2.0, libmm-glib0 (>= 1.25.1)
+Filename: pool/resolute/gir1.2-modemmanager-1.0_1.25.95-1ubuntu1+citronics2_armhf.deb
+Size: 77022
+MD5sum: dd938b7d6d52b178f2b3ddfdc5a0bd89
+SHA1: f1890b896c99620b693b6e79fefeb2b3a1b68765
+SHA256: 24a47b03e0a4f5510dcfdc6b437a4b0362ccd03dbe7b0867562eed0059410e17
+SHA512: 48cda69dfa6881181df8bb44164dd7a3849420b5641994c3e432e8d6847364043e193a5fecc4ab860cfb44c28c613889435c0de8ede432b3488a5480830fd662
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: GObject introspection data for modemmanager
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains introspection data for the libmm-glib library.
+
+Package: libmm-glib-dev
+Architecture: armhf
+Version: 1.25.95-1ubuntu1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: modemmanager
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 5990
+Depends: libmm-glib0 (= 1.25.95-1ubuntu1+citronics2), gir1.2-modemmanager-1.0 (= 1.25.95-1ubuntu1+citronics2), libglib2.0-dev, modemmanager-dev
+Suggests: libmm-glib-doc
+Filename: pool/resolute/libmm-glib-dev_1.25.95-1ubuntu1+citronics2_armhf.deb
+Size: 254236
+MD5sum: 453655903873452d5026f70e75558968
+SHA1: 3707889e80c8fa842443d4d6e15a75db7a779b4a
+SHA256: ef4806ecdc9e0942ec47feb479a66a307c606fac48fa471e32354027516b354a
+SHA512: 44251a7e0f4bcd1438b25fa3e7f090d29bedc3ad0d4a1ad91b8a6b1bb790d00946bc41c745fed1ab42003d6f17ddb379e7ca83502146a9993e8d0a3d1e401e11
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems - library development files
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains development files and Vala bindings to use when writing
+ applications that interface with ModemManager.
+
+Package: libmm-glib0
+Architecture: armhf
+Version: 1.25.95-1ubuntu1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: modemmanager
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 839
+Depends: libc6 (>= 2.4), libglib2.0-0t64 (>= 2.62.0)
+Recommends: modemmanager (>= 1.25.95-1ubuntu1+citronics2)
+Filename: pool/resolute/libmm-glib0_1.25.95-1ubuntu1+citronics2_armhf.deb
+Size: 221908
+MD5sum: 0de59e555f43fb22eba267467927b579
+SHA1: 524d8b950c0a7089790607ee9fb68b7a613bc920
+SHA256: 79c800738fe178682928f569224fb8efe1ef410e85507dcd709fa6a3132b5bed
+SHA512: 60835932a7ffbd4a416cfbe7b86d1ae2b27795f8fec961aa9202105401fe6bf89e3c8c3e8f6746209c284ac5e4d7bbe8a438f51e2a75a36d382cae03f937d880
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems - shared libraries
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains shared libraries for applications interfacing with
+ ModemManager.
+
+Package: modemmanager-dev
+Architecture: armhf
+Version: 1.25.95-1ubuntu1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: modemmanager
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 451
+Suggests: modemmanager-doc
+Breaks: modemmanager (<< 1.6.6-1)
+Replaces: modemmanager (<< 1.6.6-1)
+Filename: pool/resolute/modemmanager-dev_1.25.95-1ubuntu1+citronics2_armhf.deb
+Size: 66578
+MD5sum: 74de4b0f3ce4729ab1c6869d6f16cc6f
+SHA1: de913effb300c924f1ee7c5c4501bd53f4da0a96
+SHA256: 57f33f739775582214ec764e1ffac65d8998aa8b4faa0801418052735aba57c0
+SHA512: 563bf12831bbbaf8bb0019e58182234acc28ca19728191355c26e977375cd3664ee5e8f46f32596551fc2fd32e964b27d30e9c2e11eb46b6517e54c505db6a53
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems - development files
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains header files for ModemManager.
+
+Package: modemmanager
+Architecture: armhf
+Version: 1.25.95-1ubuntu1+citronics2
+Priority: optional
+Section: net
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 5999
+Depends: libc6 (>= 2.42), libglib2.0-0t64 (>= 2.56.0), libgudev-1.0-0 (>= 212), libmbim-glib4 (>= 1.32~), libmbim-proxy, libmm-glib0 (>= 1.25.1), libpolkit-gobject-1-0 (>= 0.99), libqmi-glib5 (>= 1.37.95), libqmi-proxy, libqrtr-glib0 (>= 1.0.0), libsystemd0 (>= 209), polkitd
+Recommends: libmbim-utils, libqmi-utils, usb-modeswitch
+Filename: pool/resolute/modemmanager_1.25.95-1ubuntu1+citronics2_armhf.deb
+Size: 1091292
+MD5sum: f04010cb0171e700eb92e8293edb7de8
+SHA1: 8a2aac7c8c52f63e0b66e62b7d42aacd262154de
+SHA256: 905f99d93de15d6abad9ae5f0aaf4a624f974796ffc8f9ea5baddf5146d3aa82
+SHA512: 62a5c807a09e22f3dda34835caa690e02ccd33955ddf86dc265278ddd1bd2c45fc58acfcc9083f9d75e2a7201a5be81c0e66ba8cab400c7748da246fe3cdc5c7
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+

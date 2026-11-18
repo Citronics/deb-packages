@@ -1,0 +1,133 @@
+Package: gir1.2-modemmanager-1.0
+Architecture: arm64
+Version: 1.24.0-1+deb13u1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: introspection
+Source: modemmanager
+Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 363
+Depends: gir1.2-gio-2.0, gir1.2-glib-2.0, gir1.2-gobject-2.0, libmm-glib0 (>= 1.24.0)
+Filename: pool/trixie/gir1.2-modemmanager-1.0_1.24.0-1+deb13u1+citronics2_arm64.deb
+Size: 69400
+MD5sum: 8a0a10b6b10cb380ce73d5218a0f93d2
+SHA1: b61fb6956527576d8c30306d60d514c5e03c368d
+SHA256: 002a4bea96caba661e6f4c04c1cae9801dc7f478b3b82983285c0fea9bf7078b
+SHA512: d6e2ba1d7f24e3b48396a2896d7b4fa6cf3ac5d4866edd97ff6a3fff5fb2f31633367b696a1658f47c7df29a531b093a88ea601fbbbf6bc863ed94b32fb952ef
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: GObject introspection data for modemmanager
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains introspection data for the libmm-glib library.
+
+Package: libmm-glib-dev
+Architecture: arm64
+Version: 1.24.0-1+deb13u1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: modemmanager
+Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 5952
+Depends: libmm-glib0 (= 1.24.0-1+deb13u1+citronics2), gir1.2-modemmanager-1.0 (= 1.24.0-1+deb13u1+citronics2), libglib2.0-dev, modemmanager-dev
+Suggests: libmm-glib-doc
+Filename: pool/trixie/libmm-glib-dev_1.24.0-1+deb13u1+citronics2_arm64.deb
+Size: 270508
+MD5sum: 8e55c50ded6e0c3bacb5d894a9f6bc64
+SHA1: 355b4823b70ea3a2d24fc99bb08c862699230daf
+SHA256: 0164e2c699764b5f918dfdd15af46f7c5ee9228fb7dbcbf399e823574ce8f6c5
+SHA512: 704bb4fab03f830729614663eb7261dd25ac776b3ef679a69eb60f20b079598ac03cead032a32c105507aab18dfd9448149d084dba1d655c665503eb0bb7082a
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems - library development files
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains development files and Vala bindings to use when writing
+ applications that interface with ModemManager.
+
+Package: libmm-glib0
+Architecture: arm64
+Version: 1.24.0-1+deb13u1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: modemmanager
+Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 1481
+Depends: libc6 (>= 2.17), libglib2.0-0t64 (>= 2.62.0)
+Recommends: modemmanager (>= 1.24.0-1+deb13u1+citronics2)
+Filename: pool/trixie/libmm-glib0_1.24.0-1+deb13u1+citronics2_arm64.deb
+Size: 231100
+MD5sum: 76bff5829e0fb169c7639ee1fce33204
+SHA1: fd779cddf33cd0c3eb028d0c47cd1c64e0f5f375
+SHA256: d5fd76274f65817ecf9d2450002c0dc393d7da1aa0a7886a0a2d6bd947841054
+SHA512: 55f2405bbb9818c21b88ff1ed7fdd95e4fd0628e43c3ccb6d5a2dceb18af3d6e859f996203d9f11f6daa3776e73b35c273583f84c5ea9eb552fec34c4f5216c3
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems - shared libraries
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains shared libraries for applications interfacing with
+ ModemManager.
+
+Package: modemmanager-dev
+Architecture: arm64
+Version: 1.24.0-1+deb13u1+citronics2
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: modemmanager
+Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 453
+Suggests: modemmanager-doc
+Breaks: modemmanager (<< 1.6.6-1)
+Replaces: modemmanager (<< 1.6.6-1)
+Filename: pool/trixie/modemmanager-dev_1.24.0-1+deb13u1+citronics2_arm64.deb
+Size: 67004
+MD5sum: 95a819685ae2515fdd86b64b3203b6a5
+SHA1: 38d19cecc84dcf5616695d4af09914051fded36b
+SHA256: a4bcf34e042a382013199703259ac61cbb0fe956df3ce6a02d39a0b10b3c87cb
+SHA512: c405689fed670f53a33c580af26f32df80814e56bacbfd45a9b43f07c7bca03e8aebcb0a9cbaede71e53c752747c9c3a1bab7c2e3dabfd07b9bf1350e7cf9368
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems - development files
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+ .
+ This package contains header files for ModemManager.
+
+Package: modemmanager
+Architecture: arm64
+Version: 1.24.0-1+deb13u1+citronics2
+Priority: optional
+Section: net
+Maintainer: DebianOnMobile Maintainers <debian-on-mobile-maintainers@alioth-lists.debian.net>
+Installed-Size: 7047
+Depends: libc6 (>= 2.38), libglib2.0-0t64 (>= 2.56.0), libgudev-1.0-0 (>= 212), libmbim-glib4 (>= 1.32~), libmbim-proxy, libmm-glib0 (>= 1.24.0), libpolkit-gobject-1-0 (>= 0.99), libqmi-glib5 (>= 1.36~), libqmi-proxy, libqrtr-glib0 (>= 1.0.0), libsystemd0 (>= 209), polkitd
+Recommends: libmbim-utils, libqmi-utils, usb-modeswitch
+Filename: pool/trixie/modemmanager_1.24.0-1+deb13u1+citronics2_arm64.deb
+Size: 973656
+MD5sum: 4f16faefe5ce2d312d62fc2f22848552
+SHA1: c532f0600bdb5a712b5d9a1f7833d40bf0802fb0
+SHA256: 8fdfbcb0d08b1ee83b5968d8c157117a8e44f39a2fd352de3c08d5a218f085f2
+SHA512: 2606db9a2a64d630c4799f3ddd6809e86bfbaa9129e3d4a04027f8aae1aa7ea98e3ba4027acc2ed54ae22a755c6a6b0434e437d2c8218789168c5a7dc284164d
+Homepage: https://www.freedesktop.org/wiki/Software/ModemManager/
+Description: D-Bus service for managing modems
+ ModemManager is a DBus-activated daemon which controls mobile broadband
+ (2G/3G/4G/5G) devices and connections. Whether built-in devices, USB dongles,
+ Bluetooth-paired telephones or professional RS232/USB devices with external
+ power supplies, ModemManager is able to prepare and configure the modems and
+ setup connections with them.
+
