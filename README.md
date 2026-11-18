@@ -35,7 +35,7 @@ sudo apt update
 | `linux-firmware-lime-fp2` | all | ✅ current | FP2 firmware | [citronics-firmware](https://github.com/Citronics/citronics-firmware) |
 | `linux-firmware-lime-fp3` | all | ✅ current | FP3 firmware | [citronics-firmware](https://github.com/Citronics/citronics-firmware) |
 | `linux-firmware-lime` | all | ⚠️ legacy | Kept so existing FP2 installs that depend on this name don't break. Superseded by `linux-firmware-lime-fp2`. Do not use for new installs. | [linux-firmware-lime](https://github.com/Citronics/linux-firmware-lime) |
-| `citronics-initramfs` | all | ✅ current | Custom initramfs | [citronics-initramfs](https://github.com/Citronics/citronics-initramfs) |
+| `citronics-initramfs` | all | ✅ current | Custom initramfs | [initramfs](https://github.com/Citronics/initramfs) |
 | `unudhcpd` | armhf, arm64 | ✅ current | USB DHCP helper | [unudhcpd-deb](https://github.com/Citronics/unudhcpd-deb) |
 | `limeboard-io` | all | ✅ current | Limeboard header tools: limeboard-config, raspi-config, gpiozero/RPi.GPIO/Blinka compatibility, udev rules | [limeboard-extras](https://github.com/Citronics/limeboard-extras) |
 | `limeboard-ha` | all | ✅ current | Limeboard Home Assistant agent (MQTT discovery) | [limeboard-extras](https://github.com/Citronics/limeboard-extras) |
