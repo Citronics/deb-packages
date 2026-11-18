@@ -57,7 +57,7 @@ case "$(key "$conn" ipv6 method)" in
 disabled|ignore) pdp=IPV4; pdp_shown=ipv4 ;;
 *) pdp=IPV4V6; pdp_shown=ipv4-or-ipv6 ;;
 esac
-if [ -n "$user" ] || [ -n "$password" ]; then auth="PAP|CHAP"; else auth=NONE; fi
+if [ -n "$user" ] || [ -n "$password" ]; then auth=BOTH; else auth=NONE; fi
 
 # The attach profile index, as ModemManager finds it
 idx=$($Q --wds-get-lte-attach-pdn-list 2>/dev/null | sed -n "s/.*Current list: '\([0-9]*\).*/\1/p")
