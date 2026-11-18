@@ -1,5 +1,5 @@
 Package: citronics-lime-fp2
-Version: 2.7
+Version: 2.8
 Architecture: armhf
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd, limeboard-io, limeboard-ha, unattended-upgrades, citronics-net-id (>= 1.3)
