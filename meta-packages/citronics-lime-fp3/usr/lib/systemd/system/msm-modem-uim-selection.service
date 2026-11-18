@@ -1,7 +1,7 @@
 [Unit]
 Description=Select UIM slot and application on the embedded QMI modem
 After=rmtfs.service
-Before=ofono.service modemmanager.service
+Before=ofono.service ModemManager.service
 
 [Service]
 Type=notify

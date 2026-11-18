@@ -162,6 +162,15 @@ following the fork's promotion gate (`AGENTS.md` §1.1).
 - `experimental`: rc kernels (and FP3 experimental kernels). Devices only see
   it if they opt in.
 
+Packages built for one distribution release, whose versions differ per
+release, go to a suite named after its codename (`trixie`, `resolute`),
+component `main`: in `stable`, apt would pick the highest version whatever
+distribution it was built for. Today these are the patched ModemManager
+builds of [modemmanager-deb](https://github.com/Citronics/modemmanager-deb).
+Images list `Suites: stable <codename>`; the `citronics-lime-*`
+meta-packages (FP2 2.7, FP3 1.6) add a `citronics-<codename>.sources` on
+older installations that lack the suite.
+
 The repository is not signed; devices trust it with `Trusted: yes`.
 
 ### update-repo
@@ -174,7 +183,9 @@ The repository is not signed; devices trust it with `Trusted: yes`.
 2. drops FP2 kernels of any series other than 6.12 and 6.18;
 3. places each package in `main` or `experimental` according to its
    release's `components.tsv`; kernels from releases older than the manifest
-   use a fallback list in the workflow;
+   use a fallback list in the workflow. A package listed in its release's
+   `suites.tsv` goes to `pool/<codename>` instead, which holds exactly the
+   files the current releases list;
 4. **prunes experimental kernels**: per series (image or headers, kernel
    major.minor, phone) only the packages of the 3 newest citronics-kernel
    releases stay, older ones are deleted and recorded in `pruned.txt`
@@ -186,7 +197,7 @@ The repository is not signed; devices trust it with `Trusted: yes`.
    bump its `Version:` in `DEBIAN/control`;
 6. generates the index, commits it to `gh-pages`;
 7. asks debos-citronics to rebuild the images **only if a `main` index
-   changed**. A change that only touches `experimental` does not rebuild
+   changed** (of `stable` or of a codename suite). A change that only touches `experimental` does not rebuild
    them.
 
 A failed release listing or a refused image-build request fails the run.

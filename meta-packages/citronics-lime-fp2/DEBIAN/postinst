@@ -37,6 +37,27 @@ SOURCES
 		fi
 		echo "citronics-lime: security updates enabled; run apt update && apt full-upgrade"
 	fi
+	# Packages built for one distribution release, such as the patched
+	# ModemManager, are published in a suite named after its codename.
+	# Images configure it; older installations get it here.
+	if [ -r /etc/os-release ]; then
+		. /etc/os-release
+		case "$VERSION_CODENAME" in
+		trixie|resolute)
+			if ! grep -lsr 'citronics\.github\.io/deb-packages' /etc/apt/sources.list /etc/apt/sources.list.d/ |
+			     xargs -r grep -qsw -- "$VERSION_CODENAME"; then
+				cat > "/etc/apt/sources.list.d/citronics-$VERSION_CODENAME.sources" <<SOURCES
+Types: deb
+URIs: https://citronics.github.io/deb-packages
+Suites: $VERSION_CODENAME
+Components: main
+Trusted: yes
+SOURCES
+				echo "citronics-lime: added the Citronics $VERSION_CODENAME suite; run apt update && apt full-upgrade"
+			fi
+			;;
+		esac
+	fi
 	# The SIM selection unit images installed in /etc would hide this
 	# package's: replace it, keeping the service enabled.
 	f=/etc/systemd/system/msm-modem-uim-selection.service
@@ -74,6 +95,17 @@ SOURCES
 	fi
 	[ -d /run/systemd/system ] && systemctl daemon-reload >/dev/null 2>&1 || true
 	[ -d /run/udev ] && udevadm control --reload >/dev/null 2>&1 || true
+	# Sets the modem's LTE attach APN at every boot, before ModemManager
+	if command -v deb-systemd-helper >/dev/null; then
+		# Enabled when first seen (installation, or upgrade from a version
+		# without it); otherwise as the administrator left it
+		if ! deb-systemd-helper debian-installed msm-modem-attach-apn.service ||
+		   deb-systemd-helper --quiet was-enabled msm-modem-attach-apn.service; then
+			deb-systemd-helper enable msm-modem-attach-apn.service >/dev/null || true
+		else
+			deb-systemd-helper update-state msm-modem-attach-apn.service >/dev/null || true
+		fi
+	fi
 	# isc-dhcp-server6 has no interface to serve on these boards and fails
 	# at every boot; images built since 2.2 disable it.
 	if [ -d /run/systemd/system ]; then

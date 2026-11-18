@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+if [ "$1" = purge ]; then
+	rm -f /etc/apt/sources.list.d/citronics-trixie.sources \
+	      /etc/apt/sources.list.d/citronics-resolute.sources
+fi
+if [ "$1" = purge ] && command -v deb-systemd-helper >/dev/null; then
+	deb-systemd-helper purge msm-modem-attach-apn.service >/dev/null || true
+fi
+exit 0

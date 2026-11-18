@@ -93,4 +93,17 @@ echo "Selecting $FIRST_PRESENT_AID on slot $FIRST_PRESENT_SLOT"
 # Finally send the new configuration to the modem.
 $QMICLI_MODEM --uim-change-provisioning-session="slot=$FIRST_PRESENT_SLOT,activate=yes,session-type=primary-gw-provisioning,aid=$FIRST_PRESENT_AID" > /dev/null
 
-exit $?
+# ModemManager gives up on a SIM that is not ready within a few retries:
+# wait until the application has initialized (or asks for a PIN).
+count=0
+until $QMICLI_MODEM --uim-get-card-status 2>/dev/null |
+      grep -Eq "Application state: '(ready|pin1-or-upin-pin-required|puk1-or-upin-puk-required)'"; do
+	if [ "$count" -ge 15 ]; then
+		echo "The SIM application is not ready after 15 seconds."
+		exit 0
+	fi
+	sleep 1
+	count=$((count+1))
+done
+echo "SIM application ready after $count seconds"
+exit 0
