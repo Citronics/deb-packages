@@ -18,7 +18,7 @@ flowchart LR
   NK -- "kernel-rc-updated<br/>KERNEL_DISPATCH_TOKEN" --> CK["Citronics/citronics-kernel<br/>build-release"]
   SS -- "kernel-rc-updated<br/>KERNEL_DISPATCH_TOKEN" --> CK
   CK -- "update-repo<br/>APT_DISPATCH_TOKEN" --> DP["Citronics/deb-packages<br/>update-repo"]
-  OTHER["initramfs, citronics-firmware,<br/>limeboard-extras, limeboard-firmware"] -- "update-repo<br/>APT_DISPATCH_TOKEN" --> DP
+  OTHER["initramfs, citronics-firmware,<br/>limeboard-extras, limeboard-firmware,<br/>modemmanager-deb"] -- "update-repo<br/>APT_DISPATCH_TOKEN" --> DP
   DP -- "deps-updated, only when main changed<br/>IMAGES_DISPATCH_TOKEN" --> IMG["Citronics/debos-citronics<br/>build-images"]
   DP --> APT[("APT repository<br/>citronics.github.io/deb-packages")]
   IMG --> NIGHTLY[("GitHub release 'nightly'")]
@@ -38,6 +38,10 @@ Every hop runs on its own. Each one can also be started by hand (see
 | [Citronics/debos-citronics](https://github.com/Citronics/debos-citronics) | the six images (`debian`, `ubuntu`, `raspap` × `fp2`, `fp3`) | `main` of the APT repository changed; RaspAP upgrade (raspap-sync, daily 04:41 UTC); `v*` tag; by hand |
 | [Citronics/initramfs](https://github.com/Citronics/initramfs) | `citronics-initramfs` | push to `main` touching `initramfs/`, `build.sh`, `release.sh` |
 | [Citronics/citronics-firmware](https://github.com/Citronics/citronics-firmware) | `linux-firmware-lime-fp2`, `linux-firmware-lime-fp3` | push to `master` touching the firmware or build scripts |
+| [Citronics/limeboard-extras](https://github.com/Citronics/limeboard-extras) | `limeboard-io`, `limeboard-ha`, the GPIO Python libraries | push to `main`; new upstream releases (upstream-sync, daily) |
+| [Citronics/limeboard-firmware](https://github.com/Citronics/limeboard-firmware) | `limeboard-io-firmware` | push to `main` |
+| [Citronics/modemmanager-deb](https://github.com/Citronics/modemmanager-deb) | the patched ModemManager, in the `trixie` and `resolute` suites | push to `main`; new Debian/Ubuntu ModemManager versions (daily check) |
+| [Citronics/unudhcpd-deb](https://github.com/Citronics/unudhcpd-deb) | `unudhcpd` | by hand (`build.sh`, `release.sh`) |
 | [Citronics/limeboard-extras](https://github.com/Citronics/limeboard-extras) | `limeboard-io`, `limeboard-ha`, Python GPIO libraries | push to `main` touching the packages; upstream-sync (daily 04:17 UTC) for the PyPI libraries |
 | [Citronics/limeboard-firmware](https://github.com/Citronics/limeboard-firmware) | `limeboard-io-firmware` | push to `main` touching the firmware sources |
 | [Citronics/u-boot](https://github.com/Citronics/u-boot) | U-Boot for FP2 and FP3 as GitHub releases `citronics-*` | push to `main`; flashed by hand, not part of the APT repository or the images |
@@ -220,7 +224,7 @@ under three names:
 | Secret | Stored in | Lets it request |
 |---|---|---|
 | `KERNEL_DISPATCH_TOKEN` | `mlainez/linux-msm8x74` | a build in `Citronics/citronics-kernel` |
-| `APT_DISPATCH_TOKEN` | `Citronics/citronics-kernel`, `initramfs`, `citronics-firmware`, `limeboard-extras`, `limeboard-firmware` | an index update in `Citronics/deb-packages` |
+| `APT_DISPATCH_TOKEN` | `Citronics/citronics-kernel`, `initramfs`, `citronics-firmware`, `limeboard-extras`, `limeboard-firmware`, `modemmanager-deb` | an index update in `Citronics/deb-packages` |
 | `IMAGES_DISPATCH_TOKEN` | `Citronics/deb-packages` | an image build in `Citronics/debos-citronics` |
 
 The token: resource owner **Citronics**; repositories `citronics-kernel`,
@@ -230,14 +234,14 @@ Fine-grained tokens for an organisation need an organisation owner's approval
 
 **The token expires.** When it does, the cross-repository hops fail (the runs
 turn red). To rotate it, create a new token with the same settings, have it
-approved, and store it in all seven places. This works in bash and zsh and
+approved, and store it in all eight places. This works in bash and zsh and
 stops if the token was not captured:
 
 ```sh
 printf 'Token: '; stty -echo; read -r T; stty echo; echo
 [ ${#T} -gt 30 ] && echo "length ok (${#T})" || echo "EMPTY/short, stop"
 printf '%s' "$T" | gh secret set KERNEL_DISPATCH_TOKEN --repo mlainez/linux-msm8x74
-for r in citronics-kernel initramfs citronics-firmware limeboard-extras limeboard-firmware; do
+for r in citronics-kernel initramfs citronics-firmware limeboard-extras limeboard-firmware modemmanager-deb; do
   printf '%s' "$T" | gh secret set APT_DISPATCH_TOKEN --repo Citronics/$r
 done
 printf '%s' "$T" | gh secret set IMAGES_DISPATCH_TOKEN --repo Citronics/deb-packages
