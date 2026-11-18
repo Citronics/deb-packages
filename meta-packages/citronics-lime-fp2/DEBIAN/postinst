@@ -95,16 +95,19 @@ SOURCES
 	fi
 	[ -d /run/systemd/system ] && systemctl daemon-reload >/dev/null 2>&1 || true
 	[ -d /run/udev ] && udevadm control --reload >/dev/null 2>&1 || true
-	# Sets the modem's LTE attach APN at every boot, before ModemManager
+	# The modem setup units: attach APN and LTE preference before
+	# ModemManager, LTE once registered
 	if command -v deb-systemd-helper >/dev/null; then
-		# Enabled when first seen (installation, or upgrade from a version
-		# without it); otherwise as the administrator left it
-		if ! deb-systemd-helper debian-installed msm-modem-attach-apn.service ||
-		   deb-systemd-helper --quiet was-enabled msm-modem-attach-apn.service; then
-			deb-systemd-helper enable msm-modem-attach-apn.service >/dev/null || true
-		else
-			deb-systemd-helper update-state msm-modem-attach-apn.service >/dev/null || true
-		fi
+		for unit in msm-modem-attach-apn.service msm-modem-lte-once.service; do
+			# Enabled when first seen (installation, or upgrade from a
+			# version without it); otherwise as the administrator left it
+			if ! deb-systemd-helper debian-installed "$unit" ||
+			   deb-systemd-helper --quiet was-enabled "$unit"; then
+				deb-systemd-helper enable "$unit" >/dev/null || true
+			else
+				deb-systemd-helper update-state "$unit" >/dev/null || true
+			fi
+		done
 	fi
 	# isc-dhcp-server6 has no interface to serve on these boards and fails
 	# at every boot; images built since 2.2 disable it.

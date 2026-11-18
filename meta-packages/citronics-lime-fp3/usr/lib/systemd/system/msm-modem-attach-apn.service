@@ -1,0 +1,12 @@
+[Unit]
+Description=Prefer LTE and set the LTE attach APN from the NetworkManager GSM connection
+After=rmtfs.service msm-modem-uim-selection.service
+Before=ModemManager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/libexec/msm-modem-attach-apn
+
+[Install]
+WantedBy=multi-user.target
