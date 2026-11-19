@@ -10,13 +10,13 @@ Lime images.
 ```mermaid
 flowchart LR
   subgraph fork["mlainez/linux-msm8x74 (FP2 kernel)"]
-    SS["stable-sync<br/>daily 04:17 UTC"] --> RC["6.12/rc, 6.18/rc"]
+    SS["stable-sync<br/>daily 04:17 UTC"] --> ST["6.12/staging, 6.18/staging"]
+    ST -- "manual promotion<br/>after the soak" --> RC["6.12/rc, 6.18/rc"]
     PROMO["manual promotion"] --> REL["6.12/release"]
     RC --> NK["notify-kernel-build"]
     REL --> NK
   end
   NK -- "kernel-rc-updated<br/>KERNEL_DISPATCH_TOKEN" --> CK["Citronics/citronics-kernel<br/>build-release"]
-  SS -- "kernel-rc-updated<br/>KERNEL_DISPATCH_TOKEN" --> CK
   CK -- "update-repo<br/>APT_DISPATCH_TOKEN" --> DP["Citronics/deb-packages<br/>update-repo"]
   OTHER["initramfs, citronics-firmware,<br/>limeboard-extras, limeboard-firmware,<br/>modemmanager-deb"] -- "update-repo<br/>APT_DISPATCH_TOKEN" --> DP
   DP -- "deps-updated, only when main changed<br/>IMAGES_DISPATCH_TOKEN" --> IMG["Citronics/debos-citronics<br/>build-images"]
@@ -61,25 +61,28 @@ Only two series exist for the FP2: **6.12**, the production series, and
 
 | Branch | Moves when | Built as |
 |---|---|---|
-| `6.12/rc` | stable-sync merges a stable update; staging is promoted to rc | rc kernel, APT `experimental` |
+| `6.12/rc` | **only** by manual promotion of a soaked staging | rc kernel, APT `experimental` |
 | `6.12/release` | **only** by manual promotion of a validated rc | release kernel, APT `main` |
-| `6.18/rc` | stable-sync; staging promoted to rc | rc kernel, APT `experimental` |
+| `6.18/rc` | **only** by manual promotion of a soaked staging | rc kernel, APT `experimental` |
 | `*/baseline`, `*/staging` | stable-sync, topic merges | not built |
 
 ### stable-sync
 
 `.github/workflows/stable-sync.yml` on the fork's default branch
 (`6.18/staging`) runs daily at 04:17 UTC. It merges `linux-6.12.y` into
-`6.12/{baseline,staging,rc}` and `linux-6.18.y` into
-`6.18/{baseline,staging,rc}`, one branch at a time:
+`6.12/{baseline,staging}` and `linux-6.18.y` into `6.18/{baseline,staging}`,
+one branch at a time:
 
-- a clean merge is pushed; after a merge into an `rc` branch it asks
-  citronics-kernel to build, so **every stable update becomes an experimental
-  rc kernel** without anyone doing anything;
+- it fetches from git.kernel.org, or from github.com/gregkh/linux when
+  git.kernel.org is unreachable, and merges only a stable release whose tag is
+  signed by the stable release key and points at the fetched commit;
+- a clean merge is pushed; a stable update reaches `rc`, and becomes an rc
+  kernel, only when a staging that carries it is promoted after the on-device
+  soak (the fork's AGENTS.md section 1.1);
 - a conflict fails that branch's job with the conflicting files in the error,
   leaves the branch untouched, and the other branches still sync. Resolve it
   by merging stable into the branch by hand, push, done;
-- it **never touches a release branch**.
+- it **never touches an rc or release branch**.
 
 ### Channels
 
