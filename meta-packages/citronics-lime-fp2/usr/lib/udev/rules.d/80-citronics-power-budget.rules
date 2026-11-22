@@ -1,0 +1,3 @@
+# Apply the CPU power budget as soon as the CPU package power zone exists,
+# for kernels where it appears only after sysinit (cpufreq built as a module).
+ACTION=="add", SUBSYSTEM=="powercap", ATTR{name}=="package", TAG+="systemd", ENV{SYSTEMD_WANTS}+="citronics-power-budget.service"
