@@ -109,7 +109,7 @@ SOURCES
 			fi
 		done
 	fi
-	# The CPU power budget for boards without a battery
+	# The CPU power budget (the Limeboard has no battery)
 	if command -v deb-systemd-helper >/dev/null; then
 		unit=citronics-power-budget.service
 		if ! deb-systemd-helper debian-installed "$unit" ||

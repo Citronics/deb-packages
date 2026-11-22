@@ -1,5 +1,5 @@
 [Unit]
-Description=CPU power budget for boards without a battery
+Description=CPU power budget of the Limeboard (no battery)
 Documentation=file:///usr/libexec/citronics-power-budget
 DefaultDependencies=no
 After=systemd-modules-load.service
