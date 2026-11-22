@@ -1,0 +1,15 @@
+[Unit]
+Description=CPU power budget for boards without a battery
+Documentation=file:///usr/libexec/citronics-power-budget
+DefaultDependencies=no
+After=systemd-modules-load.service
+Before=sysinit.target
+
+# Not RemainAfterExit: the udev rule starts it again when the power zone
+# appears after sysinit. Applying the budget twice is harmless.
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/citronics-power-budget
+
+[Install]
+WantedBy=sysinit.target
