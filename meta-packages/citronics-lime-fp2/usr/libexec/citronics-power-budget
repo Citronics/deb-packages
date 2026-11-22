@@ -1,12 +1,17 @@
 #!/bin/sh
-# Keep the CPUs within what the supply can carry when no battery is fitted.
+# Keep the CPUs within what the Limeboard's weakest power source can carry.
 #
-# Without a cell, the board runs from its supply input alone. A radio
-# powering up (the modem when rmtfs starts, the Wi-Fi firmware when it
-# recovers from a crash) while the four CPUs run at full speed draws more
-# than the input holds: the system voltage collapses and the PMIC cuts the
-# power (power-on reason SMPL, previous power-off UVLO). A battery absorbs
-# these peaks, so the limit applies only when there is none.
+# The Limeboard has no battery: the CiSoM runs from the board's supply alone,
+# and nothing absorbs a current peak. A radio powering up (the modem when
+# rmtfs starts, the Wi-Fi firmware when it recovers from a crash) while the
+# four CPUs run at full speed draws more than the input holds: the system
+# voltage collapses and the PMIC cuts the power (power-on reason SMPL,
+# previous power-off UVLO).
+#
+# One budget serves both operating modes, so a board can move between them
+# without reconfiguration. It is set for the weakest source, Debug mode
+# (powered by the host computer's USB port); Default mode, on USB-C PD or
+# PoE, has more headroom.
 #
 # The limit is a power budget for the CPUs as a whole, set on the "package"
 # node of the powercap DTPM zone; the kernel picks the CPU frequencies that
@@ -14,21 +19,13 @@
 # /etc/default/citronics-power-budget:
 #   CPU_BUDGET_UW=<microwatts>   0 leaves the CPUs unlimited
 #
-# 3.31 W holds the four CPUs at 1574 MHz. On a carrier rig fed from USB, load
-# plus a Wi-Fi firmware restart survived at 1728 MHz and browned out at
-# 1958 MHz; the default stays one step below what survived.
+# 3.31 W holds the four CPUs at 1574 MHz. In Debug mode, load plus a Wi-Fi
+# firmware restart survived at 1728 MHz and browned out at 1958 MHz; the
+# default stays one step below what survived.
 set -u
 
 CPU_BUDGET_UW=3310000
 [ -r /etc/default/citronics-power-budget ] && . /etc/default/citronics-power-budget
-
-battery_present() {
-	for s in /sys/class/power_supply/*; do
-		[ "$(cat "$s/type" 2>/dev/null)" = Battery ] || continue
-		[ "$(cat "$s/present" 2>/dev/null)" = 1 ] && return 0
-	done
-	return 1
-}
 
 package_zone() {
 	for z in /sys/class/powercap/dtpm:*; do
@@ -42,10 +39,10 @@ if ! zone=$(package_zone); then
 	exit 0
 fi
 
-if battery_present || [ "$CPU_BUDGET_UW" -eq 0 ]; then
+if [ "$CPU_BUDGET_UW" -eq 0 ]; then
 	cat "$zone/constraint_0_max_power_uw" > "$zone/constraint_0_power_limit_uw"
 	echo "CPU power not limited."
 else
 	echo "$CPU_BUDGET_UW" > "$zone/constraint_0_power_limit_uw"
-	echo "No battery: CPU power limited to $CPU_BUDGET_UW uW."
+	echo "CPU power limited to $CPU_BUDGET_UW uW."
 fi
