@@ -261,6 +261,24 @@ Description: Citronics Lime meta-package for Fairphone 2
 
 Package: citronics-lime-fp2
 Architecture: armhf
+Version: 2.12
+Priority: optional
+Section: metapackages
+Maintainer: Citronics <info@citronics.eu>
+Depends: linux-image-citronics-lime-fp2, linux-firmware-lime-fp2, citronics-initramfs, unudhcpd, limeboard-io, limeboard-ha, unattended-upgrades, citronics-net-id (>= 1.3)
+Filename: pool/main/citronics-lime-fp2_2.12_armhf.deb
+Size: 10434
+MD5sum: 3d42b6d5c857bfeb1032dd4bbf28ae34
+SHA1: 203b373aa8c0bec4b849f1b6f240c71f9b441811
+SHA256: a75a87efd9c1d77525d0c96addf2f0cc22b31753de7062a6acc5ca183c0f2011
+SHA512: 806313177282d0ff6117531fe13f7f2f68a927d07c0dcb06771f81545656cc44531c4b7798cf9dd9fd4a04a754821ce4ae2d579b48bfb73724be6460d2d3c603
+Description: Citronics Lime meta-package for Fairphone 2
+ Installs the complete Citronics Lime software stack for Fairphone 2:
+ firmware, initramfs, DHCP helper, and the Limeboard header tools and
+ Home Assistant agent.
+
+Package: citronics-lime-fp2
+Architecture: armhf
 Version: 2.1
 Priority: optional
 Section: metapackages
