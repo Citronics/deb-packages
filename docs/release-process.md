@@ -261,12 +261,15 @@ Trusted: yes
 ```
 
 `unattended-upgrades` installs updates from it daily, so a release reaches
-devices without anyone logging in. It only takes origins it is told to: the
-repository's `Release` files say `Origin: Citronics` (set in `update-repo.yml`),
-and the `citronics-lime-*` meta-packages (FP2 2.12, FP3 1.9) allow that origin in
-`/etc/apt/apt.conf.d/52citronics-unattended-upgrades`. A device on an older
-meta-package needs one `sudo apt update && sudo apt full-upgrade` by hand to get
-that file; without it, unattended-upgrades skips every Citronics package.
+devices without anyone logging in. It only takes origins it is told to: the `citronics-lime-*`
+meta-packages (FP2 2.13, FP3 1.10) allow this repository by its host in
+`/etc/apt/apt.conf.d/52citronics-unattended-upgrades`
+(`site=citronics.github.io`). The `Release` files carry no `Origin` or `Label`,
+and must keep it that way: apt refuses a repository whose origin or label
+changes ("changed its 'Origin' value") until each device accepts it by hand. A
+device on an older meta-package needs one `sudo apt update && sudo apt
+full-upgrade` by hand to get the file; without it, unattended-upgrades skips
+every Citronics package.
 
 The kernel that boots is the one on the boot partition (`/boot/zImage` on the
 FP2, `/boot/Image.gz` on the FP3, with `/boot/initramfs.gz`). The kernel hook
