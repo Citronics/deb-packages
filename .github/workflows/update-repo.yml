@@ -202,6 +202,8 @@ jobs:
           gzip -kf dists/stable/experimental/binary-arm64/Packages
           gzip -kf dists/stable/experimental/binary-all/Packages
           apt-ftparchive \
+            -o APT::FTPArchive::Release::Origin=Citronics \
+            -o APT::FTPArchive::Release::Label=Citronics \
             -o APT::FTPArchive::Release::Suite=stable \
             -o APT::FTPArchive::Release::Codename=stable \
             -o APT::FTPArchive::Release::Architectures="armhf arm64 all" \
@@ -220,6 +222,8 @@ jobs:
               gzip -kf "dists/$suite/main/binary-$arch/Packages"
             done
             apt-ftparchive \
+              -o APT::FTPArchive::Release::Origin=Citronics \
+              -o APT::FTPArchive::Release::Label=Citronics \
               -o APT::FTPArchive::Release::Suite="$suite" \
               -o APT::FTPArchive::Release::Codename="$suite" \
               -o APT::FTPArchive::Release::Architectures="armhf arm64" \
