@@ -1,0 +1,7 @@
+# Keep the Citronics ModemManager (patched for the Fairphone modems): the
+# distribution's build crashes at every start after the first and cannot set
+# the modem's attach APN. It wins on its version alone only until the
+# distribution publishes a higher one, so pin it to this repository.
+Package: modemmanager libmm-glib0
+Pin: origin citronics.github.io
+Pin-Priority: 990

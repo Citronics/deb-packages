@@ -1,5 +1,5 @@
 Package: citronics-lime-fp3
-Version: 1.10
+Version: 1.11
 Architecture: arm64
 Maintainer: Citronics <info@citronics.eu>
 Depends: linux-image-citronics-lime-fp3, linux-firmware-lime-fp3, citronics-initramfs, unudhcpd, qbootctl, unattended-upgrades, citronics-net-id (>= 1.3)
