@@ -1,0 +1,7 @@
+// Let unattended-upgrades install updates from the Citronics APT repository:
+// kernels, firmware, the Limeboard tools and the patched ModemManager. Its
+// Release files carry "Origin: Citronics"; the experimental component is
+// only seen by boards that opted in to it.
+Unattended-Upgrade::Origins-Pattern {
+	"origin=Citronics";
+};
